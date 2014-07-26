@@ -2,6 +2,7 @@ body {
   background: #fff;
   color: #222;
   font-family: Arial, Helvetica, sans-serif;
+  padding: 0 10px;
 }
 
 div.upper-area {
@@ -19,17 +20,38 @@ div.upper-area #right-area {
 #main-content {
   width: 940px;
   margin: 0 auto;
+  padding: 35px 0;
+}
+form.large {
+  width: 300px;
+  margin: 0 auto;
+  border-radius: 5px;
+  border: 1px solid #c0c0c0;
+  padding: 1px 20px 30px 20px;
+  background: #f0f0f0;
+}
+form.large input[type=text], form.large input[type=password] {
+  width: 280px;
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 3px;
+  border: 1px solid #c0c0c0;
+}
+form.large .checkbox-area {
+  display: inline-block;
+  height: 20px;
 }
 
 #schedule-main {
   margin: 20px 0;
+  height: 100px;
 }
 
 #schedule-main .day {
   float:left;
   display: inline-block;
   width: 14%;
-  height: 200px;
+  height: 100px;
 }
 #schedule-main .day:last-child {
   border: none;
@@ -41,10 +63,10 @@ div.upper-area #right-area {
 #schedule-main .time-label {
   color: #767676;
   position: absolute;
-  right: 120px;
+  right: 118px;
 }
 #schedule-main .time-label::after {
-  color: #c0c0c0;
+  color: #dedede;
   position: absolute;
   display: inline-block;
   content: "";
@@ -53,4 +75,16 @@ div.upper-area #right-area {
   width: 90px;
   height: 15px;
   border-bottom:1px solid;
+}
+
+.session-slot {
+  margin: 10px 5px;
+  padding: 2px 4px;
+  display: inline-block;
+  font-size: 15px;
+  border-radius: 2px;
+  text-decoration: none;
+  color: #fff;
+  border: 1px solid #2b800a;
+  background: #3ab70e;
 }

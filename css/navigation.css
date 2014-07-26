@@ -28,3 +28,15 @@ a.green-button {
 a.green-button:last-child {
   margin-right: 0;
 }
+
+form.large button {
+  font-size: inherit;
+  padding: 8px;
+  background: linear-gradient(to top, #40a120, #3ab70e);
+  text-decoration: none;
+  color: #fff;
+  border: 1px solid #2b800a;
+  border-radius: 3px;
+  margin: 5px 0;
+  float: right;
+}
