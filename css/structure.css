@@ -10,6 +10,7 @@ div.upper-area {
   margin: 0 auto;
   border-bottom: 1px solid #c0c0c0;
   padding: 20px 0;
+  overflow: auto;
 }
 div.upper-area #right-area {
   float: right;
@@ -39,7 +40,7 @@ form.large input[type=text], form.large input[type=password] {
 }
 form.large .checkbox-area {
   display: inline-block;
-  height: 20px;
+  margin-top: 16px;
 }
 
 #schedule-main {

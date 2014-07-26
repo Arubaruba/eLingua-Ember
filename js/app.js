@@ -1,7 +1,8 @@
 App = Ember.Application.create();
 
 App.Router.map(function() {
-  // put your routes here
+  this.route('schedule', {path: '/'});
+  this.route('sign-in', {path: '/sign-in'});
 });
 
 App.IndexRoute = Ember.Route.extend({
@@ -9,3 +10,4 @@ App.IndexRoute = Ember.Route.extend({
     return ['red', 'yellow', 'blue'];
   }
 });
+
