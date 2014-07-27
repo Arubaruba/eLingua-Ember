@@ -10,7 +10,6 @@ var Form = function(fields) {
     for(var fieldId in this.fields) {
       var field = this.fields[fieldId];
       if (!field || field == '') {
-
         return 'Fields Missing';
       }
     }
