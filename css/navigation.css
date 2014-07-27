@@ -31,7 +31,7 @@ a.green-button:last-child {
 
 form.large button {
   font-size: inherit;
-  padding: 8px;
+  padding: 6px;
   background: linear-gradient(to top, #40a120, #3ab70e);
   text-decoration: none;
   color: #fff;

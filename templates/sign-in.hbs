@@ -1,8 +1,7 @@
-<form class="large">
+<form class="large" {{action "signIn" on="submit"}}>
   <h1>Sign In</h1>
-  <input type="text" placeholder="Email Address"/><br>
-  <input type="password" placeholder="Password"/><br>
-  <div class="checkbox-area"></div>
-  <label><input type="checkbox" class="checkbox-area"/> Stay Signed In</label>
+  {{input value=form.fields.name type="email" placeholder="Email Address"}}<br>
+  {{input value=form.fields.password type="password" placeholder="Password"}}<br>
+  <div class="response-message-area" >{{responseMessage}}</div>
   <button class="green-button" type="submit">Sign In</button>
 </form>
