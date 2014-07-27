@@ -10,9 +10,12 @@ module.exports = function(grunt) {
     emberTemplates: config('emberTemplates'),
     uglify: config('uglify')
   });
+
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-ember-templates');
-grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.registerTask('default', ['concat','emberTemplates','uglify']);
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+
+  grunt.registerTask('production', ['emberTemplates', 'concat', 'uglify']);
+  grunt.registerTask('development', ['emberTemplates', 'concat']);
 };

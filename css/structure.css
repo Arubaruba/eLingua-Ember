@@ -39,6 +39,8 @@ form.large input[type=text], form.large input[type=password] {
   border: 1px solid #c0c0c0;
 }
 form.large .checkbox-area {
+  user-select: none;
+  cursor: pointer;
   display: inline-block;
   margin-top: 16px;
 }
