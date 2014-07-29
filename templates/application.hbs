@@ -2,9 +2,13 @@
       <span id="website-title">
         eLingua
         <span id="right-area">
-          <a class="black-link" href="#/">Home</a>
-          <a class="white-button" href="#/sign-up">Sign Up</a>
-          <a class="green-button" href="#/sign-in">Sign In</a>
+          {{#link-to 'schedule' class="black-link"}}Home{{/link-to}}
+          {{#if signedIn}}
+            <button class="white-button" {{action "signOut" on="click"}}>Sign Out</button>
+          {{else}}
+            {{#link-to 'sign-up' class="white-button"}}Sign Up{{/link-to}}
+            {{#link-to 'sign-in' class="green-button"}}Sign In{{/link-to}}
+          {{/if}}
         </span>
       </span>
 </div>
