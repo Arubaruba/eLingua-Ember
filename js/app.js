@@ -1,13 +1,11 @@
 App = Ember.Application.create();
 
 App.Router.map(function() {
-  this.route('schedule', {path: '/'});
-  this.route('sign-up');
-  this.route('sign-in');
-  this.route('sign-out');
+  this.resource('users', function() {
+    this.route('guest');
+  });
 });
-
-
+/*
 function ajax(arguments) {
   if(App.rootElement == '#ember-testing1') {
 
@@ -144,3 +142,4 @@ App.SignInController = Ember.Controller.extend({
   }
 });
 
+*/

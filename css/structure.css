@@ -1,89 +1,287 @@
 body {
+  color: #444;
+  font-family: Tahoma, Geneva, sans-serif;
   background: #fff;
-  color: #222;
-  font-family: Arial, Helvetica, sans-serif;
-  padding: 0 10px;
+  margin: 0;
+  padding: 0 0 60px 0;
 }
 
-div.upper-area {
-  width: 940px;
-  margin: 0 auto;
-  border-bottom: 1px solid #c0c0c0;
-  padding: 20px 0;
-  overflow: auto;
+#upper-area {
+  height: 110px;
+  line-height: 70px;
 }
-div.upper-area #right-area {
-  float: right;
-  font-size: 16px;
-  line-height: 40px;
+#upper-area span#right {
+  float:right;
+}
+.centerer {
+  background: inherit;
+  width: 1100px;
+  margin:0 auto;
+  padding: 20px;
 }
 
-#main-content {
-  width: 940px;
-  margin: 0 auto;
-  padding: 35px 0;
+#home-middle {
+  font-size: 20px;
+  background-color: #0082bd;
 }
-form.large {
-  width: 300px;
-  padding: 0 20px;
+
+#home-middle #sign-up {
+  width: 400px;
+  display: inline-block;
 }
-form.large input[type=text], form.large input[type=email], form.large input[type=password] {
-  width: 280px;
-  padding: 8px;
-  margin: 5px 0;
+#home-middle #sign-up .fieldLabel {
+  font-size: 40px;
+}
+.form1 {
+  display: inline-block;
+}
+.form1 input[type=text],
+.form1 input[type=email],
+.form1 input[type=password] {
+  width: 250px;
+  font-size: 18px;
+  padding: 10px;
+  border: 2px solid #c0c0c0;
   border-radius: 3px;
-  border: 1px solid #c0c0c0;
-}
-form.large .response-message-area {
-  color: #c60014;
+  background: #fff;
   display: inline-block;
-  margin: 14px 5px 0 5px;
-  font-weight: bold;
+  margin: 5px 0 22px 0;
 }
 
-#schedule-main {
-  margin: 20px 0;
+.form2 {
+  padding: 20px;
+}
+.form2 input[type=text],
+.form2 input[type=email],
+.form2 textarea,
+.form2 input[type=password],
+.form2 select{
+  font-family: inherit;
+  width: 250px;
+  font-size: 18px;
+  padding: 10px;
+  border: 2px solid #c0c0c0;
+  border-radius: 3px;
+  background: #fff;
+  font-weight: normal;
+  margin: 5px 0 22px 0;
+  display: block;
+}
+.form2 button, .form2 select {
+  width: 274px;
+}
+.form2 select[disabled] {
+  background: #cbcbcb;
+}
+
+#home-middle #info {
+  font-size: 30px;
+  width: 600px;
+  display: inline-block;
+  line-height: 3;
+  color: #ddd;
+}
+#home-middle #info li::before {
+  content: '';
+  display: inline-block;
+  position: relative;
+  right: 38px;
+  top: 25px;
+}
+#home-middle #info li.tutors::before{
+  height:80px;
+  width:72px;
+  background:url('../images/icons.png') -0px -0px no-repeat;
+}
+#home-middle #info li#arabic_types::before{
+  height:75px;
+  width:93px;
+  margin-right: -24px;
+  right: 50px;
+  background:url('../images/icons.png') -73px -0px no-repeat;
+}
+#home-middle #info li#scheduling::before{
+  height:75px;
+  width:73px;
+  background:url('../images/icons.png') -166px -0px no-repeat;
+}
+#home-middle #info li#courses::before{
+  height:75px;
+  width:74px;
+  background:url('../images/icons.png') -238px -0px no-repeat;
+}
+#home-middle #info li {
+  list-style-type: none;
   height: 100px;
 }
 
-#schedule-main .day {
-  float:left;
-  display: inline-block;
-  width: 14%;
-  height: 100px;
-}
-#schedule-main .day:last-child {
-  border: none;
+#footer {
+  background: #5c5c5c;
+  color: #fff;
+  font-size: 13px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
 }
 
-#schedule-main .time-container {
+.tutor {
+  min-height: 180px;
   position: relative;
 }
-#schedule-main .time-label {
-  color: #767676;
-  position: absolute;
-  right: 118px;
-}
-#schedule-main .time-label::after {
-  color: #dedede;
-  position: absolute;
+
+.tutor-list img {
+  width: 140px;
+  height: 140px;
+  border-radius: 70px;
   display: inline-block;
-  content: "";
-  top: -5px;
-  right: -95px;
-  width: 90px;
-  height: 15px;
-  border-bottom:1px solid;
+  position: absolute;
+  top: 25px;
+}
+.tutor-list .text {
+  margin-left: 130px;
+  display: inline-block;
+  width: 650px;
+  padding-left: 40px;
 }
 
-.session-slot {
-  margin: 10px 5px;
-  padding: 2px 4px;
+#submenu {
+  border: 1px solid #c0c0c0;
+  width: 250px;
+  padding: 20px;
+  float: left;
+  line-height: 2;
+}
+#submenu-content {
+  margin-left: 350px;
+}
+#submenu-content form {
+  padding: 0 !important;
+}
+
+#tutor-selection-message {
+  margin: 20px 0;
+  height: 30px;
+}
+.tutor-account .name {
+  font-weight: bold;
+}
+table.table1 {
+}
+table.table1 th {
+  font-size: 19px;
+}
+table.table1 td {
+  padding: 10px;
+  font-size: 16px;
+}
+table.table1 tr:nth-child(2n+1) td {
+  background: #ebebeb;
+}
+.form-table1 {
+  margin: 20px 0;
+}
+.form-table1 input[type=text],
+.form-table1 select
+{
+  color: inherit;
+  font-size: 17px;
+  padding: 3px;
+  border: 1px solid #c0c0c0;
+  border-radius: 3px;
+  background: #fff;
+  width: 100px;
+}
+.form-table1 button[disabled] {
+  border: 1px solid #888888;
+  background: #c0c0c0;
+}
+.form-table1  input[disabled] {
+  background: #dddddd;
+}
+table#schedule {
+  padding: 10px;
+}
+table#schedule th {
+  width:120px;
+}
+
+table#schedule th:nth-child(even) {
+  background: #ebebeb;
+}
+table#schedule tr.tutor td:first-child {
+  width: 200px;
+}
+table#schedule tr.tutor td {
+  position: relative;
+  height:20px;
+}
+table#schedule tr.tutor td:nth-child(even) {
+  background: #ebebeb;
+}
+table#schedule td:first-child {
+  padding: 10px;
+  font-size: 19px;
+}
+table#schedule tr.blended-out td:first-child {
+  color:#c0c0c0;
+}
+table#schedule tr.tutor td:hover {
+  background: #949494;
+}
+table#schedule tr.tutor td:hover:nth-child(1) {
+  background: none;
+}
+table#schedule tr.tutor.blended-out .hour {
+  border: 1px solid #656b60;
+  background: #abb5a3;
+}
+table#schedule .hour {
   display: inline-block;
-  font-size: 15px;
+  border: 1px solid #2e6c00;
+  background: #4cb600;
+  top: 10px;
+  height: 20px;
+  width: 5px;
   border-radius: 2px;
-  text-decoration: none;
+}
+table#schedule .hour.selected {
+  border: 1px solid #459e00;
+  background: #65e800;
+}
+table#schedule .magnified {
+  display: none;
+}
+table#schedule td .magnified {
+  display: none;
+}
+table#schedule td:hover .magnified {
+  display: inline-block;
   color: #fff;
-  border: 1px solid #2b800a;
-  background: #3ab70e;
+  padding: 5px;
+  position: absolute;
+  background: inherit;
+  height: 44px;
+  line-height: 22px;
+  left: 0;
+  bottom: 40px;
+  font-weight: bold;
+  border-radius: 2px 2px 2px 0;
+}
+
+table#schedule td .magnified a {
+  border: 1px solid #2e6c00;
+  background: #4cb600;
+  color: #fff;
+  font-size: 15px;
+  text-align: center;
+  display: inline-block;
+  padding: 2px;
+  top: 25px;
+  width: 80px;
+  height: 20px;
+  line-height: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 3px;
 }

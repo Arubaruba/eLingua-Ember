@@ -1,54 +1,73 @@
-.black-link {
-  color: inherit;
-  text-decoration: none;
-  margin: 0 10px;
+#upper-area #website-name {
+  font-size: 60px;
+  font-weight: bold;
 }
-.black-link.active {
+
+.black-link{
+  color: #444;
+  font-size: 16px;
+  margin: 0 20px;
+  text-decoration: none;
+}
+.black-link:hover{
   text-decoration: underline;
 }
+.black-link-ul {
+  color: #444;
+  text-decoration: underline;
+  font-size: 19px;
+}
 
-.white-button {
-  font-size: inherit;
+.button-green {
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid #2e6c00;
+  background: #4cb600;
+  border-radius: 3px;
+  padding: 10px;
+  font-weight: bold;
+}
+.button-green.small {
+  padding: 3px;
+}
+.button-green[disabled] {
+  border: 1px solid #666963;
+  background: #aeb3aa;
+  cursor: default;
+}
+.button-blue {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid #002533;
+  border-radius: 3px;
+  background: linear-gradient(to top, #0083b3, #008fcc);
+  color: #fff;
+}
+.button-blue.active {
+  border-color: #002533;
+  background: linear-gradient(to top, #8fa9b3, #a3c0cc);
+}
+.button-wide {
+  width: 150px;
+  font-weight: bold;
+}
+.white-link {
+  text-decoration: none;
+  font-weight: bold;
+  color: #fff;
+}
+.white-link:hover {
+  text-decoration: underline;
+}
+#submenu a {
+  display: block;
   color: inherit;
+  text-decoration: underline;
+}
+#submenu a.active {
   text-decoration: none;
-  margin: 0 10px;
-  padding: 10px;
-  background: #fff;
-  border: 1px solid #c0c0c0;
-  border-radius: 3px;
-}
-.white-button.active {
-  background: #cccccc;
-  border: 1px solid #8c8c8c;
-}
-
-.green-button {
-  font-size: inherit;
-  padding: 10px;
-  background: linear-gradient(to top, #40a120, #3ab70e);
-  text-decoration: none;
-  color: #fff;
-  border: 1px solid #2b800a;
-  border-radius: 3px;
-  margin: 0 10px;
-}
-.green-button.active {
-  background: linear-gradient(to top, #a1a1a1, #a3b39d);
-  color: #fff;
-  border: 1px solid #758070;
-}
-.green-button:last-child {
-  margin-right: 0;
-}
-
-form.large button {
-  font-size: inherit;
-  padding: 6px;
-  background: linear-gradient(to top, #40a120, #3ab70e);
-  text-decoration: none;
-  color: #fff;
-  border: 1px solid #2b800a;
-  border-radius: 3px;
-  margin: 5px 0;
-  float: right;
+  color: #7b7b7b;
 }

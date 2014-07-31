@@ -1,0 +1,9 @@
+<form class="large" {{action "signUp" on="submit"}}>
+  <h1>Sign Up</h1>
+  {{input value=form.fields.fullName type="text" placeholder="Full Name"}}<br>
+  {{input value=form.fields.emailAddress type="email" placeholder="Email Address"}}<br>
+  {{input value=form.fields.password type="password" placeholder="Password"}}<br>
+  {{input value=form.fields.repeatPassword type="password" placeholder="Repeat Password"}}<br>
+  <div class="response-message-area" >{{responseMessage}}</div>
+  <button class="green-button" type="submit">Sign Up</button>
+</form>

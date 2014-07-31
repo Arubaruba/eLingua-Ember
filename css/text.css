@@ -1,40 +1,46 @@
-#website-title {
+#upper-area #website-description {
+  position: relative;
+  top: -10px;
+  margin-left: 20px;
+  font-size: 19px;
+}
+#home-middle #sign-up #message{
+  font-size: 19px;
+  color: #fff;
+  margin-bottom: 30px;
+  line-height: 30px;
+}
+h1 {
+  margin-top: 40px;
+  font-size: 56px;
+}
+#footer #author {
+  float:right;
+  margin-right: 20px;
+}
+#submenu #title {
+  font-size: 19px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+#submenu-content #page-title {
   font-size: 35px;
-}
-#schedule-main .day .name{
-  font-weight: bold;
-  text-align: center;
-}
-.session-slot .x-mark {
-  cursor:pointer;
-  position: relative;
-  color: #153a06;
-}
-.session-slot .x-mark:hover {
-  color: darkred;
-}
-.session-slot .tutor {
-  color: #153a06;
-  font-weight: bold;
-  margin-right: 10px;
-}
-/*
-.session-slot .tutor:hover {
-  text-decoration: underline;
-  cursor:pointer;
-}*/
-.session-slot .time-period {
-  color: #e7e7e7;
+  margin-bottom: 20px;
   font-weight: bold;
 }
-
-#claiming-session {
-  color: #767676;
-  font-size: 15px;
-  margin: 30px 0 10px 0;
+.subtle {
+  color: #c0c0c0;
+  font-size: 18px;
 }
-#claiming-session img {
-  position: relative;
-  top:10px;
-  margin-right: 5px;
+#schedule-lession-list .day {
+  font-weight: bold;
+  display: inline-block;
+  width: 100px;
+}
+.warning {
+  color: #e31700;
+  font-weight: bold;
+  font-size: 19px;
+  line-height: 2;
+  margin: 20px 0;
 }

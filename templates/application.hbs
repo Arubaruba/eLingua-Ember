@@ -1,17 +1,15 @@
-<div class="upper-area">
-      <span id="website-title">
-        eLingua
-        <span id="right-area">
-          {{#link-to 'schedule' class="black-link"}}Home{{/link-to}}
-          {{#if signedIn}}
-            <button class="white-button" {{action "signOut" on="click"}}>Sign Out</button>
-          {{else}}
-            {{#link-to 'sign-up' class="white-button"}}Sign Up{{/link-to}}
-            {{#link-to 'sign-in' class="green-button"}}Sign In{{/link-to}}
-          {{/if}}
-        </span>
-      </span>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>eLingua</title>
+  <link rel="stylesheet" href="../css/master.css"/>
+</head>
+<body>
+{{outlet}}
+<div id="footer">
+  Copyright 2014 eLingua
+  <span id="author">Website by <b>Andreas Stocker</b></span>
 </div>
-<div id="main-content">
-  {{outlet}}
-</div>
+</body>
+</html>
