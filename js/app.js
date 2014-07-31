@@ -1,9 +1,40 @@
 App = Ember.Application.create();
 
 App.Router.map(function() {
-  this.resource('users', function() {
-    this.route('guest');
+  this.resource('guest', function() {
+    this.route('tutors');
+    this.route('sign-in');
   });
+  this.resource('tutor', function() {
+    this.resource('account', function() {
+      this.route('change-password');
+      this.route('profile');
+    });
+  });
+  this.route('missing', {path: '/*wildcard'})
+});
+
+App.GuestRoute = Ember.Route.extend({
+  renderTemplate: function() {
+    this.render();
+    this.render('guest.menu', {
+      outlet: 'menu',
+      into: 'application'
+    });
+  }
+});
+
+App.TutorRoute = Ember.Route.extend({
+  renderTemplate: function() {
+    this.render();
+    this.render('tutor.menu', {
+      outlet: 'menu',
+      into: 'application'
+    });
+  }
+});
+App.TutorAccountRoute = Ember.Route.extend({
+
 });
 /*
 function ajax(arguments) {

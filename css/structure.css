@@ -88,7 +88,7 @@ body {
   right: 38px;
   top: 25px;
 }
-#home-middle #info li.tutors::before{
+#home-middle #info li#tutors::before{
   height:80px;
   width:72px;
   background:url('../images/icons.png') -0px -0px no-repeat;
