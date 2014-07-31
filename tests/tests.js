@@ -2,33 +2,37 @@
 App.rootElement = '#ember-testing';
 
 // Common test setup
-
 App.setupForTesting();
-App.injectTestHelpers();
-/*
-// common QUnit module declaration
-module("Integration tests", {
-  setup: function() {
-    // before each test, ensure the application is ready to run.
-    Ember.run(App, App.advanceReadiness);
-  },
 
-  teardown: function() {
-    // reset the application state between each test
-    App.reset();
+Ember.Test.registerAsyncHelper('testAjax',
+  function(app, context) {
+    Ember.run(function() {
+      return $.get('localhost/db');
+    });
   }
-});*/
+);
 
-// QUnit test case
+emq.globalize();
+setResolver(Ember.DefaultResolver.create({ namespace: App }));
+App.injectTestHelpers();
+
+moduleFor('controller:application', 'Application Controller', {needs: ['controller:sign-in']});
+
 test("Sign In", function() {
-  // async helper telling the application to go to the '/' route
+
+  var application = this.subject();
+
   visit("/sign-in");
 
   fillIn('input[type=email]', 'a@a.a');
   fillIn('input[type=password]', '1234');
 
-  // helper waiting the application is idle before running the callback
+  console.log(testAjax());
+  Ember.run(function(){
+    //return click('form button');
+  });
+
   andThen(function() {
-    find('form button').submit();
+    notEqual(currentRouteName(), 'sign-in', 'Signed In');
   });
 });

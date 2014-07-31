@@ -7,11 +7,38 @@ App.Router.map(function() {
   this.route('sign-out');
 });
 
+
 function ajax(arguments) {
-  if(App.rootElement == '#ember-testing') {
-    return mocks[arguments['url']][arguments['type']](arguments['data']);
+  if(App.rootElement == '#ember-testing1') {
+
+    var requestUrl = mocks[arguments['url']];
+    if(!requestUrl) throw('Missing mock request with url: ' + arguments['url']);
+
+    var requestType = requestUrl[arguments['type']];
+    if (!requestType) throw('Mock request with url missing request type: ' + arguments['type']);
+
+    var mockRequest = requestType(arguments['data']);
+
+    var possibleOutcomes = ['success', 'fail'];
+
+    var result = {
+      'success': function(func) {
+        if(mockRequest.outcome == 'success') {
+          func(mockRequest.result);
+        }
+        return result;
+      },
+      'fail': function(func) {
+        if(mockRequest.outcome == 'fail') {
+          func(mockRequest.result);
+        }
+        return result;
+      }
+    };
+
+    return result;
   } else {
-    return Ember.$.ajax(arguments);
+    return $.ajax(arguments);
   }
 }
 
@@ -101,7 +128,7 @@ App.SignInController = Ember.Controller.extend({
       this.set('responseMessage', validationError);
 
       if (!validationError)  {
-        ajax({url:'/db/_session', data: JSON.stringify(this.get('form').fields)
+        return ajax({url:'/db/_session', data: this.get('form').fields, type: 'POST'
         }).success(function(data, status) {
           scope.get('controllers.application').set('signedIn', true);
           scope.transitionToRoute('schedule');
