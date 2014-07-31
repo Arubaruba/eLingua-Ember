@@ -2,13 +2,28 @@ App = Ember.Application.create();
 
 App.Router.map(function() {
   this.resource('guest', function() {
+    this.route('index');
     this.route('tutors');
     this.route('sign-in');
+    this.route('sign-up-privileged');
+    this.route('password-recovery');
+    this.route('password-reset');
+  });
+  this.resource('student', function() {
+    this.route('index');
+    this.route('change-schedule');
+    this.route('finalize-schedule');
+    this.resource('student.account', {path: 'account'}, function() {
+      this.route('change-password');
+    });
   });
   this.resource('tutor', function() {
-    this.resource('account', function() {
+    this.route('index');
+    this.resource('tutor.account', {path: 'account'}, function() {
       this.route('change-password');
       this.route('profile');
+      this.route('create-privileged-account');
+      this.route('manage-tutors');
     });
   });
   this.route('missing', {path: '/*wildcard'})
@@ -24,6 +39,16 @@ App.GuestRoute = Ember.Route.extend({
   }
 });
 
+App.StudentRoute = Ember.Route.extend({
+  renderTemplate: function() {
+    this.render();
+    this.render('student.menu', {
+      outlet: 'menu',
+      into: 'application'
+    });
+  }
+});
+
 App.TutorRoute = Ember.Route.extend({
   renderTemplate: function() {
     this.render();
@@ -33,8 +58,33 @@ App.TutorRoute = Ember.Route.extend({
     });
   }
 });
-App.TutorAccountRoute = Ember.Route.extend({
 
+App.TutorAccountRoute = Ember.Route.extend({
+  renderTemplate: function() {
+    this.render();
+  }
+});
+
+App.TutorAccountChangePasswordRoute = Ember.Route.extend({
+  renderTemplate: function() {
+    this.render('account.change-password', {
+      into: 'tutor.account'
+    });
+  }
+});
+
+App.StudentAccountRoute = Ember.Route.extend({
+  renderTemplate: function() {
+    this.render();
+  }
+});
+
+App.StudentAccountChangePasswordRoute = Ember.Route.extend({
+  renderTemplate: function() {
+    this.render('account.change-password', {
+      into: 'student.account'
+    });
+  }
 });
 /*
 function ajax(arguments) {

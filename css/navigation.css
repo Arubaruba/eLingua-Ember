@@ -9,8 +9,15 @@
   margin: 0 20px;
   text-decoration: none;
 }
+.black-link.active{
+  color: #aeb3aa;
+}
 .black-link:hover{
   text-decoration: underline;
+}
+.black-link.active:hover{
+  text-decoration: none;
+  cursor: default;
 }
 .black-link-ul {
   color: #444;
@@ -31,7 +38,9 @@
 .button-green.small {
   padding: 3px;
 }
-.button-green[disabled] {
+.button-green[disabled],
+.button-green.active
+{
   border: 1px solid #666963;
   background: #aeb3aa;
   cursor: default;
