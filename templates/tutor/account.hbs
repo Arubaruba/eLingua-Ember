@@ -1,14 +1,21 @@
 <div class="centerer">
-  <div id="submenu">
-    <div id="title">Tutor Account</div>
-    {{#link-to 'tutor.account.change-password' class='black-link'}}Change Password{{/link-to}}
-    {{#link-to 'tutor.account.profile' class='black-link'}}My Profile{{/link-to}}
-    <br>
-    <div id="title">Administration</div>
-    {{#link-to 'tutor.account.create-privileged-account' class='black-link'}}Create Privileged Account{{/link-to}}
-    {{#link-to 'tutor.account.manage-tutors' class='black-link'}}Manage Tutors{{/link-to}}
+  <div class="titled-box-menu-container">
+    <div class="titled-box menu">
+      <div class="title">Tutor Dashboard</div>
+      <div class="inner">
+        {{#link-to 'tutor.account.profile' class='link'}}My Profile{{/link-to}}
+        {{#link-to 'tutor.account.change-password' class='link'}}Change Password{{/link-to}}
+      </div>
+    </div>
+    <div class="titled-box menu">
+      <div class="title">Admin Dashboard</div>
+      <div class="inner">
+        {{#link-to 'tutor.account.create-privileged-account' class='link'}}Create Privileged Account{{/link-to}}
+        {{#link-to 'tutor.account.manage-tutors' class='link'}}Manage Tutors{{/link-to}}
+      </div>
+    </div>
   </div>
-  <div id="submenu-content">
+  <div class="titled-box-container">
     {{outlet}}
   </div>
 </div>

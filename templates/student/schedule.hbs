@@ -1,0 +1,16 @@
+<div class="centerer">
+  <div class="titled-box-menu-container">
+    <div class="titled-box menu">
+      <div class="title">Schedule</div>
+      <div class="inner">
+        {{#link-to 'student.schedule.current' class='link'}}Current{{/link-to}}
+        {{#link-to 'student.schedule.change' class='link'}}Change Schedule{{/link-to}}
+        {{#link-to 'student.schedule.lesson-history' class='link'}}Lesson History <span class="notification-count">5</span>{{/link-to}}
+      </div>
+    </div>
+    {{outlet boxMenus}}
+  </div>
+  <div class="titled-box-container">
+    {{outlet}}
+  </div>
+</div>

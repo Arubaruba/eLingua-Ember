@@ -23,7 +23,7 @@ h1 {
   font-weight: bold;
   margin-bottom: 10px;
 }
-#page-title {
+#submenu-content #page-title {
   font-size: 35px;
   margin-bottom: 20px;
   font-weight: bold;
@@ -31,11 +31,6 @@ h1 {
 .subtle {
   color: #c0c0c0;
   font-size: 18px;
-}
-#schedule-lession-list .day {
-  font-weight: bold;
-  display: inline-block;
-  width: 100px;
 }
 .warning {
   color: #e31700;

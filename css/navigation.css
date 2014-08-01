@@ -9,38 +9,35 @@
   margin: 0 20px;
   text-decoration: none;
 }
-.black-link.active{
-  color: #aeb3aa;
-}
 .black-link:hover{
   text-decoration: underline;
-}
-.black-link.active:hover{
-  text-decoration: none;
-  cursor: default;
 }
 .black-link-ul {
   color: #444;
   text-decoration: underline;
   font-size: 19px;
 }
-
+.black-link-ul.active {
+  text-decoration: none;
+  color: #c0c0c0;
+}
+.black-link.active {
+  color: #c0c0c0;
+}
 .button-green {
   font-size: 16px;
   color: #fff;
   text-decoration: none;
   border: 1px solid #2e6c00;
   background: #4cb600;
-  border-radius: 3px;
   padding: 10px;
   font-weight: bold;
 }
 .button-green.small {
   padding: 3px;
+  height: 28px;
 }
-.button-green[disabled],
-.button-green.active
-{
+.button-green[disabled] {
   border: 1px solid #666963;
   background: #aeb3aa;
   cursor: default;
@@ -79,4 +76,25 @@
 #submenu a.active {
   text-decoration: none;
   color: #7b7b7b;
+}
+
+.titled-box.menu .link {
+  border-bottom: 1px solid #e0e0e0;
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+  color: inherit;
+}
+.titled-box.menu .link:hover {
+  text-decoration: underline;
+}
+.titled-box.menu .link:last-child {
+  border: none;
+}
+.titled-box.menu .link.active:hover {
+  text-decoration: none;
+}
+.titled-box.menu .link.active {
+  color: #979797;
+  cursor: default;
 }

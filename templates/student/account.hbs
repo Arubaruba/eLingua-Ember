@@ -1,5 +1,13 @@
 <div class="centerer">
-  <div>
+  <div class="titled-box-menu-container">
+    <div class="titled-box menu">
+      <div class="title">Account Dashboard</div>
+      <div class="inner">
+        {{#link-to 'student.account.change-password' class='link'}}Change Password{{/link-to}}
+      </div>
+    </div>
+  </div>
+  <div class="titled-box-container">
     {{outlet}}
   </div>
 </div>
