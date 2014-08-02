@@ -15,10 +15,12 @@ App.Router.map(function() {
       this.route('change-password');
     });
     this.resource('student.schedule', {path: 'schedule'}, function() {
-      this.route('current', {path: '/'});
+      this.resource('student.schedule.overview', {path: 'overview'}, function() {
+        this.route('history', {path: '/'});
+        this.route('feedback', {path: 'feedback/:history_item'});
+      });
       this.route('change');
       this.route('finalize');
-      this.route('lesson-history');
     });
   });
   this.resource('tutor', function() {
@@ -39,25 +41,6 @@ App.GuestRoute = Ember.Route.extend({
     this.render('guest.menu', {
       outlet: 'menu',
       into: 'application'
-    });
-  }
-});
-
-App.StudentRoute = Ember.Route.extend({
-  renderTemplate: function() {
-    this.render();
-    this.render('student.menu', {
-      outlet: 'menu',
-      into: 'application'
-    });
-  }
-});
-
-App.StudentScheduleChangeRoute = Ember.Route.extend({
-  renderTemplate: function() {
-    this.render();
-    this.render('student.schedule.selected-schedule', {
-      outlet: 'boxMenus'
     });
   }
 });
@@ -86,6 +69,16 @@ App.TutorAccountChangePasswordRoute = Ember.Route.extend({
   }
 });
 
+App.StudentRoute = Ember.Route.extend({
+  renderTemplate: function() {
+    this.render();
+    this.render('student.menu', {
+      outlet: 'menu',
+      into: 'application'
+    });
+  }
+});
+
 App.StudentScheduleRoute = Ember.Route.extend({
   renderTemplate: function() {
     this.render();
@@ -103,6 +96,21 @@ App.StudentAccountChangePasswordRoute = Ember.Route.extend({
     this.render('account.change-password', {
       into: 'student.account'
     });
+  }
+});
+
+App.StudentScheduleChangeRoute = Ember.Route.extend({
+  renderTemplate: function() {
+    this.render();
+    this.render('student.schedule.new-schedule', {
+      outlet: 'boxMenus'
+    });
+  }
+});
+
+App.StudentScheduleOverviewRoute = Ember.Route.extend({
+  renderTemplate: function() {
+    this.render();
   }
 });
 /*

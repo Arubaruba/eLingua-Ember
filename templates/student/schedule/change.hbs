@@ -1,66 +1,50 @@
 <div class="titled-box">
   <div class="title">Change Schedule</div>
-  <div class="content">
-    <div id="tutor-selection-message">
-      <b>0 of 2</b> available hours of tutoring selected.
-      {{#link-to 'student.schedule.finalize' class='button-green'}}Finalize Schedule{{/link-to}}
+    <div class="content">
+      <h2>1) Who will tutor you</h2>
+      <div class="content" id="change-schedule">
+        <div class="days">
+          <div class="day">Mon</div>
+          <div class="day">Tue</div>
+          <div class="day">Wed</div>
+          <div class="day">Thu</div>
+          <div class="day">Fri</div>
+          <div class="day">Sat</div>
+          <div class="day">Sun</div>
+        </div>
+        <div class="tutor">
+          <input type="radio" name="tutor"/>
+          Kamal Suleiman
+          <div class="time" style="left: 200px">9</div>
+          <div class="time" style="left: 205px">9</div>
+          <div class="time" style="left: 210px">9</div>
+        </div>
+        <div class="tutor">
+          <input type="radio" name="tutor"/>
+          Kamal Suleiman
+          <div class="time" style="left: 200px">9</div>
+          <div class="time" style="left: 205px">9</div>
+          <div class="time" style="left: 210px">9</div>
+        </div>
+      </div>
+      <h2>2) When they will tutor you</h2>
+      <table cellspacing="0" class="table1">
+        <tr>
+          <td><input type="checkbox" name="tutor"/></td>
+          <td>Monday</td>
+          <td>9:00 - 10:00</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="tutor"/></td>
+          <td>Monday</td>
+          <td>9:00 - 10:00</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="tutor"/></td>
+          <td>Monday</td>
+          <td>9:00 - 10:00</td>
+        </tr>
+      </table>
     </div>
-    <table id="schedule" cellspacing="0">
-      <tr>
-        <th></th>
-        <th>Monday</th>
-        <th>Tuesday</th>
-        <th>Wednesday</th>
-        <th>Thursday</th>
-        <th>Friday</th>
-        <th>Saturday</th>
-        <th>Sunday</th>
-      </tr>
-      <tr id="times">
-      </tr>
-      <tr class="tutor blended-out">
-        <td>Kamal Suleiman</td>
-        <td class="selected">
-          <!-- left: startingHour*7 -->
-          <div class="hour" style="left: 0; ">
-          </div>
-          <div class="hour" style="left: 7px;">
-          </div>
-          <div class="hour selected" style="left: 14px;width: 5px; ">
-          </div>
-          <!-- max tutoring hours per day: 10 -->
-          <!-- width = NUM_OF_AVAILABLE_HOURS * 35 - 10 [for padding] + 4 [844 % 24] -->
-          <div class="magnified" style="width: 190px">
-            Monday<br>
-            <!-- add 2px to left always (844 [if all 24 hours are filed] % 24) = 4, 4/2 = 2 -->
-            <a href="">9:00-10:00</a>
-          </div>
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr class="tutor">
-        <td>Kamal Suleiman</td>
-        <td>
-          <!-- left: startingHour*7, width: 3px -->
-          <div class="hour" style="left: 0;width: 5px; ">
-          </div>
-          <div class="hour" style="left: 7px;width: 5px; ">
-          </div>
-          <div class="hour selected" style="left: 14px;width: 5px; ">
-          </div>
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
   </div>
 </div>

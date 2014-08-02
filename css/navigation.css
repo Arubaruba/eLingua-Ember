@@ -42,6 +42,9 @@
   background: #aeb3aa;
   cursor: default;
 }
+.button-green.right {
+  float: right;
+}
 .button-blue {
   text-decoration: none;
   font-weight: bold;
@@ -97,4 +100,17 @@
 .titled-box.menu .link.active {
   color: #979797;
   cursor: default;
+}
+.breadcrumb {
+  display: none;
+}
+.breadcrumb.active {
+  font-size: 14px;
+  display: inline;
+  text-decoration: none;
+  color: #444;
+}
+.breadcrumb.active:before {
+  content: '> ';
+  font-size: 14px;
 }

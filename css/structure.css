@@ -64,6 +64,7 @@ body {
   font-weight: normal;
   margin: 5px 0 22px 0;
   display: block;
+  color: inherit;
 }
 .form2 button, .form2 select {
   width: 274px;
@@ -71,13 +72,29 @@ body {
 .form2 select[disabled] {
   background: #cbcbcb;
 }
-.form3 h2:first-of-type {
+.form3 select {
+  width: 250px;
+  font-size: 18px;
+  padding: 10px;
+  border: 1px solid #c0c0c0;
+  background: #fff;
+  font-weight: normal;
+  margin: 5px 0 22px 0;
+  display: block;
+  font-family: inherit;
+  color: inherit;
+}
+.form3 h2:first-child {
   margin-top: 0;
 }
 .form3 textarea{
+  font-size: 18px;
+  font-family: inherit;
+  color: inherit;
+  border: 1px solid #c0c0c0;
   width: 350px;
   height: 150px;
-  font: inherit;
+  padding: 10px;
 }
 .form3 button[type=submit]{
   display: block;
@@ -134,8 +151,13 @@ body {
   width: 100%;
   padding: 10px;
 }
+#footer > .inner {
+  max-width: 1100px;
+  min-width: 400px;
+  margin: 0 auto;
+}
 
-.tutor {
+.tutor-list .tutor {
   min-height: 180px;
   position: relative;
 }
@@ -187,6 +209,9 @@ table.table1 td {
 table.table1 tr:nth-child(2n+1) td {
   background: #ebebeb;
 }
+table.table1.fill {
+  width: 100%;
+}
 .form-table1 {
   margin: 10px 0 20px 0;
 }
@@ -215,122 +240,36 @@ table.table1 tr:nth-child(2n+1) td {
 .form-table1  input[disabled] {
   background: #dddddd;
 }
-table#schedule {
-  padding: 10px;
-}
-table#schedule th {
-}
 
-table#schedule th:nth-child(even) {
-  background: #ebebeb;
-}
-table#schedule tr.tutor td:first-child {
-  width: 200px;
-}
-table#schedule tr.tutor td {
-  position: relative;
-  height:20px;
-}
-table#schedule tr.tutor td:nth-child(even) {
-  background: #ebebeb;
-}
-table#schedule td:first-child {
-  padding: 10px;
-  font-size: 19px;
-}
-table#schedule tr.blended-out td:first-child {
-  color:#c0c0c0;
-}
-table#schedule tr.tutor td:hover {
-  background: #949494;
-}
-table#schedule tr.tutor td:hover:nth-child(1) {
-  background: none;
-}
-table#schedule tr.tutor.blended-out .hour {
-  border: 1px solid #656b60;
-  background: #abb5a3;
-}
-table#schedule .hour {
-  display: inline-block;
-  border: 1px solid #2e6c00;
-  background: #4cb600;
-  top: 10px;
-  height: 20px;
-  width: 5px;
-  border-radius: 2px;
-}
-table#schedule .hour.selected {
-  border: 1px solid #459e00;
-  background: #65e800;
-}
-table#schedule .magnified {
-  display: none;
-}
-table#schedule td .magnified {
-  display: none;
-}
-table#schedule td:hover .magnified {
-  display: inline-block;
-  color: #fff;
-  padding: 5px;
-  position: absolute;
-  background: inherit;
-  height: 44px;
-  line-height: 22px;
-  left: 0;
-  bottom: 40px;
-  font-weight: bold;
-  border-radius: 2px 2px 2px 0;
-}
-
-table#schedule td .magnified a {
-  border: 1px solid #2e6c00;
-  background: #4cb600;
-  color: #fff;
-  font-size: 15px;
-  text-align: center;
-  display: inline-block;
-  padding: 2px;
-  top: 25px;
-  width: 80px;
-  height: 20px;
-  line-height: 20px;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 3px;
-}
 .titled-box {
   border: 1px solid #ccc;
   overflow: hidden;
+  margin-bottom: 20px;
 }
 .titled-box-menu-container {
   float: left;
   width: 330px;
 }
-.titled-box.menu {
-  margin-bottom: 20px;
-}
 .titled-box-container {
   float: right;
   width: 750px;
 }
-.titled-box .title {
+.titled-box > .title {
   background: #e8e8e8;
+  border-bottom: 1px solid #c0c0c0;
   color: #868686;
   font-weight: bold;
   font-size: 17px;
   padding: 15px;
 }
-.titled-box .content {
-  border-top: 1px solid #c0c0c0;
+.titled-box > .content {
   padding: 15px;
 }
-.titled-box .content form {
+.titled-box > .content form {
   padding: 0;
 }
-.titled-box .inner {
-  border-top: 1px solid #c0c0c0;
+.titled-box > .content > h2:first-of-type {
+  margin-top: 0;
 }
 .image-upload-container {
   overflow: auto;
@@ -352,14 +291,38 @@ table#schedule td .magnified a {
   font-size: 14px;
   font-weight: bold;
 }
-.notification-count {
-  background: red;
-  border: 1px solid #971000;
-  color: #fff;
-  padding: 4px;
-  border-radius: 3px;
-  margin-left: 5px;
+#change-schedule > .instructions {
   font-weight: bold;
-  font-size: 13px;
-  float: right;
+  font-size: 19px;
+}
+#change-schedule > .days {
+  font-weight: bold;
+  height: 40px;
+}
+#change-schedule > .days > .day:first-child {
+  margin-left: 200px;
+}
+#change-schedule > .days > .day {
+  width: 74px;
+  float: left;
+}
+#change-schedule > .tutor {
+  position: relative;
+  font-weight: bold;
+  height: 40px;
+  line-height: 40px;
+}
+#change-schedule > .tutor > .time {
+  display: inline-block;
+  line-height: 1;
+  position: absolute;
+  top: 8px;
+  padding: 2px;
+  border: 1px solid #c0c0c0;
+  background: #ffffff;
+}
+#lesson-history .feedback-count {
+  font-size: 15px;
+  color: #5c5c5c;
+  margin: 15px 0 30px 0;
 }

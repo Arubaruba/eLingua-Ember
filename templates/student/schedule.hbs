@@ -3,12 +3,32 @@
     <div class="titled-box menu">
       <div class="title">Schedule</div>
       <div class="inner">
-        {{#link-to 'student.schedule.current' class='link'}}Current{{/link-to}}
+        {{#link-to 'student.schedule.overview.history' class='link'}}Overview{{/link-to}}
         {{#link-to 'student.schedule.change' class='link'}}Change Schedule{{/link-to}}
-        {{#link-to 'student.schedule.lesson-history' class='link'}}Lesson History <span class="notification-count">5</span>{{/link-to}}
       </div>
     </div>
     {{outlet boxMenus}}
+    <div class="titled-box">
+      <div class="title">Current Schedule</div>
+      <div class="content">
+        <a class="black-link-ul" href="">Kamal Suleiman</a> is your Tutor
+        <br><br>
+        <table cellspacing="0" class="table1 fill">
+          <tr>
+            <td>Monday</td>
+            <td>9:00 - 10:00</td>
+          </tr>
+          <tr>
+            <td>Monday</td>
+            <td>9:00 - 10:00</td>
+          </tr>
+          <tr>
+            <td>Monday</td>
+            <td>9:00 - 10:00</td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
   <div class="titled-box-container">
     {{outlet}}
