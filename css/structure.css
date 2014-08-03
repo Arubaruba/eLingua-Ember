@@ -115,7 +115,7 @@ body {
   right: 38px;
   top: 25px;
 }
-#home-middle #info li.tutors::before{
+#home-middle #info li#tutors::before{
   height:80px;
   width:72px;
   background:url('../images/icons.png') -0px -0px no-repeat;
@@ -233,6 +233,11 @@ table.table1.fill {
   width: 100px;
   height: 20px;
 }
+.form-table1 select {
+  position: relative;
+  top: 1px;
+  height: 28px;
+}
 .form-table1 button[disabled] {
   border: 1px solid #888888;
   background: #c0c0c0;
@@ -253,6 +258,13 @@ table.table1.fill {
 .titled-box-container {
   float: right;
   width: 750px;
+}
+.titled-box.half {
+  float: left;
+  width: 540px;
+}
+.titled-box.half:nth-child(even) {
+  float: right;
 }
 .titled-box > .title {
   background: #e8e8e8;
@@ -325,4 +337,10 @@ table.table1.fill {
   font-size: 15px;
   color: #5c5c5c;
   margin: 15px 0 30px 0;
+}
+.error-response {
+  color: #910f00;
+  margin: 20px 0;
+  font-size: 19px;
+  font-weight: bold;
 }

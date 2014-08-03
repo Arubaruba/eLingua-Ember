@@ -5,22 +5,27 @@
         Don't have an account yet?
         <div id="suggestion">
           Just <b>Sign Up</b> below:
-        </div>
+      </div>
       </div>
       <form class="form1" action="">
-        <input type="text" placeholder="Full Name"/>
-        <input type="text" placeholder="Email Address"/>
-        <input type="text" placeholder="Password"/>
-        <input type="text" placeholder="Repeat Password"/>
-        <button class="button-green button-wide">Sign Up</button>
+        {{input type="text" value=fullName id="fullName" placeholder="Full name"}}
+        {{input type="email" value=emailAddress id="emailAddress" placeholder="Email address"}}
+        {{input type="password" value=password id="password" placeholder="Password"}}
+        {{input type="password" value=repeatPassword id="repeatPassword" placeholder="Repeat password"}}
+        {{#if response}}
+          <div class="error-response">
+            {{response}}
+          </div>
+        {{/if}}
+        <button {{action 'signUp'}} class="button-green button-wide">Sign Up</button>
       </form>
     </div>
     <div id="info">
       <ul>
-        <li id="tutors">Live <a href="/tutors" class="white-link">Tutors</a></li>
+        <li id="tutors">Live {{#link-to 'guest.tutors' class="white-link"}}Tutors{{/link-to}}</li>
         <li id="arabic_types">Spoken and Formal Arabic</li>
-        <li id="scheduling">An Online <a class="white-link" href="/schedule">Scheduling System</a></li>
-        <li id="courses">A Varienty of <a href="#courses" class="white-link">Courses</a></li>
+        <li id="scheduling">An Online Scheduling System</li>
+        <li id="courses">A Varienty of Courses</li>
       </ul>
     </div>
   </div>
