@@ -1,10 +1,104 @@
 body {
-  background: #fff; }
-
-.centerer {
+  background: #fff;
+  color: #333;
+  font-family: Helvetica Neue, Helvetica, Arial;
+  font-size: 18px;
   margin: 0 auto;
+  padding: 40px;
   width: 920px; }
-  .centerer.padded {
-    padding: 20px; }
+
+.upper-bar {
+  margin-bottom: 50px; }
+  .upper-bar .website-name {
+    font-size: 45px; }
+  .upper-bar .right {
+    float: right;
+    line-height: 60px; }
+
+.partition {
+  overflow: auto; }
+  .partition .one-third {
+    float: left;
+    width: 300px; }
+  .partition .two-thirds {
+    float: right;
+    width: 600px; }
+
+.titled-box {
+  border: 1px solid #bbb;
+  margin-bottom: 20px;
+  width: 100%; }
+  .titled-box .title {
+    background: #eee;
+    border-bottom: 1px solid #bbb;
+    font-size: 20px;
+    padding: 12px; }
+  .titled-box .content {
+    padding: 12px; }
+    .titled-box .content .input-1 {
+      background: #fff;
+      border: 1px solid #bbb;
+      box-sizing: border-box;
+      font: inherit;
+      padding: 7px;
+      margin-bottom: 15px;
+      width: 100%; }
+      .titled-box .content .input-1.time-range {
+        text-align: center;
+        width: 43px; }
+    .titled-box .content .time-range-label {
+      margin: 0 12px; }
+
+.scheduled-hours .hour {
+  overflow: auto;
+  margin-bottom: 15px; }
+  .scheduled-hours .hour:last-of-type {
+    margin-bottom: 0; }
+  .scheduled-hours .hour .img-container {
+    float: left;
+    height: 70px;
+    overflow: hidden;
+    width: 70px; }
+    .scheduled-hours .hour .img-container img {
+      max-height: auto;
+      width: 70px; }
+  .scheduled-hours .hour .text {
+    float: left;
+    margin: 5px 0 0 17px; }
+    .scheduled-hours .hour .text .day {
+      font-size: 16px; }
+    .scheduled-hours .hour .text .time-range {
+      font-size: 20px; }
+    .scheduled-hours .hour .text .time-remaining {
+      color: #888;
+      font-size: 16px;
+      font-weight: bold; }
+  .scheduled-hours .hour .remove {
+    background: #ddd;
+    border: 1px solid #bbb;
+    float: right;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 26px;
+    padding: 5px;
+    text-align: center;
+    width: 18px; }
+
+.tutor-hour-selection .tutor {
+  overflow: auto;
+  margin-bottom: 50px; }
+  .tutor-hour-selection .tutor .img-container {
+    float: left;
+    height: 150px;
+    overflow: hidden;
+    width: 150px; }
+    .tutor-hour-selection .tutor .img-container img {
+      height: auto;
+      width: 150px; }
+  .tutor-hour-selection .tutor .text {
+    float: left;
+    margin: 15px 0 0 15px; }
+    .tutor-hour-selection .tutor .text .tutor-name {
+      font-size: 25px; }
 
 /*# sourceMappingURL=structure.css.map */

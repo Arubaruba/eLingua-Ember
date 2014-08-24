@@ -1,0 +1,64 @@
+<div class="partition">
+  <div class="one-third">
+    <div class="titled-box">
+      <div class="title">Filter</div>
+      <div class="content">
+        {{input type="textfield" class="input-1" value=filterName id="filterName" placeholder="Name"}}
+        <select name="" id="" class="input-1">
+          <option value="">Monday</option>
+        </select>
+        <b>
+          {{input type="textfield" class="input-1 time-range" value=filterStartingTime id="filterStartingTime" placeholder="00"}}
+          :00
+        </b>
+        <span class="time-range-label">to</span>
+        <b>
+          {{input type="textfield" class="input-1 time-range" value=filterEndingTime id="filterEndingTime" placeholder="00"}}
+          :00
+        </b>
+      </div>
+    </div>
+    <div class="titled-box">
+      <div class="title">Scheduled Hours</div>
+      <div class="content scheduled-hours">
+        {{#each test}}
+          <div class="hour">
+            <div class="img-container">
+              <img src="/images/kamal.png" alt="Kamal"/>
+            </div>
+            <div class="text">
+              <div class="day">Monday</div>
+              <div class="time-range">13:00 - 14:00</div>
+              <div class="time-remaining">Starts in 1 Day</div>
+            </div>
+            <div class="remove">X</div>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  <div class="two-thirds tutor-hour-selection">
+    {{#each test}}
+      <div class="tutor">
+        <div class="img-container">
+          <img src="/images/kamal.png" alt="Kamal"/>
+        </div>
+        <div class="text">
+          <div class="tutor-name">
+            Kamal Suleiman
+          </div>
+          <div class="days-available">
+            <span class="day">
+              <span class="day-name">Monday</span>
+              (2)
+            </span>
+            <span class="day">
+              <span class="day-name">Monday</span>
+              (2)
+            </span>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+</div>
+</div>

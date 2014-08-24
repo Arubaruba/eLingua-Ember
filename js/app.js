@@ -9,13 +9,13 @@ App.Router.map(function () {
   this.route('sign-up');
   this.route('reset-password');
   this.resource('student', function () {
-    this.resource('account', {path: 'account'}, function () {
+    this.resource('student.account', {path: 'account'}, function () {
       this.route('change-password');
       this.route('delete-account');
     });
   });
   this.resource('tutor', function () {
-    this.resource('account', {path: 'account'}, function () {
+    this.resource('tutor.account', {path: 'account'}, function () {
       this.route('change-password');
       this.route('delete-account');
     });
@@ -23,12 +23,32 @@ App.Router.map(function () {
   this.resource('admin', function () {
     this.resource('students', {path: '/'});
     this.resource('tutors');
-    this.resource('account', {path: 'account'}, function () {
+    this.resource('tutor.account', {path: 'account'}, function () {
       this.route('change-password');
       this.route('delete-account');
     });
   });
   this.route('missing', {path: '/*wildcard'})
+});
+
+App.ApplicationRoute = Ember.Route.extend({
+  renderTemplate: function () {
+    this.render();
+    this.render('default-menu', {
+      outlet: 'upperMenu',
+      into  : 'application'
+    });
+  }
+});
+
+App.StudentRoute = Ember.Route.extend({
+  renderTemplate: function () {
+    this.render();
+    this.render('student.menu', {
+      outlet: 'upperMenu',
+      into  : 'application'
+    });
+  }
 });
 
 /*

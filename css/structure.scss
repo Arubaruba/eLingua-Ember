@@ -1,15 +1,154 @@
+
+$page-width: 920px;
+$border-color: #bbb;
+
 body {
   background: #fff;
+  color: #333;
+  font-family: Helvetica Neue, Helvetica, Arial;
+  font-size: 18px;
+  margin: 0 auto;
+  padding: 40px;
+  width: $page-width;
 }
 
-$centerer-padding: 20px;
-$page-width: 920px;
+.upper-bar {
+  margin-bottom: 50px;
 
-.centerer {
-  margin: 0 auto;
-  width: $page-width;
-  &.padded {
-    padding: $centerer-padding;
+  .website-name{
+    font-size: 45px;
+  }
+  .right {
+    float: right;
+    line-height: 60px;
   }
 }
 
+$part-one-third-width: 300px;
+
+.partition {
+  overflow: auto;
+
+  .one-third {
+    float: left;
+    width: $part-one-third-width;
+  }
+  .two-thirds {
+    float: right;
+    width: 600px;
+  }
+}
+
+.titled-box {
+  $titled-box-padding: 12px;
+  border: 1px solid $border-color;
+  margin-bottom: 20px;
+  width: 100%;
+
+  .title {
+    background: #eee;
+    border-bottom: 1px solid $border-color;
+    font-size: 20px;
+    padding: $titled-box-padding;
+  }
+  .content {
+    padding: $titled-box-padding;
+
+    $input-padding: 7px;
+    .input-1 {
+      background: #fff;
+      border: 1px solid $border-color;
+      box-sizing: border-box;
+      font: inherit;
+      padding: $input-padding;
+      margin-bottom: 15px;
+      width: 100%;
+      &.time-range {
+        text-align: center;
+        width: 43px;
+      }
+    }
+    .time-range-label {
+      margin:0 12px;
+    }
+  }
+}
+
+.scheduled-hours{
+  .hour {
+    overflow: auto;
+    margin-bottom: 15px;
+
+    $img-size: 70px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+    .img-container {
+      float: left;
+      height: $img-size;
+      overflow: hidden;
+      width: $img-size;
+
+      img {
+        max-height: auto;
+        width: $img-size;
+      }
+    }
+    .text {
+      float:left;
+      margin: 5px 0 0 17px;
+      .day {
+        font-size: 16px;
+      }
+      .time-range {
+        font-size: 20px;
+      }
+      .time-remaining {
+        color: #888;
+        font-size: 16px;
+        font-weight: bold;
+      }
+    }
+    .remove {
+      background: #ddd;
+      border: 1px solid $border-color;
+      float: right;
+      font-size: 15px;
+      font-weight: bold;
+      margin-top: 26px;
+      padding: 5px;
+      text-align: center;
+      width: 18px;
+    }
+  }
+}
+
+.tutor-hour-selection {
+  .tutor {
+    overflow: auto;
+    margin-bottom: 50px;
+    $image-size: 150px;
+
+    .img-container {
+      float: left;
+      height: $image-size;
+      overflow: hidden;
+      width: $image-size;
+
+      img {
+        height: auto;
+        width: $image-size;
+      }
+    }
+
+    .text {
+      float: left;
+      margin: 15px 0 0 15px;
+
+      .tutor-name {
+        font-size: 25px;
+      }
+    }
+  }
+}
