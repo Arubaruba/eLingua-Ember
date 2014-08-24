@@ -1,0 +1,15 @@
+body {
+  background: #fff;
+}
+
+$centerer-padding: 20px;
+$page-width: 920px;
+
+.centerer {
+  margin: 0 auto;
+  width: $page-width;
+  &.padded {
+    padding: $centerer-padding;
+  }
+}
+

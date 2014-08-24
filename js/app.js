@@ -5,41 +5,33 @@ App.ApplicationAdapter = DS.RESTAdapter.extend({
 });
 
 App.Router.map(function () {
-  this.resource('guest', function () {
-    this.route('index');
-    this.route('tutors');
-    this.route('sign-in');
-    this.route('sign-up-privileged');
-    this.route('password-recovery');
-    this.route('password-reset');
-  });
+  this.route('login', {path: '/'});
+  this.route('sign-up');
+  this.route('reset-password');
   this.resource('student', function () {
-    this.route('index');
-    this.route('tutors');
-    this.resource('student.account', {path: 'account'}, function () {
+    this.resource('account', {path: 'account'}, function () {
       this.route('change-password');
-    });
-    this.resource('student.schedule', {path: 'schedule'}, function () {
-      this.resource('student.schedule.overview', {path: 'overview'}, function () {
-        this.route('history', {path: '/'});
-        this.route('feedback', {path: 'feedback/:history_item'});
-      });
-      this.route('change');
-      this.route('finalize');
+      this.route('delete-account');
     });
   });
   this.resource('tutor', function () {
-    this.route('schedule', {path: '/'});
-    this.resource('tutor.account', {path: 'account'}, function () {
-      this.route('profile', {path: '/'});
+    this.resource('account', {path: 'account'}, function () {
       this.route('change-password');
-      this.route('create-privileged-account');
-      this.route('manage-tutors');
+      this.route('delete-account');
+    });
+  });
+  this.resource('admin', function () {
+    this.resource('students', {path: '/'});
+    this.resource('tutors');
+    this.resource('account', {path: 'account'}, function () {
+      this.route('change-password');
+      this.route('delete-account');
     });
   });
   this.route('missing', {path: '/*wildcard'})
 });
 
+/*
 App.GuestRoute = Ember.Route.extend({
   renderTemplate: function () {
     this.render();
@@ -124,7 +116,6 @@ App.StudentScheduleOverviewRoute = Ember.Route.extend({
     this.render();
   }
 });
-/*
  function ajax(arguments) {
  if(App.rootElement == '#ember-testing1') {
 
