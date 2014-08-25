@@ -5,27 +5,31 @@ $nav-margin: 0 15px;
   border: 1px solid darken($main-color, 25%);
   color: #fff;
   cursor: pointer;
-  font-size: 20px;
-  margin: $nav-margin;
-  padding: 10px;
+  font-size: 18px;
+  padding: 6px;
   text-decoration: none;
+  font-variant: uppercase;
+  &.button-large {
+    padding: 10px;
+  }
 }
 
 .button-blue {
-  @include button(dodgerblue);
+  @include button(#0069ff);
+}
+
+.button-red {
+  @include button(#ff2300);
 }
 
 .link-black {
-  text-decoration: none;
+  text-decoration: underline;
   color: #333;
   margin: $nav-margin;
 
-  &:hover {
-    text-decoration: underline;
-  }
   &.active {
     color: #999;
     cursor: default;
-    text-decoration: none !important;
+    text-decoration: none;
   }
 }

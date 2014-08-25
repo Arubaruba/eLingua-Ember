@@ -1,11 +1,12 @@
 
 $page-width: 920px;
+$background-color: #eee;
 $border-color: #bbb;
 
 body {
   background: #fff;
   color: #333;
-  font-family: Helvetica Neue, Helvetica, Arial;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
   font-size: 18px;
   margin: 0 auto;
   padding: 40px;
@@ -21,6 +22,26 @@ body {
   .right {
     float: right;
     line-height: 60px;
+  }
+}
+
+.heading-bar {
+  font-size: 25px;
+  line-height: 50px;
+  margin-bottom: 45px;
+  overflow: auto;
+
+  .label {
+    margin-right: 10px;
+  }
+  .value {
+    font-weight: bold;
+  }
+  .search {
+    border: 1px solid $border-color;
+    font-size: 20px;
+    float: right;
+    padding: 10px;
   }
 }
 
@@ -42,11 +63,12 @@ $part-one-third-width: 300px;
 .titled-box {
   $titled-box-padding: 12px;
   border: 1px solid $border-color;
+  box-sizing: border-box;
   margin-bottom: 20px;
   width: 100%;
 
   .title {
-    background: #eee;
+    background: $background-color;
     border-bottom: 1px solid $border-color;
     font-size: 20px;
     padding: $titled-box-padding;
@@ -111,15 +133,22 @@ $part-one-third-width: 300px;
       }
     }
     .remove {
-      background: #ddd;
-      border: 1px solid $border-color;
-      float: right;
-      font-size: 15px;
-      font-weight: bold;
-      margin-top: 26px;
-      padding: 5px;
-      text-align: center;
-      width: 18px;
+      display: none;
+    }
+    &:hover {
+      .remove {
+        background: #dd3800;
+        color: #fff;
+        cursor: pointer;
+        display: block;
+        float: right;
+        font-size: 15px;
+        font-weight: bold;
+        margin-top: 26px;
+        padding: 3px;
+        text-align: center;
+        width: 18px;
+      }
     }
   }
 }
@@ -127,7 +156,9 @@ $part-one-third-width: 300px;
 .tutor-hour-selection {
   .tutor {
     overflow: auto;
-    margin-bottom: 50px;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    min-height: 305px;
     $image-size: 150px;
 
     .img-container {
@@ -144,11 +175,99 @@ $part-one-third-width: 300px;
 
     .text {
       float: left;
-      margin: 15px 0 0 15px;
+      margin-left: 15px;
+      text-decoration: none;
+      cursor: pointer;
 
       .tutor-name {
         font-size: 25px;
       }
+      .skype {
+        font-size: 14px;
+        font-weight: bold;
+        margin: 8px 0;
+      }
+      .days-available {
+        color: #333;
+
+        .selected-day-title {
+          color: #888;
+          font-size: 20px;
+
+          .day {
+            text-decoration: none !important;
+          }
+        }
+        .day {
+          margin-left: 10px;
+          text-decoration: underline;
+          &:first-of-type {
+            margin-left: 0;
+          }
+        }
+      }
+      .selected-day {
+        border: 1px solid $border-color;
+        margin-top: 8px;
+        padding: 5px;
+        text-align: center;
+        width: 420px;
+
+        .available-hour {
+
+          &:nth-child(odd) {
+            background: #e7e7e7;
+          }
+
+          td {
+            padding: 5px 0;
+          }
+
+          .add-to-schedule {
+            color: inherit;
+            cursor: pointer;
+            text-decoration: underline;
+          }
+        }
+      }
     }
+  }
+}
+
+.simple-menu {
+  .title {
+    display: inline-block;
+    font-size: 19px;
+    font-weight: bold;
+    border-bottom: 1px solid $border-color;
+    padding: 13px 0;
+    margin-bottom: 15px;
+  }
+  .option {
+    color: inherit;
+    display: block;
+    margin: 10px 0;
+
+    &.active {
+      color: #999999;
+      text-decoration: none;
+    }
+  }
+}
+
+.form-1 {
+  input,
+  select {
+    box-sizing: border-box;
+    border: 1px solid $border-color;
+    background: #fff;
+    display: block;
+    font: inherit;
+    margin-bottom: 15px;
+    padding: 10px;
+  }
+  .message {
+    line-height: 2;
+    margin-bottom: 10px;
   }
 }

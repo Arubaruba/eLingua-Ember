@@ -1,64 +1,56 @@
+<div class="heading-bar">
+  <span class="label" title="Tutoring Hours">Remaining Credits:</span>
+  <span class="value">5</span>
+  {{input class="search" type="textfield" value=headingBarSearch id="headingBarSearch" placeholder="Search Tutors"}}
+</div>
 <div class="partition">
   <div class="one-third">
     <div class="titled-box">
-      <div class="title">Filter</div>
-      <div class="content">
-        {{input type="textfield" class="input-1" value=filterName id="filterName" placeholder="Name"}}
-        <select name="" id="" class="input-1">
-          <option value="">Monday</option>
-        </select>
-        <b>
-          {{input type="textfield" class="input-1 time-range" value=filterStartingTime id="filterStartingTime" placeholder="00"}}
-          :00
-        </b>
-        <span class="time-range-label">to</span>
-        <b>
-          {{input type="textfield" class="input-1 time-range" value=filterEndingTime id="filterEndingTime" placeholder="00"}}
-          :00
-        </b>
-      </div>
-    </div>
-    <div class="titled-box">
-      <div class="title">Scheduled Hours</div>
+      <div class="title">Weekly Tutoring Hours</div>
       <div class="content scheduled-hours">
-        {{#each test}}
-          <div class="hour">
-            <div class="img-container">
-              <img src="/images/kamal.png" alt="Kamal"/>
-            </div>
-            <div class="text">
-              <div class="day">Monday</div>
-              <div class="time-range">13:00 - 14:00</div>
-              <div class="time-remaining">Starts in 1 Day</div>
-            </div>
-            <div class="remove">X</div>
+        <div class="hour">
+          <div class="img-container">
+            <img src="/images/kamal.png" alt="Kamal"/>
           </div>
-        {{/each}}
+          <div class="text">
+            <div class="day">Monday</div>
+            <div class="time-range">13:00 - 14:00</div>
+            <div class="time-remaining">Starts in 1 Day</div>
+          </div>
+          <div class="remove">X</div>
+        </div>
       </div>
     </div>
   </div>
   <div class="two-thirds tutor-hour-selection">
-    {{#each test}}
-      <div class="tutor">
-        <div class="img-container">
-          <img src="/images/kamal.png" alt="Kamal"/>
-        </div>
-        <div class="text">
-          <div class="tutor-name">
-            Kamal Suleiman
-          </div>
-          <div class="days-available">
-            <span class="day">
-              <span class="day-name">Monday</span>
-              (2)
-            </span>
-            <span class="day">
-              <span class="day-name">Monday</span>
-              (2)
-            </span>
-          </div>
-        </div>
+    <div class="tutor">
+      <div class="img-container">
+        <img src="/images/kamal.png" alt="Kamal"/>
       </div>
-    {{/each}}
-</div>
+      <div class="text">
+        <div class="tutor-name">
+          Kamal Suleiman
+        </div>
+        <div class="skype">Skype: kamal@komensky.org</div>
+        <div class="days-available">
+          <span class="selected-day-title">
+            <a class="day">All</a> (5)
+          </span>
+          <span>
+            <a class="day">Monday</a> (5)
+          </span>
+          <span>
+            <a class="day">Tuesday</a> (5)
+          </span>
+        </div>
+        <table cellspacing="0" class="selected-day">
+          <tr class="available-hour">
+            <td>Monday</td>
+            <td>13:00 - 14:00</td>
+            <td class="add-to-schedule">Add to Schedule</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>

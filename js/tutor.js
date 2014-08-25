@@ -1,7 +1,7 @@
-App.StudentRoute = Ember.Route.extend({
+App.TutorRoute = Ember.Route.extend({
   renderTemplate: function () {
     this.render();
-    this.render('student.menu', {
+    this.render('tutor.menu', {
       outlet: 'upperMenu',
       into  : 'application'
     });
@@ -9,17 +9,17 @@ App.StudentRoute = Ember.Route.extend({
 });
 
 
-App.StudentAccountRoute = Ember.Route.extend({
+App.TutorAccountRoute = Ember.Route.extend({
   renderTemplate: function () {
     this.render('account.account');
-    this.render('student.account-menu', {
+    this.render('tutor.account-menu', {
       outlet: 'accountMenu',
       into: 'account.account'
     });
   }
 });
 
-App.StudentAccountChangePasswordRoute = Ember.Route.extend({
+App.TutorAccountChangePasswordRoute = Ember.Route.extend({
   renderTemplate: function () {
     this.render('account.change-password', {
       outlet: 'accountDashboard'
@@ -27,7 +27,7 @@ App.StudentAccountChangePasswordRoute = Ember.Route.extend({
   }
 });
 
-App.StudentAccountDeleteAccountRoute = Ember.Route.extend({
+App.TutorAccountDeleteAccountRoute = Ember.Route.extend({
   renderTemplate: function () {
     this.render('account.delete-account', {
       outlet: 'accountDashboard'
@@ -35,6 +35,6 @@ App.StudentAccountDeleteAccountRoute = Ember.Route.extend({
   }
 });
 
-App.StudentIndexController = Ember.Route.extend({
+App.TutorIndexController = Ember.Route.extend({
   test: new Array(5)
 });

@@ -10,21 +10,21 @@ App.Router.map(function () {
   this.route('reset-password');
   this.resource('student', function () {
     this.resource('student.account', {path: 'account'}, function () {
-      this.route('change-password');
+      this.route('change-password', {path: '/'});
       this.route('delete-account');
     });
   });
   this.resource('tutor', function () {
     this.resource('tutor.account', {path: 'account'}, function () {
-      this.route('change-password');
+      this.route('change-password', {path: '/'});
       this.route('delete-account');
     });
   });
   this.resource('admin', function () {
     this.resource('students', {path: '/'});
     this.resource('tutors');
-    this.resource('tutor.account', {path: 'account'}, function () {
-      this.route('change-password');
+    this.resource('admin.account', {path: 'account'}, function () {
+      this.route('change-password', {path: '/'});
       this.route('delete-account');
     });
   });
@@ -40,17 +40,6 @@ App.ApplicationRoute = Ember.Route.extend({
     });
   }
 });
-
-App.StudentRoute = Ember.Route.extend({
-  renderTemplate: function () {
-    this.render();
-    this.render('student.menu', {
-      outlet: 'upperMenu',
-      into  : 'application'
-    });
-  }
-});
-
 /*
 App.GuestRoute = Ember.Route.extend({
   renderTemplate: function () {
