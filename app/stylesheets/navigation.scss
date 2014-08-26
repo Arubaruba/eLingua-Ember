@@ -12,10 +12,12 @@ $nav-margin: 0 15px;
   &.button-large {
     padding: 10px;
   }
+  &.disabled,
   &.active {
     $active-main-color: lighten(desaturate($main-color, 30%), 20%);
     background: $active-main-color;
     border: 1px solid darken($active-main-color, 25%);
+    cursor: default;
   }
 }
 

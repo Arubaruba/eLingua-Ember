@@ -1,0 +1,10 @@
+{{#unless field.valid}}
+  <div class="error-frame">
+    {{#each error in field.errors}}
+      <div class="error">
+        {{error}}
+      </div>
+    {{/each}}
+  </div>
+{{/unless}}
+{{yield}}

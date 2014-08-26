@@ -233,7 +233,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   
 });
 
-Ember.TEMPLATES["components/validated-field"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+Ember.TEMPLATES["components/field-validated"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   var buffer = '', stack1, self=this;
@@ -241,8 +241,8 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
 function program1(depth0,data) {
   
   var buffer = '', stack1;
-  data.buffer.push("\n  <div class=\"field-errors\">\n    ");
-  stack1 = helpers.each.call(depth0, "errors", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(2, program2, data),contexts:[depth0],types:["ID"],data:data});
+  data.buffer.push("\n  <div class=\"error-frame\">\n    ");
+  stack1 = helpers.each.call(depth0, "error", "in", "field.errors", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(2, program2, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n  </div>\n");
   return buffer;
@@ -250,23 +250,14 @@ function program1(depth0,data) {
 function program2(depth0,data) {
   
   var buffer = '', stack1;
-  data.buffer.push("\n      ");
-  stack1 = helpers['if'].call(depth0, "present", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0],types:["ID"],data:data});
+  data.buffer.push("\n      <div class=\"error\">\n        ");
+  stack1 = helpers._triageMustache.call(depth0, "error", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n    ");
-  return buffer;
-  }
-function program3(depth0,data) {
-  
-  var buffer = '', stack1;
-  data.buffer.push("\n        <div class=\"message\">\n          ");
-  stack1 = helpers._triageMustache.call(depth0, "message", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n        </div>\n      ");
+  data.buffer.push("\n      </div>\n    ");
   return buffer;
   }
 
-  stack1 = helpers['if'].call(depth0, "errors", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
+  stack1 = helpers.unless.call(depth0, "field.valid", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n");
   stack1 = helpers._triageMustache.call(depth0, "yield", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
@@ -351,12 +342,64 @@ function program1(depth0,data) {
 Ember.TEMPLATES["sign-up"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, helper, options, self=this, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+  var buffer = '', stack1, helper, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
   
   
   data.buffer.push("eLingua Account");
+  }
+
+function program3(depth0,data) {
+  
+  var buffer = '', helper, options;
+  data.buffer.push("\n            ");
+  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
+    'type': ("textfield"),
+    'value': ("form.fields.fullName.value"),
+    'placeholder': ("Full name")
+  },hashTypes:{'type': "STRING",'value': "ID",'placeholder': "STRING"},hashContexts:{'type': depth0,'value': depth0,'placeholder': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+  data.buffer.push("\n          ");
+  return buffer;
+  }
+
+function program5(depth0,data) {
+  
+  var buffer = '', helper, options;
+  data.buffer.push("\n            ");
+  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
+    'type': ("email"),
+    'value': ("form.fields.emailAddress.value"),
+    'placeholder': ("Email address")
+  },hashTypes:{'type': "STRING",'value': "ID",'placeholder': "STRING"},hashContexts:{'type': depth0,'value': depth0,'placeholder': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+  data.buffer.push("\n          ");
+  return buffer;
+  }
+
+function program7(depth0,data) {
+  
+  var buffer = '', helper, options;
+  data.buffer.push("\n            ");
+  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
+    'type': ("password"),
+    'value': ("form.fields.password.value"),
+    'placeholder': ("Password")
+  },hashTypes:{'type': "STRING",'value': "ID",'placeholder': "STRING"},hashContexts:{'type': depth0,'value': depth0,'placeholder': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+  data.buffer.push("\n          ");
+  return buffer;
+  }
+
+function program9(depth0,data) {
+  
+  var buffer = '', helper, options;
+  data.buffer.push("\n            ");
+  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
+    'type': ("password"),
+    'value': ("form.fields.repeatPassword.value"),
+    'placeholder': ("Repeat password")
+  },hashTypes:{'type': "STRING",'value': "ID",'placeholder': "STRING"},hashContexts:{'type': depth0,'value': depth0,'placeholder': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+  data.buffer.push("\n          ");
+  return buffer;
   }
 
   data.buffer.push("<div class=\"partition\">\n  <div class=\"one-third simple-menu\">\n    <div class=\"title\">Authentication Methods</div>\n    <a class=\"option\">Facebook</a>\n    <a class=\"option\">Google</a>\n    ");
@@ -366,49 +409,33 @@ function program1(depth0,data) {
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n  </div>\n  <div class=\"two-thirds\">\n    <div class=\"titled-box\">\n      <div class=\"title\">eLingua Account Sign Up</div>\n      <div class=\"content\">\n        <form class=\"form-1\" ");
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "createAccount", {hash:{
-    'type': ("submit")
-  },hashTypes:{'type': "STRING"},hashContexts:{'type': depth0},contexts:[depth0],types:["STRING"],data:data})));
+    'on': ("submit")
+  },hashTypes:{'on': "STRING"},hashContexts:{'on': depth0},contexts:[depth0],types:["STRING"],data:data})));
   data.buffer.push(">\n          ");
-  data.buffer.push(escapeExpression((helper = helpers['field-errors'] || (depth0 && depth0['field-errors']),options={hash:{
-    'errors': ("errors.fullName")
-  },hashTypes:{'errors': "ID"},hashContexts:{'errors': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "field-errors", options))));
+  stack1 = (helper = helpers['field-validated'] || (depth0 && depth0['field-validated']),options={hash:{
+    'field': ("form.fields.fullName")
+  },hashTypes:{'field': "ID"},hashContexts:{'field': depth0},inverse:self.noop,fn:self.program(3, program3, data),contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "field-validated", options));
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n          ");
-  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
-    'type': ("textfield"),
-    'value': ("fullName"),
-    'placeholder': ("Full name")
-  },hashTypes:{'type': "STRING",'value': "ID",'placeholder': "STRING"},hashContexts:{'type': depth0,'value': depth0,'placeholder': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+  stack1 = (helper = helpers['field-validated'] || (depth0 && depth0['field-validated']),options={hash:{
+    'field': ("form.fields.emailAddress")
+  },hashTypes:{'field': "ID"},hashContexts:{'field': depth0},inverse:self.noop,fn:self.program(5, program5, data),contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "field-validated", options));
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n          ");
-  data.buffer.push(escapeExpression((helper = helpers['field-errors'] || (depth0 && depth0['field-errors']),options={hash:{
-    'errors': ("errors.emailAddress")
-  },hashTypes:{'errors': "ID"},hashContexts:{'errors': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "field-errors", options))));
+  stack1 = (helper = helpers['field-validated'] || (depth0 && depth0['field-validated']),options={hash:{
+    'field': ("form.fields.password")
+  },hashTypes:{'field': "ID"},hashContexts:{'field': depth0},inverse:self.noop,fn:self.program(7, program7, data),contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "field-validated", options));
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n          ");
-  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
-    'type': ("email"),
-    'value': ("emailAddress"),
-    'placeholder': ("Email address")
-  },hashTypes:{'type': "STRING",'value': "ID",'placeholder': "STRING"},hashContexts:{'type': depth0,'value': depth0,'placeholder': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n          ");
-  data.buffer.push(escapeExpression((helper = helpers['field-errors'] || (depth0 && depth0['field-errors']),options={hash:{
-    'errors': ("errors.password")
-  },hashTypes:{'errors': "ID"},hashContexts:{'errors': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "field-errors", options))));
-  data.buffer.push("\n          ");
-  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
-    'type': ("password"),
-    'value': ("password"),
-    'placeholder': ("Password")
-  },hashTypes:{'type': "STRING",'value': "ID",'placeholder': "STRING"},hashContexts:{'type': depth0,'value': depth0,'placeholder': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n          ");
-  data.buffer.push(escapeExpression((helper = helpers['field-errors'] || (depth0 && depth0['field-errors']),options={hash:{
-    'errors': ("errors.repeatPassword")
-  },hashTypes:{'errors': "ID"},hashContexts:{'errors': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "field-errors", options))));
-  data.buffer.push("\n          ");
-  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
-    'type': ("password"),
-    'value': ("repeatPassword"),
-    'placeholder': ("Repeat password")
-  },hashTypes:{'type': "STRING",'value': "ID",'placeholder': "STRING"},hashContexts:{'type': depth0,'value': depth0,'placeholder': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n          <button class=\"button-blue\">Sign Up</button>\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n");
+  stack1 = (helper = helpers['field-validated'] || (depth0 && depth0['field-validated']),options={hash:{
+    'field': ("form.fields.repeatPassword")
+  },hashTypes:{'field': "ID"},hashContexts:{'field': depth0},inverse:self.noop,fn:self.program(9, program9, data),contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "field-validated", options));
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n          <button ");
+  data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
+    'class': (":button-blue form.valid::disabled")
+  },hashTypes:{'class': "STRING"},hashContexts:{'class': depth0},contexts:[],types:[],data:data})));
+  data.buffer.push(">Sign Up</button>\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n");
   return buffer;
   
 });

@@ -9,16 +9,20 @@
     <div class="titled-box">
       <div class="title">eLingua Account Sign Up</div>
       <div class="content">
-        <form class="form-1" {{action 'createAccount' type='submit'}}>
-          {{field-errors errors=errors.fullName}}
-          {{input type="textfield" value=fullName placeholder="Full name"}}
-          {{field-errors errors=errors.emailAddress}}
-          {{input type="email" value=emailAddress placeholder="Email address"}}
-          {{field-errors errors=errors.password}}
-          {{input type="password" value=password placeholder="Password"}}
-          {{field-errors errors=errors.repeatPassword}}
-          {{input type="password" value=repeatPassword placeholder="Repeat password"}}
-          <button class="button-blue">Sign Up</button>
+        <form class="form-1" {{action 'createAccount' on='submit'}}>
+          {{#field-validated field=form.fields.fullName}}
+            {{input type="textfield" value=form.fields.fullName.value placeholder="Full name"}}
+          {{/field-validated}}
+          {{#field-validated field=form.fields.emailAddress}}
+            {{input type="email" value=form.fields.emailAddress.value placeholder="Email address"}}
+          {{/field-validated}}
+          {{#field-validated field=form.fields.password}}
+            {{input type="password" value=form.fields.password.value placeholder="Password"}}
+          {{/field-validated}}
+          {{#field-validated field=form.fields.repeatPassword}}
+            {{input type="password" value=form.fields.repeatPassword.value placeholder="Repeat password"}}
+          {{/field-validated}}
+          <button {{bind-attr class=":button-blue form.valid::disabled"}}>Sign Up</button>
         </form>
       </div>
     </div>
