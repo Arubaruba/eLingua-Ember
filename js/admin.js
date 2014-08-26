@@ -1,24 +1,25 @@
-App.StudentRoute = Ember.Route.extend({
+App.AdminRoute = Ember.Route.extend({
   renderTemplate: function () {
     this.render();
-    this.render('student.menu', {
+    this.render('admin.menu', {
       outlet: 'upperMenu',
       into  : 'application'
     });
   }
 });
 
-App.StudentAccountRoute = Ember.Route.extend({
+
+App.AdminAccountRoute = Ember.Route.extend({
   renderTemplate: function () {
     this.render('account.account');
-    this.render('student.account-menu', {
+    this.render('admin.account-menu', {
       outlet: 'accountMenu',
       into: 'account.account'
     });
   }
 });
 
-App.StudentAccountChangePasswordRoute = Ember.Route.extend({
+App.AdminAccountChangePasswordRoute = Ember.Route.extend({
   renderTemplate: function () {
     this.render('account.change-password', {
       outlet: 'accountDashboard'
@@ -26,7 +27,7 @@ App.StudentAccountChangePasswordRoute = Ember.Route.extend({
   }
 });
 
-App.StudentAccountDeleteAccountRoute = Ember.Route.extend({
+App.AdminAccountDeleteAccountRoute = Ember.Route.extend({
   renderTemplate: function () {
     this.render('account.delete-account', {
       outlet: 'accountDashboard'
@@ -34,15 +35,6 @@ App.StudentAccountDeleteAccountRoute = Ember.Route.extend({
   }
 });
 
-App.StudentIndexController = Ember.Route.extend({
+App.AdminIndexController = Ember.Route.extend({
   test: new Array(5)
-});
-
-App.StudentController = Ember.Controller.extend({
-  actions: {
-    logout: function() {
-      auth.logout();
-      this.transitionToRoute('login');
-    }
-  }
 });

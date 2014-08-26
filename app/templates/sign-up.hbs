@@ -1,0 +1,26 @@
+<div class="partition">
+  <div class="one-third simple-menu">
+    <div class="title">Authentication Methods</div>
+    <a class="option">Facebook</a>
+    <a class="option">Google</a>
+    {{#link-to 'sign-up' class="option"}}eLingua Account{{/link-to}}
+  </div>
+  <div class="two-thirds">
+    <div class="titled-box">
+      <div class="title">eLingua Account Sign Up</div>
+      <div class="content">
+        <form class="form-1" {{action 'createAccount' type='submit'}}>
+          {{field-errors errors=errors.fullName}}
+          {{input type="textfield" value=fullName placeholder="Full name"}}
+          {{field-errors errors=errors.emailAddress}}
+          {{input type="email" value=emailAddress placeholder="Email address"}}
+          {{field-errors errors=errors.password}}
+          {{input type="password" value=password placeholder="Password"}}
+          {{field-errors errors=errors.repeatPassword}}
+          {{input type="password" value=repeatPassword placeholder="Repeat password"}}
+          <button class="button-blue">Sign Up</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

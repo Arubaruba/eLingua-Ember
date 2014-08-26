@@ -12,10 +12,19 @@ $nav-margin: 0 15px;
   &.button-large {
     padding: 10px;
   }
+  &.active {
+    $active-main-color: lighten(desaturate($main-color, 30%), 20%);
+    background: $active-main-color;
+    border: 1px solid darken($active-main-color, 25%);
+  }
 }
 
 .button-blue {
   @include button(#0069ff);
+}
+
+.button-green {
+  @include button(#16b600);
 }
 
 .button-red {

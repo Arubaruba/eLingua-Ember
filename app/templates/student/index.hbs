@@ -8,17 +8,28 @@
     <div class="titled-box">
       <div class="title">Weekly Tutoring Hours</div>
       <div class="content scheduled-hours">
-        <div class="hour">
-          <div class="img-container">
-            <img src="/images/kamal.png" alt="Kamal"/>
+        {{#each test}}
+          <div class="hour">
+            <div class="text">
+              <div class="datetime">Monday 13:00 - 14:00</div>
+              <div class="time-remaining">Starts in 1 Day</div>
+              <div class="email">kamal@komensky.org</div>
+            </div>
+            <div class="remove">X</div>
           </div>
-          <div class="text">
-            <div class="day">Monday</div>
-            <div class="time-range">13:00 - 14:00</div>
-            <div class="time-remaining">Starts in 1 Day</div>
-          </div>
-          <div class="remove">X</div>
-        </div>
+        {{/each}}
+      </div>
+    </div>
+    <div class="titled-box">
+      <div class="title">Download Excel Report</div>
+      <div class="content">
+        <form class="form-1" action="">
+          Start Date
+          {{input type="textfield" value=reportDateStart id="reportDateStart" placeholder="Day-Month-Year"}}
+          End Date
+          {{input type="textfield" value=reportDateEnd id="reportDateEnd" placeholder="Day-Month-Year"}}
+          <button class="button-green">Download</button>
+        </form>
       </div>
     </div>
   </div>
@@ -31,7 +42,6 @@
         <div class="tutor-name">
           Kamal Suleiman
         </div>
-        <div class="skype">Skype: kamal@komensky.org</div>
         <div class="days-available">
           <span class="selected-day-title">
             <a class="day">All</a> (5)

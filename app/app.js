@@ -1,7 +1,7 @@
 App = Ember.Application.create();
 
-App.ApplicationAdapter = DS.RESTAdapter.extend({
-  namespace: 'node'
+App.ApplicationAdapter = DS.FirebaseAdapter.extend({
+	firebase: new Firebase('https://elingua.firebaseio.com')
 });
 
 App.Router.map(function () {
@@ -21,8 +21,8 @@ App.Router.map(function () {
     });
   });
   this.resource('admin', function () {
-    this.resource('students', {path: '/'});
-    this.resource('tutors');
+    this.route('students', {path: '/'});
+    this.route('tutors');
     this.resource('admin.account', {path: 'account'}, function () {
       this.route('change-password', {path: '/'});
       this.route('delete-account');
@@ -30,6 +30,8 @@ App.Router.map(function () {
   });
   this.route('missing', {path: '/*wildcard'})
 });
+/*
+var auth;
 
 App.ApplicationRoute = Ember.Route.extend({
   renderTemplate: function () {
@@ -38,8 +40,31 @@ App.ApplicationRoute = Ember.Route.extend({
       outlet: 'upperMenu',
       into  : 'application'
     });
+  },
+  init: function() {
+    var self = this;
+    auth = new FirebaseSimpleLogin(firebase, function(err, user) {
+      if (!user) {
+        self.transitionTo('login');
+      }
+    });
   }
 });
+
+App.LoginRoute = Ember.Route.extend({
+  renderTemplate: function () {
+    this.render();
+    this.render('default-menu', {
+      outlet: 'upperMenu',
+      into  : 'application'
+    });
+  }
+});
+*/
+
+
+//----------------------------------------
+
 /*
 App.GuestRoute = Ember.Route.extend({
   renderTemplate: function () {

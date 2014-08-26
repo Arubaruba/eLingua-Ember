@@ -1,0 +1,40 @@
+<div class="heading-bar">
+  {{input class="search" type="textfield" value=headingBarSearch id="headingBarSearch" placeholder="Search Tutors"}}
+</div>
+<div class="partition">
+  <div class="one-third">
+    <div class="titled-box">
+      <div class="title">Hourly Tutor Payment</div>
+      <div class="content">
+        <form class="form-1" action="">
+          {{input class="halved" type="textfield" value=hourlyTutorRate id="hourlyTutorRate" placeholder="JD per Hour"}}
+          <button class="button-blue button-large">Update</button>
+        </form>
+      </div>
+    </div>
+    <div class="titled-box">
+      <div class="title">Download Excel Report</div>
+      <div class="content">
+        <form class="form-1" action="">
+          Start Date
+          {{input type="textfield" value=reportDateStart id="reportDateStart" placeholder="Day-Month-Year"}}
+          End Date
+          {{input type="textfield" value=reportDateEnd id="reportDateEnd" placeholder="Day-Month-Year"}}
+          <div class="text">
+            Select a Tutor, or
+          </div>
+          <button class="button-green">Download (All Tutors)</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="two-thirds">
+    <table cellspacing="0" class="student-list">
+      <tr class="student">
+        <td>Kamal Suleiman<br> <span class="email">kamal@komensky.net</span></td>
+        <td>15 JD Owed <a class="button-blue add-credits">Paid</a></td>
+        <td><a class="link-black">Download Report</a></td>
+      </tr>
+    </table>
+  </div>
+</div>

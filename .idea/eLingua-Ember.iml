@@ -8,6 +8,8 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="eLingua-Ember node_modules" level="project" />
     <orderEntry type="library" name="sass-stdlib" level="application" />
+    <orderEntry type="library" name="firebase" level="application" />
+    <orderEntry type="library" name="emberfire" level="application" />
   </component>
 </module>
 

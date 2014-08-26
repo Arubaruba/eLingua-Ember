@@ -4,7 +4,7 @@ module.exports = {
   },
   dist: {
     files: {
-      'dist/<%= pkg.name %>.min.js': ['dist/<%= pkg.name %>.min.js']
+      'dist/elingua.min.js': ['tmp/elingua.concat.js']
     }
   }
 };

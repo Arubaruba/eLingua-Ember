@@ -2,11 +2,11 @@ module.exports = {
   compile: {
     options: {
       templateName: function(sourceFile) {
-        return sourceFile.replace(/templates\//, '')
+        return sourceFile.replace(/app\/templates\//, '')
       }
     },
     files: {
-      "dist/templates.js": "templates/**/*.hbs"
+      "tmp/templates.js": "app/templates/**/*.hbs"
     }
   }
 };

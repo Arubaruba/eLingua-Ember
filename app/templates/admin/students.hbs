@@ -1,0 +1,40 @@
+<div class="heading-bar">
+  {{input class="search" type="textfield" value=headingBarSearch id="headingBarSearch" placeholder="Search Students"}}
+</div>
+<div class="partition">
+  <div class="one-third">
+    <div class="titled-box">
+      <div class="title">Add Credits</div>
+      <div class="content">
+        <form class="form-1" action="">
+          {{input type="textfield" value=additionalCredits id="additionalCredits" placeholder="Number of Credits"}}
+          Now select a student from the list
+        </form>
+      </div>
+    </div>
+    <div class="titled-box">
+      <div class="title">Download Excel Report</div>
+      <div class="content">
+        <form class="form-1" action="">
+          Start Date
+          {{input type="textfield" value=reportDateStart id="reportDateStart" placeholder="Day-Month-Year"}}
+          End Date
+          {{input type="textfield" value=reportDateEnd id="reportDateEnd" placeholder="Day-Month-Year"}}
+          <div class="text">
+            Select a Student, or
+          </div>
+          <button class="button-green">Download (All Students)</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="two-thirds">
+    <table cellspacing="0" class="student-list">
+        <tr class="student">
+          <td>Andreas Stocker <br> <span class="email">andreas@stockers.org</span></td>
+          <td>4 Credits <a class="button-blue add-credits">+ 10</a></td>
+          <td><a class="link-black">Download Report</a></td>
+        </tr>
+    </table>
+  </div>
+</div>

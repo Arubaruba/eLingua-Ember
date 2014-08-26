@@ -10,8 +10,8 @@ module.exports = function(grunt) {
     emberTemplates: config('emberTemplates'),
     uglify: config('uglify'),
     watch: {
-      files: ['templates/**/*.hbs', 'js/**/*.js'],
-      tasks: ['emberTemplates', 'concat']
+      files: ['app/templates/**/*.hbs'],
+      tasks: ['emberTemplates']
     }
   });
 
@@ -22,6 +22,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('production', ['emberTemplates', 'concat', 'uglify']);
-  grunt.registerTask('development', ['emberTemplates', 'concat']);
   grunt.registerTask('default', ['watch']);
 };

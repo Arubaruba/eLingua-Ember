@@ -1,0 +1,61 @@
+<div class="heading-bar">
+  <span class="label">Credits Earned this Month:</span>
+  <span class="value">29</span>
+  {{input class="search" type="textfield" value=headingBarSearch id="headingBarSearch" placeholder="Search Students"}}
+</div>
+<div class="partition">
+  <div class="one-third">
+    <div class="titled-box">
+      <div class="title">Add Tutoring Hours</div>
+      <div class="content">
+        <form class="form-1" action="">
+          <select name="" id="">
+            <option value="">Monday</option>
+          </select>
+          <b>
+            {{input type="textfield" class="time-range" value=filterStartingTime id="filterStartingTime" placeholder="00"}}
+            :00
+          </b>
+          <span class="time-range-label">to</span>
+          <b>
+            {{input type="textfield" class="time-range" value=filterEndingTime id="filterEndingTime" placeholder="00"}}
+            :00
+          </b><br>
+          <button class="button-blue">Add Hours</button>
+        </form>
+      </div>
+    </div>
+    <div class="titled-box">
+      <div class="title">Download Excel Report</div>
+      <div class="content">
+        <form class="form-1" action="">
+          Start Date
+          {{input type="textfield" value=reportDateStart id="reportDateStart" placeholder="Day-Month-Year"}}
+          End Date
+          {{input type="textfield" value=reportDateEnd id="reportDateEnd" placeholder="Day-Month-Year"}}
+          <button class="button-green">Download</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="two-thirds tutors-available-hours">
+    {{#each test}}
+      <div class="hour">
+        <div>
+          <span class="student-name">Andreas Stocker</span>
+          <span class="right">
+            <span class="begins-in">begins in</span> 1 Hour
+          </span>
+        </div>
+        <div>
+          <span class="datetime">Monday 13:00 - 14:00</span>
+          <span class="right">
+            <button class="button-red remove">Remove</button>
+          </span>
+        </div>
+      </div>
+    {{/each}}
+    <br>
+    <button class="button-blue">Show More</button>
+  </div>
+</div>
