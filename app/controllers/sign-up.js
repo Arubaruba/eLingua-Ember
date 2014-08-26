@@ -13,6 +13,36 @@ App.SignUpController = Ember.Controller.extend({
             }
           })
         ]
+      }),
+      emailAddress: App.Field.create({
+        validations: [
+          App.Validation.create({
+            message: 'Valid email address is required',
+            invalid: function (field) {
+              return field.get('value').indexOf('@') == -1;
+            }
+          })
+        ]
+      }),
+      password: App.Field.create({
+        validations: [
+          App.Validation.create({
+            message: 'Password must be at least 8 characters long',
+            invalid: function (field) {
+              return field.get('value').length < 8;
+            }
+          })
+        ]
+      }),
+      repeatPassword: App.Field.create({
+        validations: [
+          App.Validation.create({
+            message: 'Passwords must be exactly the same',
+            invalid: function (field) {
+              return field.get('value') != field.get('form.fields.password.value');
+            }
+          })
+        ]
       })
     }
   }),

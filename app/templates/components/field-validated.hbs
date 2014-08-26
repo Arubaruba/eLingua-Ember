@@ -1,10 +1,8 @@
+{{yield}}
 {{#unless field.valid}}
-  <div class="error-frame">
+  <div class="field-validated">
     {{#each error in field.errors}}
-      <div class="error">
-        {{error}}
-      </div>
+      <div>{{error}}</div>
     {{/each}}
   </div>
 {{/unless}}
-{{yield}}
