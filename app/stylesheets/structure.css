@@ -67,6 +67,9 @@ body { background: #fff; color: #333; font-family: "Lucida Grande", "Lucida Sans
 .student-list tr td { text-align: center; padding: 10px; }
 .student-list tr td .email { font-size: 16px; }
 
-.field-validated { box-sizing: border-box; display: inline-block; color: red; font-size: 16px; font-weight: bold; margin-bottom: 25px; border-left: 3px solid; max-width: 350px; padding: 10px; width: 100%; }
+.field-validated { box-sizing: border-box; color: #0069ff; display: inline-block; font-size: 16px; font-weight: bold; margin-bottom: 25px; padding: 10px 0; }
+
+.loading-message { color: #999; display: none; }
+.loading-message.visible { display: inline-block; }
 
 /*# sourceMappingURL=structure.css.map */

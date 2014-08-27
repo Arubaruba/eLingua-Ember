@@ -2,6 +2,9 @@ App.SignUpController = Ember.Controller.extend({
   needs: ['application', 'login'],
   auth: Ember.computed.alias('controllers.application.auth'),
 
+  loading: false,
+  submissionError: '',
+
   form: App.Form.create({
     fields: {
       fullName: App.Field.create({
@@ -48,71 +51,30 @@ App.SignUpController = Ember.Controller.extend({
   }),
   actions: {
     createAccount: function () {
+      var controller = this;
       if (this.get('form.valid')) {
-        console.log('create account!');
+        this.set('submissionError', '');
+        this.set('loading', true);
+        this.get('auth').createUser(this.get('form.fields.emailAddress.value'), this.get('form.fields.password.value'), function (err, user) {
+          controller.set('loading', false);
+          if (err === null) {
+            controller.set('controllers.login.form.fields.emailAddress.value', user.email);
+            controller.transitionToRoute('login');
+            controller.get('form').clear();
+          } else {
+            switch(err.code) {
+              case 'EMAIL_TAKEN':
+                controller.set('submissionError', 'This email address is already taken');
+                break;
+              case 'INVALID_EMAIL':
+                controller.set('submissionError', 'Email address is not valid');
+                break;
+              default:
+                controller.set('submissionError', 'Unable to connect');
+            }
+          }
+        });
       }
     }
   }
 });
-
-
-//    createAccount: function () {
-//      var errors = {
-//        fullName: [
-//          {
-//            message: 'Full name is required',
-//            invalid: this.get('fullName').length == 0
-//          }
-//        ],
-//        emailAddress: [
-//          {
-//            message: 'This is not a valid email address',
-//            present: this.get('emailAddress').indexOf('@') == -1
-//          },
-//          {
-//            message: 'another sneaky error',
-//            present: true
-//          }
-//        ],
-//        password: [
-//          {
-//            message: 'Password must be ' + this.get('minPasswordLength') + ' characters long',
-//            present: this.get('password').length < this.get('minPasswordLength')
-//          }
-//        ],
-//        repeatPassword: [
-//          {
-//            message: 'Passwords not the same',
-//            present: this.get('password') != this.get('repeatPassword')
-//          }
-//        ]
-//      };
-//      var errorsPresent = false;
-//
-//      for (var fieldName in errors) {
-//        var field = errors[fieldName];
-//        var fieldErrors = false;
-//        for (var e = 0, ee = field.length; e < ee; e++) {
-//          var error = field[e];
-//          fieldErrors = fieldErrors || error.present;
-//          errorsPresent = errorsPresent || error.present;
-//        }
-//        if (!fieldErrors) errors[fieldName] = null;
-//      }
-//
-//      if (errorsPresent) {
-//        this.set('errors', errors);
-//      } else {
-//        var controller = this;
-//        this.get('auth').createUser(this.get('emailAddress'), this.get('password'),
-//          function (err, user) {
-//            if (err) {
-//              controller.set('formError', err);
-//            } else {
-//              controller.set('controllers.login.emailAddress', user.email);
-//              controller.transitionToRoute('login');
-//            }
-//          });
-//      }
-//    }
-

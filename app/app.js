@@ -1,7 +1,9 @@
 App = Ember.Application.create();
 
+App.Firebase = new Firebase('https://elingua.firebaseio.com');
+
 App.ApplicationAdapter = DS.FirebaseAdapter.extend({
-	firebase: new Firebase('https://elingua.firebaseio.com')
+  firebase: App.Firebase
 });
 
 App.Router.map(function () {
@@ -11,13 +13,11 @@ App.Router.map(function () {
   this.resource('student', function () {
     this.resource('student.account', {path: 'account'}, function () {
       this.route('change-password', {path: '/'});
-      this.route('delete-account');
     });
   });
   this.resource('tutor', function () {
     this.resource('tutor.account', {path: 'account'}, function () {
       this.route('change-password', {path: '/'});
-      this.route('delete-account');
     });
   });
   this.resource('admin', function () {
@@ -25,131 +25,130 @@ App.Router.map(function () {
     this.route('tutors');
     this.resource('admin.account', {path: 'account'}, function () {
       this.route('change-password', {path: '/'});
-      this.route('delete-account');
     });
   });
   this.route('missing', {path: '/*wildcard'})
 });
 /*
-var auth;
+ var auth;
 
-App.ApplicationRoute = Ember.Route.extend({
-  renderTemplate: function () {
-    this.render();
-    this.render('default-menu', {
-      outlet: 'upperMenu',
-      into  : 'application'
-    });
-  },
-  init: function() {
-    var self = this;
-    auth = new FirebaseSimpleLogin(firebase, function(err, user) {
-      if (!user) {
-        self.transitionTo('login');
-      }
-    });
-  }
-});
+ App.ApplicationRoute = Ember.Route.extend({
+ renderTemplate: function () {
+ this.render();
+ this.render('default-menu', {
+ outlet: 'upperMenu',
+ into  : 'application'
+ });
+ },
+ init: function() {
+ var self = this;
+ auth = new FirebaseSimpleLogin(firebase, function(err, user) {
+ if (!user) {
+ self.transitionTo('login');
+ }
+ });
+ }
+ });
 
-App.LoginRoute = Ember.Route.extend({
-  renderTemplate: function () {
-    this.render();
-    this.render('default-menu', {
-      outlet: 'upperMenu',
-      into  : 'application'
-    });
-  }
-});
-*/
+ App.LoginRoute = Ember.Route.extend({
+ renderTemplate: function () {
+ this.render();
+ this.render('default-menu', {
+ outlet: 'upperMenu',
+ into  : 'application'
+ });
+ }
+ });
+ */
 
 
 //----------------------------------------
 
 /*
-App.GuestRoute = Ember.Route.extend({
-  renderTemplate: function () {
-    this.render();
-    this.render('guest.menu', {
-      outlet: 'menu',
-      into  : 'application'
-    });
-  }
-});
+ App.GuestRoute = Ember.Route.extend({
+ renderTemplate: function () {
+ this.render();
+ this.render('guest.menu', {
+ outlet: 'menu',
+ into  : 'application'
+ });
+ }
+ });
 
-App.TutorRoute = Ember.Route.extend({
-  renderTemplate: function () {
-    this.render();
-    this.render('tutor.menu', {
-      outlet: 'menu',
-      into  : 'application'
-    });
-  }
-});
+ App.TutorRoute = Ember.Route.extend({
+ renderTemplate: function () {
+ this.render();
+ this.render('tutor.menu', {
+ outlet: 'menu',
+ into  : 'application'
+ });
+ }
+ });
 
-App.TutorAccountRoute = Ember.Route.extend({
-  renderTemplate: function () {
-    this.render();
-  }
-});
+ App.TutorAccountRoute = Ember.Route.extend({
+ renderTemplate: function () {
+ this.render();
+ }
+ });
 
-App.TutorAccountChangePasswordRoute = Ember.Route.extend({
-  renderTemplate: function () {
-    this.render('account.change-password', {
-      into: 'tutor.account'
-    });
-  }
-});
+ App.TutorAccountChangePasswordRoute = Ember.Route.extend({
+ renderTemplate: function () {
+ this.render('account.change-password', {
+ into: 'tutor.account'
+ });
+ }
+ });
 
-App.StudentRoute = Ember.Route.extend({
-  renderTemplate: function () {
-    this.render();
-    this.render('student.menu', {
-      outlet: 'menu',
-      into  : 'application'
-    });
-  }
-});
+ App.StudentRoute = Ember.Route.extend({
+ renderTemplate: function () {
+ this.render();
+ this.render('student.menu', {
+ outlet: 'menu',
+ into  : 'application'
+ });
+ }
+ });
 
-App.StudentScheduleRoute = Ember.Route.extend({
-  renderTemplate: function () {
-    this.render();
-  }
-});
+ App.StudentScheduleRoute = Ember.Route.extend({
+ renderTemplate: function () {
+ this.render();
+ }
+ });
 
-App.StudentTutorsRoute = Ember.Route.extend({
-  renderTemplate: function () {
-    this.render('guest.tutors');
-  }
-});
+ App.StudentTutorsRoute = Ember.Route.extend({
+ renderTemplate: function () {
+ this.render('guest.tutors');
+ }
+ });
 
-App.StudentAccountRoute = Ember.Route.extend({
-  renderTemplate: function () {
-    this.render();
-  }
-});
+ App.StudentAccountRoute = Ember.Route.extend({
+ renderTemplate: function () {
+ this.render();
+ }
+ });
 
-App.StudentAccountChangePasswordRoute = Ember.Route.extend({
-  renderTemplate: function () {
-    this.render('account.change-password', {
-      into: 'student.account'
-    });
-  }
-});
+ App.StudentAccountChangePasswordRoute = Ember.Route.extend({
+ renderTemplate: function () {
+ this.render('account.change-password', {
+ into: 'student.account'
+ });
+ }
+ });
 
-App.StudentScheduleChangeRoute = Ember.Route.extend({
-  renderTemplate: function () {
-    this.render();
-    this.render('student.schedule.new-schedule', {
-      outlet: 'boxMenus'
-    });
-  }
-});
+ App.StudentScheduleChangeRoute = Ember.Route.extend({
+ renderTemplate: function () {
+ this.render();
+ this.render('student.schedule.new-schedule', {
+ outlet: 'boxMenus'
+ });
+ }
+ });
 
-App.StudentScheduleOverviewRoute = Ember.Route.extend({
-  renderTemplate: function () {
-    this.render();
-  }
-});
+ App.StudentScheduleOverviewRoute = Ember.Route.extend({
+ renderTemplate: function () {
+ this.render();
+ }
+ });
  function ajax(arguments) {
  if(App.rootElement == '#ember-testing1') {
 

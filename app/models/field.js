@@ -4,6 +4,9 @@ App.Field = Ember.Object.extend({
   validations: [],
   errors: [],
   _computations: 0,
+  init: function() {
+    if (this.get('value')) this.set('_computations', 2);
+  },
   valid: Ember.computed('value', function () {
     var validations = this.get('validations');
     var validationsValid = true;

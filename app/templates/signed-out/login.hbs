@@ -1,0 +1,21 @@
+<div class="partition">
+  <div class="one-third simple-menu">
+    <div class="title">Authentication Methods</div>
+    <a class="option" {{action 'facebookLogin'}}>Facebook</a>
+    <a class="option" {{action 'googleLogin'}}>Google</a>
+    {{#link-to 'login' class="option"}}eLingua Account{{/link-to}}
+  </div>
+  <div class="two-thirds">
+    <form class="form-1" {{action 'elinguaLogin' on='submit'}}>
+      {{#field-validated field=form.fields.emailAddress}}
+        {{input type="email" value=form.fields.emailAddress.value placeholder="Email address"}}
+      {{/field-validated}}
+      {{#field-validated field=form.fields.password}}
+        {{input type="password" value=form.fields.password.value placeholder="Password"}}
+      {{/field-validated}}
+      <button {{bind-attr class=":button-blue :button-large form.valid::disabled"}}>Login</button>
+      <span {{bind-attr class=":loading-message loading:visible"}}>Logging in ...</span>
+      {{submissionError}}
+    </form>
+  </div>
+</div>
