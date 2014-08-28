@@ -1,5 +1,5 @@
-App.SignUpController = Ember.Controller.extend({
-  needs: ['application', 'login'],
+App.SignedOutSignUpController = Ember.Controller.extend({
+  needs: ['application'],
   auth: Ember.computed.alias('controllers.application.auth'),
 
   loading: false,
@@ -55,13 +55,15 @@ App.SignUpController = Ember.Controller.extend({
       if (this.get('form.valid')) {
         this.set('submissionError', '');
         this.set('loading', true);
+        this.set('insertUser', true);
         this.get('auth').createUser(this.get('form.fields.emailAddress.value'), this.get('form.fields.password.value'), function (err, user) {
           controller.set('loading', false);
           if (err === null) {
-            controller.set('controllers.login.form.fields.emailAddress.value', user.email);
-            controller.transitionToRoute('login');
+            controller.controllerFor('signed-out.login').set('form.fields.emailAddress.value', user.email);
+            controller.transitionToRoute('sign-out.login');
             controller.get('form').clear();
           } else {
+            controller.set('insertUser', false);
             switch(err.code) {
               case 'EMAIL_TAKEN':
                 controller.set('submissionError', 'This email address is already taken');

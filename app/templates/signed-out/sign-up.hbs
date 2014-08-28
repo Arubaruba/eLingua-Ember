@@ -1,27 +1,18 @@
-<div class="partition">
-  <div class="one-third simple-menu">
-    <div class="title">Authentication Methods</div>
-    <a class="option">Facebook</a>
-    <a class="option">Google</a>
-    {{#link-to 'sign-up' class="option"}}eLingua Account{{/link-to}}
-  </div>
-  <div class="two-thirds">
-    <form class="form-1" {{action 'createAccount' on='submit'}}>
-      {{#field-validated field=form.fields.fullName}}
-        {{input type="textfield" value=form.fields.fullName.value placeholder="Full name"}}
-      {{/field-validated}}
-      {{#field-validated field=form.fields.emailAddress}}
-        {{input type="email" value=form.fields.emailAddress.value placeholder="Email address"}}
-      {{/field-validated}}
-      {{#field-validated field=form.fields.password}}
-        {{input type="password" value=form.fields.password.value placeholder="Password"}}
-      {{/field-validated}}
-      {{#field-validated field=form.fields.repeatPassword}}
-        {{input type="password" value=form.fields.repeatPassword.value placeholder="Repeat password"}}
-      {{/field-validated}}
-      <button {{bind-attr class=":button-blue :button-large form.valid::disabled"}}>Sign Up</button>
-      <span {{bind-attr class=":loading-message loading:visible"}}>Signing up ...</span>
-      {{submissionError}}
-    </form>
-  </div>
-</div>
+<form class="form-1" {{action 'createAccount' on='submit'}}>
+  <h2>Sign Up</h2>
+  {{#field-validated field=form.fields.fullName}}
+    {{input type="textfield" value=form.fields.fullName.value placeholder="Full name"}}
+  {{/field-validated}}
+  {{#field-validated field=form.fields.emailAddress}}
+    {{input type="email" value=form.fields.emailAddress.value placeholder="Email address"}}
+  {{/field-validated}}
+  {{#field-validated field=form.fields.password}}
+    {{input type="password" value=form.fields.password.value placeholder="Password"}}
+  {{/field-validated}}
+  {{#field-validated field=form.fields.repeatPassword}}
+    {{input type="password" value=form.fields.repeatPassword.value placeholder="Repeat password"}}
+  {{/field-validated}}
+  <button {{bind-attr class=":button-blue :button-large form.valid::disabled"}}>Sign Up</button>
+  <span {{bind-attr class=":loading-message loading:visible"}}>Signing up ...</span>
+  {{submissionError}}
+</form>

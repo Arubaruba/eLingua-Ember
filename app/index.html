@@ -14,6 +14,8 @@
 <script type="application/javascript" src="../bower_components/handlebars/handlebars.js"></script>
 <script type="application/javascript" src="../bower_components/ember/ember.js"></script>
 <script type="application/javascript" src="../bower_components/ember-data/ember-data.js"></script>
+<script type="application/javascript" src="lib/random.js"></script>
+
 <!-- Firebase -->
 <script src="../bower_components/firebase/firebase.js"></script>
 <script src="../bower_components/firebase-simple-login/firebase-simple-login.js"></script>
@@ -27,20 +29,29 @@
 <!-- Models -->
 <script type="application/javascript" src="models/field.js"></script>
 <script type="application/javascript" src="models/form.js"></script>
+<script type="application/javascript" src="models/user.js"></script>
 <script type="application/javascript" src="models/validation.js"></script>
 
 <!-- Controllers -->
 <script type="application/javascript" src="controllers/application.js"></script>
-<script type="application/javascript" src="controllers/login.js"></script>
-<script type="application/javascript" src="controllers/sign-up.js"></script>
+<script type="application/javascript" src="controllers/admin/tutors.js"></script>
+<script type="application/javascript" src="controllers/signed-out.js"></script>
+<script type="application/javascript" src="controllers/signed-out/login.js"></script>
+<script type="application/javascript" src="controllers/signed-out/sign-up.js"></script>
 
 <!-- Routes -->
-<script type="application/javascript" src="routes/application.js"></script>
 <script type="application/javascript" src="routes/account/change-password.js"></script>
+<script type="application/javascript" src="routes/admin.js"></script>
+<script type="application/javascript" src="routes/admin/account.js"></script>
+<script type="application/javascript" src="routes/admin/account/change-password.js"></script>
+<script type="application/javascript" src="routes/application.js"></script>
+<script type="application/javascript" src="routes/signed-out.js"></script>
 <script type="application/javascript" src="routes/student.js"></script>
 <script type="application/javascript" src="routes/student/account.js"></script>
 <script type="application/javascript" src="routes/student/account/change-password.js"></script>
-<script type="application/javascript" src="routes/student/account/delete-account.js"></script>
+<script type="application/javascript" src="routes/tutor.js"></script>
+<script type="application/javascript" src="routes/tutor/account.js"></script>
+<script type="application/javascript" src="routes/tutor/account/change-password.js"></script>
 
 </body>
 </html>

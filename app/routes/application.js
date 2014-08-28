@@ -1,18 +1,18 @@
 App.ApplicationRoute = Ember.Route.extend({
 
   protectedRoutes: ['student', 'tutor', 'admin'],
-
   actions: {
     signOut: function () {
       this.get('controller.auth').logout();
-      this.transitionTo('login');
+      this.transitionTo('signed-out.login');
     }
   },
   model: function () {
     var model = this;
+
     return new Ember.RSVP.Promise(function (resolve) {
       var auth = new FirebaseSimpleLogin(App.Firebase, function (err, user) {
-        var login = model.controllerFor('login');
+        var login = model.controllerFor('signed-out.login');
         login.set('loading', false);
         if (err) {
           switch (err.code) {
@@ -32,10 +32,25 @@ App.ApplicationRoute = Ember.Route.extend({
 
         if (routeProtected && !user) {
           model.transitionTo('login');
-        } else if (!routeProtected && user) {
-          model.transitionTo('student');
         }
 
+        if (user) {
+          model.store.find('user', user.uid).then(function (existingUser) {
+            if (user && !routeProtected) {
+              model.transitionTo(existingUser.get('type'));
+            }
+          }).catch(function () {
+            var fullName = (auth.provider == 'password')
+              ? model.controllerFor('sign-up').get('form.fullName') : user.displayName;
+            model.store.createRecord('user', {
+              id: user.uid,
+              //this may be null
+              emailAddress: user.email,
+              fullName: fullName,
+              type: 'student'
+            }).save();
+          });
+        }
         resolve({auth: auth, user: user});
       });
     });

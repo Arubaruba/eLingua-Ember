@@ -1,7 +1,7 @@
-App.TutorRoute = Ember.Route.extend({
+App.AdminRoute = Ember.Route.extend({
   renderTemplate: function () {
     this.render();
-    this.render('tutor.menu', {
+    this.render('admin.menu', {
       outlet: 'upperMenu',
       into: 'application'
     });

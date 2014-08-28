@@ -27,6 +27,22 @@
         </form>
       </div>
     </div>
+    <div class="titled-box">
+      <div class="title">Add Tutor</div>
+      <div class="content">
+        <form class="form-1" {{action 'addTutor' on='submit'}}>
+          {{#field-validated field=addTutorForm.fields.fullName}}
+            {{input type="textfield" value=addTutorForm.fields.fullName.value placeholder="Full name"}}
+          {{/field-validated}}
+          {{#field-validated field=addTutorForm.fields.emailAddress}}
+            {{input type="email" value=addTutorForm.fields.emailAddress.value placeholder="Email address"}}
+          {{/field-validated}}
+          <button {{bind-attr class=":button-blue :button-large addTutorForm.valid::disabled"}}>Send Email</button>
+          <span {{bind-attr class=":loading-message addTutorFormLoading:visible"}}>Creating Account ...</span>
+          {{addTutorFormResponse}}
+        </form>
+      </div>
+    </div>
   </div>
   <div class="two-thirds">
     <table cellspacing="0" class="student-list">

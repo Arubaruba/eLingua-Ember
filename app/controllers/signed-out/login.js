@@ -1,4 +1,4 @@
-App.LoginController = Ember.Controller.extend({
+App.SignedOutLoginController = Ember.Controller.extend({
   needs: 'application',
   auth: Ember.computed.alias('controllers.application.auth'),
   submissionError: '',
@@ -14,16 +14,7 @@ App.LoginController = Ember.Controller.extend({
           })
         ]
       }),
-      password: App.Field.create({
-        validations: [
-          App.Validation.create({
-            message: 'Password must be at least 8 characters long',
-            invalid: function (field) {
-              return field.get('value').length < 8;
-            }
-          })
-        ]
-      })
+      password: App.Field.create()
     }
   }),
   actions: {
@@ -41,6 +32,7 @@ App.LoginController = Ember.Controller.extend({
           email: this.get('form.fields.emailAddress.value'),
           password: this.get('form.fields.password.value')
         });
+        this.set('form.fields.password.value', '');
       }
     },
     signOut: function() {
