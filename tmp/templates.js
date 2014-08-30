@@ -825,11 +825,6 @@ function program10(depth0,data) {
     'on': ("submit")
   },hashTypes:{'on': "STRING"},hashContexts:{'on': depth0},contexts:[depth0],types:["STRING"],data:data})));
   data.buffer.push(">\n          ");
-  data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.Select", {hash:{
-    'content': ("addHours.fields.day.options"),
-    'value': ("addHours.fields.day.value")
-  },hashTypes:{'content': "ID",'value': "ID"},hashContexts:{'content': depth0,'value': depth0},contexts:[depth0],types:["ID"],data:data})));
-  data.buffer.push("\n          ");
   stack1 = (helper = helpers['field-validated'] || (depth0 && depth0['field-validated']),options={hash:{
     'field': ("addHours.fields.startTime")
   },hashTypes:{'field': "ID"},hashContexts:{'field': depth0},inverse:self.noop,fn:self.program(1, program1, data),contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "field-validated", options));
@@ -866,11 +861,11 @@ function program10(depth0,data) {
   },hashTypes:{'type': "STRING",'value': "ID",'id': "STRING",'placeholder': "STRING"},hashContexts:{'type': depth0,'value': depth0,'id': depth0,'placeholder': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
   data.buffer.push("\n          <button class=\"button-green\">Download</button>\n        </form>\n      </div>\n    </div>\n    -->\n  </div>\n  <div class=\"two-thirds tutors-available-hours\">\n    <div class=\"form-1\">\n      ");
   data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.Select", {hash:{
-    'content': ("addHours.fields.day.options"),
+    'content': ("countedDayNames"),
     'value': ("countedDayName")
   },hashTypes:{'content': "ID",'value': "ID"},hashContexts:{'content': depth0,'value': depth0},contexts:[depth0],types:["ID"],data:data})));
   data.buffer.push("\n    </div>\n    ");
-  stack1 = helpers.each.call(depth0, "model", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(10, program10, data),fn:self.program(5, program5, data),contexts:[depth0],types:["ID"],data:data});
+  stack1 = helpers.each.call(depth0, "filteredSessionPeriods", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(10, program10, data),fn:self.program(5, program5, data),contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n  </div>\n</div>");
   return buffer;

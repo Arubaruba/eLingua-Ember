@@ -9,7 +9,6 @@
       <div class="title">Add Session Periods</div>
       <div class="content">
         <form class="form-1" {{action 'addTutoringHours' on='submit'}}>
-          {{view Ember.Select content=addHours.fields.day.options value=addHours.fields.day.value}}
           {{#field-validated field=addHours.fields.startTime}}
             {{input class="time-range" type="textfield" value=addHours.fields.startTime.value placeholder="00"}}
             <b>:00</b>
@@ -47,9 +46,9 @@
   </div>
   <div class="two-thirds tutors-available-hours">
     <div class="form-1">
-      {{view Ember.Select content=addHours.fields.day.options value=countedDayName}}
+      {{view Ember.Select content=countedDayNames value=countedDayName}}
     </div>
-    {{#each model}}
+    {{#each filteredSessionPeriods}}
       <div {{bind-attr class=":hour student::empty"}}>
         <div>
           <span class="student-name">
