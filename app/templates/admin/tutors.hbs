@@ -6,16 +6,21 @@
     <div class="titled-box">
       <div class="title">Hourly Tutor Payment</div>
       <div class="content">
-        <form class="form-1" action="">
-          {{input class="halved" type="textfield" value=hourlyTutorRate id="hourlyTutorRate" placeholder="JD per Hour"}}
-          <button class="button-blue button-large">Update</button>
-        </form>
+        <div class="form-1">
+          {{#field-validated field=updateTutorPayForm.fields.tutorPay}}
+            {{input type="textfield" value=updateTutorPayForm.fields.tutorPay.model.value placeholder="JD per Hour"}}
+            <div class="message-next-line">
+              {{updateTutorPayFormResponse}}
+              <div {{bind-attr class=":loading-message updateTutorPayFormLoading:visible"}}>Updating Tutor Pay ...</div>
+            </div>
+          {{/field-validated}}
+        </div>
       </div>
     </div>
     <div class="titled-box">
       <div class="title">Download Excel Report</div>
       <div class="content">
-        <form class="form-1" action="">
+        <form class="form-1" {{action 'updateTutorPay' on='submit'}}>
           Start Date
           {{input type="textfield" value=reportDateStart id="reportDateStart" placeholder="Day-Month-Year"}}
           End Date
@@ -37,20 +42,26 @@
           {{#field-validated field=addTutorForm.fields.emailAddress}}
             {{input type="email" value=addTutorForm.fields.emailAddress.value placeholder="Email address"}}
           {{/field-validated}}
-          <button {{bind-attr class=":button-blue :button-large addTutorForm.valid::disabled"}}>Send Email</button>
-          <span {{bind-attr class=":loading-message addTutorFormLoading:visible"}}>Creating Account ...</span>
-          {{addTutorFormResponse}}
+          <button type="submit" {{bind-attr class=":button-blue :button-large addTutorForm.valid::disabled"}}>Send Email</button>
+          <div class="message-next-line">
+            {{addTutorFormResponse}}
+            <div {{bind-attr class=":loading-message addTutorFormLoading:visible"}}>Creating Account ...</div>
+          </div>
         </form>
       </div>
     </div>
   </div>
   <div class="two-thirds">
-    <table cellspacing="0" class="student-list">
-      <tr class="student">
-        <td>Kamal Suleiman<br> <span class="email">kamal@komensky.net</span></td>
-        <td>15 JD Owed <a class="button-blue add-credits">Paid</a></td>
-        <td><a class="link-black">Download Report</a></td>
-      </tr>
+    <table cellspacing="0" class="user-list">
+      <tbody>
+      {{#each model}}
+        <tr>
+          <td>{{fullName}}<br> <span class="email">{{emailAddress}}</span></td>
+          <td>{{moneyOwed}} JD Owed <a class="button-blue add-credits">Paid</a></td>
+          <td><a class="link-black">Download Report</a></td>
+        </tr>
+      {{/each}}
+      </tbody>
     </table>
   </div>
 </div>

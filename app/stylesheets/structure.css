@@ -38,7 +38,7 @@ body { background: #fff; color: #333; font-family: "Lucida Grande", "Lucida Sans
 .tutor-hour-selection .tutor .text .days-available .day { margin-left: 10px; text-decoration: underline; }
 .tutor-hour-selection .tutor .text .days-available .day:first-of-type { margin-left: 0; }
 .tutor-hour-selection .tutor .text .selected-day { border: 1px solid #bbb; margin-top: 8px; padding: 5px; text-align: center; width: 420px; }
-.tutor-hour-selection .tutor .text .selected-day .available-hour:nth-child(odd) { background: #e7e7e7; }
+.tutor-hour-selection .tutor .text .selected-day .available-hour:nth-child(even) { background: #e7e7e7; }
 .tutor-hour-selection .tutor .text .selected-day .available-hour td { padding: 5px 0; }
 .tutor-hour-selection .tutor .text .selected-day .available-hour .add-to-schedule { color: inherit; cursor: pointer; text-decoration: underline; }
 
@@ -48,26 +48,31 @@ body { background: #fff; color: #333; font-family: "Lucida Grande", "Lucida Sans
 
 .form-1 { width: 100%; }
 .form-1 input, .form-1 select { box-sizing: border-box; border: 1px solid #bbb; background: #fff; display: block; font: inherit; margin-bottom: 15px; max-width: 350px; padding: 10px; width: 100%; }
-.form-1 input.time-range, .form-1 select.time-range { display: inline-block; text-align: center; width: 43px; }
+.form-1 input.time-range, .form-1 select.time-range { display: inline-block; text-align: center; width: 63px; }
 .form-1 input.halved, .form-1 select.halved { display: inline-block; width: 50%; }
 .form-1 input.halved:last-of-type, .form-1 select.halved:last-of-type { margin-bottom: 0 !important; }
 .form-1 .time-range-label { display: inline-block; margin: 0 9px; }
+.form-1 .message-next-line { margin-top: 10px; }
 .form-1 .message { line-height: 2; margin-bottom: 10px; }
 .form-1 .text { margin-bottom: 10px; }
 
-.tutors-available-hours .hour { height: 60px; padding: 20px; overflow: hidden; }
-.tutors-available-hours .hour:nth-child(odd) { background: #e7e7e7; }
+.tutors-available-hours .hour { height: 70px; padding: 20px; overflow: hidden; position: relative; background: #f4f4f4; }
+.tutors-available-hours .hour:nth-child(even) { background: #e7e7e7; }
+.tutors-available-hours .hour.empty { color: #bbb; font-weight: normal; }
 .tutors-available-hours .hour .student-name { font-size: 23px; font-weight: bold; }
-.tutors-available-hours .hour .student-name.empty { color: #bbb; font-weight: normal; }
-.tutors-available-hours .hour .begins-in { color: #777; font-size: 16px; }
-.tutors-available-hours .hour .right { float: right; }
+.tutors-available-hours .hour .hour-range { margin-top: 10px; font-weight: bold; font-size: 23px; }
+.tutors-available-hours .hour .email { font-size: 16px; color: #999999; margin-bottom: 5px; }
+.tutors-available-hours .hour .begins-in { color: #777; font-size: 16px; margin-bottom: 10px; }
+.tutors-available-hours .hour .right { position: absolute; right: 20px; top: 20px; }
+.tutors-available-hours .hour .right button { float: right; }
 
-.student-list { width: 100%; }
-.student-list tr:nth-child(odd) { background: #e7e7e7; }
-.student-list tr td { text-align: center; padding: 10px; }
-.student-list tr td .email { font-size: 16px; }
+.user-list { width: 100%; }
+.user-list tr:nth-child(odd) { background: #e7e7e7; }
+.user-list tr td { text-align: center; padding: 10px; }
+.user-list tr td .email { font-size: 16px; }
 
 .field-validated { box-sizing: border-box; color: #0069ff; display: inline-block; font-size: 16px; font-weight: bold; margin-bottom: 25px; padding: 10px 0; }
+.field-validated:last-of-type { margin-bottom: 0; }
 
 .loading-message { color: #999; display: none; }
 .loading-message.visible { display: inline-block; }

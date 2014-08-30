@@ -6,7 +6,7 @@
   {{#field-validated field=form.fields.password}}
     {{input type="password" value=form.fields.password.value placeholder="Password"}}
   {{/field-validated}}
-  <button {{bind-attr class=":button-blue :button-large form.valid::disabled"}}>Login</button>
+  <button type="submit" {{bind-attr class=":button-blue :button-large form.valid::disabled"}}>Login</button>
   <span {{bind-attr class=":loading-message loading:visible"}}>Logging in ...</span>
   {{submissionError}}
 </form>

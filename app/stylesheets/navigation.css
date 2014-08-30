@@ -10,6 +10,10 @@
 .button-red.button-large { padding: 10px; }
 .button-red.disabled, .button-red.active { background: #e88c7d; border: 1px solid #c33822; cursor: default; }
 
+.button-grey { background: #ddd; border: 1px solid #9d9d9d; color: #fff; cursor: pointer; font-size: 18px; padding: 6px; text-decoration: none; font-variant: uppercase; color: #333; }
+.button-grey.button-large { padding: 10px; }
+.button-grey.disabled, .button-grey.active { background: white; border: 1px solid #bfbfbf; cursor: default; }
+
 .link-black { text-decoration: underline; color: #333; margin: 0 15px; }
 .link-black.active { color: #999; cursor: default; text-decoration: none; }
 

@@ -54,7 +54,7 @@ App.ChangePasswordRoute = Ember.Route.extend({
     }
   },
   renderTemplate: function () {
-    this.render('account.change-password', {
+    this.render('account/change-password', {
       outlet: 'accountDashboard'
     });
   }

@@ -221,6 +221,26 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
 
 function program1(depth0,data) {
   
+  var buffer = '', stack1, helper, options;
+  data.buffer.push("\n            ");
+  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
+    'type': ("textfield"),
+    'value': ("updateTutorPayForm.fields.tutorPay.model.value"),
+    'placeholder': ("JD per Hour")
+  },hashTypes:{'type': "STRING",'value': "ID",'placeholder': "STRING"},hashContexts:{'type': depth0,'value': depth0,'placeholder': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+  data.buffer.push("\n            <div class=\"message-next-line\">\n              ");
+  stack1 = helpers._triageMustache.call(depth0, "updateTutorPayFormResponse", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n              <div ");
+  data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
+    'class': (":loading-message updateTutorPayFormLoading:visible")
+  },hashTypes:{'class': "STRING"},hashContexts:{'class': depth0},contexts:[],types:[],data:data})));
+  data.buffer.push(">Updating Tutor Pay ...</div>\n            </div>\n          ");
+  return buffer;
+  }
+
+function program3(depth0,data) {
+  
   var buffer = '', helper, options;
   data.buffer.push("\n            ");
   data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
@@ -232,7 +252,7 @@ function program1(depth0,data) {
   return buffer;
   }
 
-function program3(depth0,data) {
+function program5(depth0,data) {
   
   var buffer = '', helper, options;
   data.buffer.push("\n            ");
@@ -245,6 +265,22 @@ function program3(depth0,data) {
   return buffer;
   }
 
+function program7(depth0,data) {
+  
+  var buffer = '', stack1;
+  data.buffer.push("\n        <tr>\n          <td>");
+  stack1 = helpers._triageMustache.call(depth0, "fullName", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("<br> <span class=\"email\">");
+  stack1 = helpers._triageMustache.call(depth0, "emailAddress", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("</span></td>\n          <td>");
+  stack1 = helpers._triageMustache.call(depth0, "moneyOwed", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push(" JD Owed <a class=\"button-blue add-credits\">Paid</a></td>\n          <td><a class=\"link-black\">Download Report</a></td>\n        </tr>\n      ");
+  return buffer;
+  }
+
   data.buffer.push("<div class=\"heading-bar\">\n  ");
   data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
     'class': ("search"),
@@ -253,15 +289,16 @@ function program3(depth0,data) {
     'id': ("headingBarSearch"),
     'placeholder': ("Search Tutors")
   },hashTypes:{'class': "STRING",'type': "STRING",'value': "ID",'id': "STRING",'placeholder': "STRING"},hashContexts:{'class': depth0,'type': depth0,'value': depth0,'id': depth0,'placeholder': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n</div>\n<div class=\"partition\">\n  <div class=\"one-third\">\n    <div class=\"titled-box\">\n      <div class=\"title\">Hourly Tutor Payment</div>\n      <div class=\"content\">\n        <form class=\"form-1\" action=\"\">\n          ");
-  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
-    'class': ("halved"),
-    'type': ("textfield"),
-    'value': ("hourlyTutorRate"),
-    'id': ("hourlyTutorRate"),
-    'placeholder': ("JD per Hour")
-  },hashTypes:{'class': "STRING",'type': "STRING",'value': "ID",'id': "STRING",'placeholder': "STRING"},hashContexts:{'class': depth0,'type': depth0,'value': depth0,'id': depth0,'placeholder': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n          <button class=\"button-blue button-large\">Update</button>\n        </form>\n      </div>\n    </div>\n    <div class=\"titled-box\">\n      <div class=\"title\">Download Excel Report</div>\n      <div class=\"content\">\n        <form class=\"form-1\" action=\"\">\n          Start Date\n          ");
+  data.buffer.push("\n</div>\n<div class=\"partition\">\n  <div class=\"one-third\">\n    <div class=\"titled-box\">\n      <div class=\"title\">Hourly Tutor Payment</div>\n      <div class=\"content\">\n        <div class=\"form-1\">\n          ");
+  stack1 = (helper = helpers['field-validated'] || (depth0 && depth0['field-validated']),options={hash:{
+    'field': ("updateTutorPayForm.fields.tutorPay")
+  },hashTypes:{'field': "ID"},hashContexts:{'field': depth0},inverse:self.noop,fn:self.program(1, program1, data),contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "field-validated", options));
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n        </div>\n      </div>\n    </div>\n    <div class=\"titled-box\">\n      <div class=\"title\">Download Excel Report</div>\n      <div class=\"content\">\n        <form class=\"form-1\" ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "updateTutorPay", {hash:{
+    'on': ("submit")
+  },hashTypes:{'on': "STRING"},hashContexts:{'on': depth0},contexts:[depth0],types:["STRING"],data:data})));
+  data.buffer.push(">\n          Start Date\n          ");
   data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
     'type': ("textfield"),
     'value': ("reportDateStart"),
@@ -282,25 +319,28 @@ function program3(depth0,data) {
   data.buffer.push(">\n          ");
   stack1 = (helper = helpers['field-validated'] || (depth0 && depth0['field-validated']),options={hash:{
     'field': ("addTutorForm.fields.fullName")
-  },hashTypes:{'field': "ID"},hashContexts:{'field': depth0},inverse:self.noop,fn:self.program(1, program1, data),contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "field-validated", options));
+  },hashTypes:{'field': "ID"},hashContexts:{'field': depth0},inverse:self.noop,fn:self.program(3, program3, data),contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "field-validated", options));
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n          ");
   stack1 = (helper = helpers['field-validated'] || (depth0 && depth0['field-validated']),options={hash:{
     'field': ("addTutorForm.fields.emailAddress")
-  },hashTypes:{'field': "ID"},hashContexts:{'field': depth0},inverse:self.noop,fn:self.program(3, program3, data),contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "field-validated", options));
+  },hashTypes:{'field': "ID"},hashContexts:{'field': depth0},inverse:self.noop,fn:self.program(5, program5, data),contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "field-validated", options));
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n          <button ");
+  data.buffer.push("\n          <button type=\"submit\" ");
   data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
     'class': (":button-blue :button-large addTutorForm.valid::disabled")
   },hashTypes:{'class': "STRING"},hashContexts:{'class': depth0},contexts:[],types:[],data:data})));
-  data.buffer.push(">Send Email</button>\n          <span ");
+  data.buffer.push(">Send Email</button>\n          <div class=\"message-next-line\">\n            ");
+  stack1 = helpers._triageMustache.call(depth0, "addTutorFormResponse", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n            <div ");
   data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
     'class': (":loading-message addTutorFormLoading:visible")
   },hashTypes:{'class': "STRING"},hashContexts:{'class': depth0},contexts:[],types:[],data:data})));
-  data.buffer.push(">Creating Account ...</span>\n          ");
-  stack1 = helpers._triageMustache.call(depth0, "addTutorFormResponse", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  data.buffer.push(">Creating Account ...</div>\n          </div>\n        </form>\n      </div>\n    </div>\n  </div>\n  <div class=\"two-thirds\">\n    <table cellspacing=\"0\" class=\"user-list\">\n      <tbody>\n      ");
+  stack1 = helpers.each.call(depth0, "model", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(7, program7, data),contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n        </form>\n      </div>\n    </div>\n  </div>\n  <div class=\"two-thirds\">\n    <table cellspacing=\"0\" class=\"student-list\">\n      <tr class=\"student\">\n        <td>Kamal Suleiman<br> <span class=\"email\">kamal@komensky.net</span></td>\n        <td>15 JD Owed <a class=\"button-blue add-credits\">Paid</a></td>\n        <td><a class=\"link-black\">Download Report</a></td>\n      </tr>\n    </table>\n  </div>\n</div>\n");
+  data.buffer.push("\n      </tbody>\n    </table>\n  </div>\n</div>\n");
   return buffer;
   
 });
@@ -428,7 +468,7 @@ function program3(depth0,data) {
     'field': ("form.fields.password")
   },hashTypes:{'field': "ID"},hashContexts:{'field': depth0},inverse:self.noop,fn:self.program(3, program3, data),contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "field-validated", options));
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n  <button ");
+  data.buffer.push("\n  <button type=\"submit\" ");
   data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
     'class': (":button-blue :button-large form.valid::disabled")
   },hashTypes:{'class': "STRING"},hashContexts:{'class': depth0},contexts:[],types:[],data:data})));
@@ -556,7 +596,7 @@ function program7(depth0,data) {
     'field': ("form.fields.repeatPassword")
   },hashTypes:{'field': "ID"},hashContexts:{'field': depth0},inverse:self.noop,fn:self.program(7, program7, data),contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "field-validated", options));
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n  <button ");
+  data.buffer.push("\n  <button type=\"submit\" ");
   data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
     'class': (":button-blue :button-large form.valid::disabled")
   },hashTypes:{'class': "STRING"},hashContexts:{'class': depth0},contexts:[],types:[],data:data})));
@@ -689,10 +729,86 @@ function program1(depth0,data) {
 Ember.TEMPLATES["tutor/index"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', helper, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+  var buffer = '', stack1, helper, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
 
+function program1(depth0,data) {
+  
+  var buffer = '', helper, options;
+  data.buffer.push("\n            ");
+  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
+    'class': ("time-range"),
+    'type': ("textfield"),
+    'value': ("addHours.fields.startTime.value"),
+    'placeholder': ("00")
+  },hashTypes:{'class': "STRING",'type': "STRING",'value': "ID",'placeholder': "STRING"},hashContexts:{'class': depth0,'type': depth0,'value': depth0,'placeholder': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+  data.buffer.push("\n            <b>:00</b>\n            <span class=\"time-range-label\">to</span>\n          ");
+  return buffer;
+  }
 
-  data.buffer.push("<div class=\"heading-bar\">\n  <span class=\"label\">Credits Earned this Month:</span>\n  <span class=\"value\">29</span>\n  ");
+function program3(depth0,data) {
+  
+  var buffer = '', helper, options;
+  data.buffer.push("\n            ");
+  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
+    'class': ("time-range"),
+    'type': ("textfield"),
+    'value': ("addHours.fields.endTime.value"),
+    'placeholder': ("00")
+  },hashTypes:{'class': "STRING",'type': "STRING",'value': "ID",'placeholder': "STRING"},hashContexts:{'class': depth0,'type': depth0,'value': depth0,'placeholder': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+  data.buffer.push("\n            <b>:00</b>\n          ");
+  return buffer;
+  }
+
+function program5(depth0,data) {
+  
+  var buffer = '', stack1;
+  data.buffer.push("\n      <div ");
+  data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
+    'class': (":hour student::empty")
+  },hashTypes:{'class': "STRING"},hashContexts:{'class': depth0},contexts:[],types:[],data:data})));
+  data.buffer.push(">\n        <div>\n          <span class=\"student-name\">\n            ");
+  stack1 = helpers['if'].call(depth0, "student", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(8, program8, data),fn:self.program(6, program6, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n          </span>\n        </div>\n        <div class=\"hour-range\">");
+  stack1 = helpers._triageMustache.call(depth0, "hour", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push(":00 - ");
+  stack1 = helpers._triageMustache.call(depth0, "endingHour", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push(":00</div>\n        <div class=\"right\">\n          <div class=\"begins-in\"><b>");
+  stack1 = helpers._triageMustache.call(depth0, "beginsIn", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("</b></div>\n          <button class=\"button-grey remove\" ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "removeSessionPeriod", "", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","ID"],data:data})));
+  data.buffer.push(">Remove</button>\n        </div>\n      </div>\n    ");
+  return buffer;
+  }
+function program6(depth0,data) {
+  
+  var buffer = '', stack1;
+  data.buffer.push("\n              ");
+  stack1 = helpers._triageMustache.call(depth0, "student.fullName", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n              <div class=\"email\">");
+  stack1 = helpers._triageMustache.call(depth0, "student.emailAddress", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("</div>\n            ");
+  return buffer;
+  }
+
+function program8(depth0,data) {
+  
+  
+  data.buffer.push("\n              Empty\n            ");
+  }
+
+function program10(depth0,data) {
+  
+  
+  data.buffer.push("\n      <h2>You have not added any Session Periods</h2>\n    ");
+  }
+
+  data.buffer.push("<!--<div class=\"heading-bar\">\n  <span class=\"label\">Credits Earned this Month:</span>\n  <span class=\"value\">29</span>\n  ");
   data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
     'class': ("search"),
     'type': ("textfield"),
@@ -700,23 +816,37 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
     'id': ("headingBarSearch"),
     'placeholder': ("Search Students")
   },hashTypes:{'class': "STRING",'type': "STRING",'value': "ID",'id': "STRING",'placeholder': "STRING"},hashContexts:{'class': depth0,'type': depth0,'value': depth0,'id': depth0,'placeholder': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n</div>\n<div class=\"partition\">\n  <div class=\"one-third\">\n    <div class=\"titled-box\">\n      <div class=\"title\">Add Tutoring Hours</div>\n      <div class=\"content\">\n        <form class=\"form-1\" action=\"\">\n          <select name=\"\" id=\"\">\n            <option value=\"\">Monday</option>\n          </select>\n          <b>\n            ");
-  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
-    'type': ("textfield"),
-    'class': ("time-range"),
-    'value': ("filterStartingTime"),
-    'id': ("filterStartingTime"),
-    'placeholder': ("00")
-  },hashTypes:{'type': "STRING",'class': "STRING",'value': "ID",'id': "STRING",'placeholder': "STRING"},hashContexts:{'type': depth0,'class': depth0,'value': depth0,'id': depth0,'placeholder': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n            :00\n          </b>\n          <span class=\"time-range-label\">to</span>\n          <b>\n            ");
-  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
-    'type': ("textfield"),
-    'class': ("time-range"),
-    'value': ("filterEndingTime"),
-    'id': ("filterEndingTime"),
-    'placeholder': ("00")
-  },hashTypes:{'type': "STRING",'class': "STRING",'value': "ID",'id': "STRING",'placeholder': "STRING"},hashContexts:{'type': depth0,'class': depth0,'value': depth0,'id': depth0,'placeholder': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n            :00\n          </b><br>\n          <button class=\"button-blue\">Add Hours</button>\n        </form>\n      </div>\n    </div>\n    <div class=\"titled-box\">\n      <div class=\"title\">Download Excel Report</div>\n      <div class=\"content\">\n        <form class=\"form-1\" action=\"\">\n          Start Date\n          ");
+  data.buffer.push("\n</div>-->\n<div class=\"partition\">\n  <div class=\"one-third\">\n    <div class=\"titled-box\">\n      <div class=\"title\">Add Session Periods</div>\n      <div class=\"content\">\n        <form class=\"form-1\" ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "addTutoringHours", {hash:{
+    'on': ("submit")
+  },hashTypes:{'on': "STRING"},hashContexts:{'on': depth0},contexts:[depth0],types:["STRING"],data:data})));
+  data.buffer.push(">\n          ");
+  data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.Select", {hash:{
+    'content': ("addHours.fields.day.options"),
+    'value': ("addHours.fields.day.value")
+  },hashTypes:{'content': "ID",'value': "ID"},hashContexts:{'content': depth0,'value': depth0},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\n          ");
+  stack1 = (helper = helpers['field-validated'] || (depth0 && depth0['field-validated']),options={hash:{
+    'field': ("addHours.fields.startTime")
+  },hashTypes:{'field': "ID"},hashContexts:{'field': depth0},inverse:self.noop,fn:self.program(1, program1, data),contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "field-validated", options));
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n          ");
+  stack1 = (helper = helpers['field-validated'] || (depth0 && depth0['field-validated']),options={hash:{
+    'field': ("addHours.fields.endTime")
+  },hashTypes:{'field': "ID"},hashContexts:{'field': depth0},inverse:self.noop,fn:self.program(3, program3, data),contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "field-validated", options));
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n          <button type=\"submit\" ");
+  data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
+    'class': (":button-blue :button-large addHours.valid::disabled")
+  },hashTypes:{'class': "STRING"},hashContexts:{'class': depth0},contexts:[],types:[],data:data})));
+  data.buffer.push(">\n            Add Hours\n          </button>\n          <span ");
+  data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
+    'class': (":loading-message addHoursLoading:visible")
+  },hashTypes:{'class': "STRING"},hashContexts:{'class': depth0},contexts:[],types:[],data:data})));
+  data.buffer.push(">Adding Hours ...</span>\n\n          <span class=\"message-next-line\">\n            ");
+  stack1 = helpers._triageMustache.call(depth0, "addHoursResponse", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n          </span>\n        </form>\n      </div>\n    </div>\n    <!--\n    <div class=\"titled-box\">\n      <div class=\"title\">Download Excel Report</div>\n      <div class=\"content\">\n        <form class=\"form-1\" action=\"\">\n          Start Date\n          ");
   data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
     'type': ("textfield"),
     'value': ("reportDateStart"),
@@ -730,7 +860,15 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
     'id': ("reportDateEnd"),
     'placeholder': ("Day-Month-Year")
   },hashTypes:{'type': "STRING",'value': "ID",'id': "STRING",'placeholder': "STRING"},hashContexts:{'type': depth0,'value': depth0,'id': depth0,'placeholder': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n          <button class=\"button-green\">Download</button>\n        </form>\n      </div>\n    </div>\n  </div>\n  <div class=\"two-thirds tutors-available-hours\">\n    <div class=\"hour\">\n      <div>\n        <span class=\"student-name\">Andreas Stocker</span>\n          <span class=\"right\">\n            <span class=\"begins-in\">begins in</span> 1 Hour\n          </span>\n      </div>\n      <div>\n        <span class=\"datetime\">Monday 13:00 - 14:00</span>\n          <span class=\"right\">\n            <button class=\"button-red remove\">Remove</button>\n          </span>\n      </div>\n    </div>\n    <br>\n    <button class=\"button-blue\">Show More</button>\n  </div>\n</div>");
+  data.buffer.push("\n          <button class=\"button-green\">Download</button>\n        </form>\n      </div>\n    </div>\n    -->\n  </div>\n  <div class=\"two-thirds tutors-available-hours\">\n    <div class=\"form-1\">\n      ");
+  data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.Select", {hash:{
+    'content': ("addHours.fields.day.options"),
+    'value': ("addHours.fields.day.value")
+  },hashTypes:{'content': "ID",'value': "ID"},hashContexts:{'content': depth0,'value': depth0},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\n    </div>\n    ");
+  stack1 = helpers.each.call(depth0, "filteredSessionPeriods", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(10, program10, data),fn:self.program(5, program5, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n  </div>\n</div>");
   return buffer;
   
 });

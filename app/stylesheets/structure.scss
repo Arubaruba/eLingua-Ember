@@ -184,7 +184,7 @@ $part-one-third-width: 300px;
 
         .available-hour {
 
-          &:nth-child(odd) {
+          &:nth-child(even) {
             background: #e7e7e7;
           }
 
@@ -245,7 +245,7 @@ $part-one-third-width: 300px;
     &.time-range {
       display: inline-block;
       text-align: center;
-      width: 43px;
+      width: 63px;
     }
     &.halved {
       display: inline-block;
@@ -253,11 +253,14 @@ $part-one-third-width: 300px;
       &:last-of-type {
         margin-bottom: 0 !important;
       }
-    }
+   }
   }
   .time-range-label {
     display: inline-block;
     margin: 0 9px;
+  }
+  .message-next-line {
+    margin-top: 10px;
   }
   .message {
     line-height: 2;
@@ -270,33 +273,51 @@ $part-one-third-width: 300px;
 
 .tutors-available-hours {
   .hour {
-    height: 60px;
+    height: 70px;
     padding: 20px;
     overflow: hidden;
+    position: relative;
+    background: #f4f4f4;
 
-    &:nth-child(odd) {
+    &:nth-child(even) {
       background: #e7e7e7;
+    }
+    &.empty {
+      color: #bbb;
+      font-weight: normal;
     }
 
     .student-name {
       font-size: 23px;
       font-weight: bold;
-      &.empty {
-        color: #bbb;
-        font-weight: normal;
-      }
+    }
+    .hour-range {
+      margin-top: 10px;
+      font-weight: bold;
+      font-size: 23px;
+    }
+    .email {
+      font-size: 16px;
+      color: #999999;
+      margin-bottom: 5px;
     }
     .begins-in {
       color: #777;
       font-size: 16px;
+      margin-bottom: 10px;
     }
     .right {
-      float: right;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      button {
+        float: right;
+      }
     }
   }
 }
 
-.student-list {
+.user-list {
   width: 100%;
   tr {
     &:nth-child(odd) {
@@ -321,6 +342,9 @@ $part-one-third-width: 300px;
   font-weight: bold;
   margin-bottom: 25px;
   padding: 10px 0;
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 }
 
 .loading-message {

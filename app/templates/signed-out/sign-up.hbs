@@ -12,7 +12,7 @@
   {{#field-validated field=form.fields.repeatPassword}}
     {{input type="password" value=form.fields.repeatPassword.value placeholder="Repeat password"}}
   {{/field-validated}}
-  <button {{bind-attr class=":button-blue :button-large form.valid::disabled"}}>Sign Up</button>
+  <button type="submit" {{bind-attr class=":button-blue :button-large form.valid::disabled"}}>Sign Up</button>
   <span {{bind-attr class=":loading-message loading:visible"}}>Signing up ...</span>
   {{submissionError}}
 </form>

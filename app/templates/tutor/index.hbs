@@ -1,30 +1,36 @@
-<div class="heading-bar">
+<!--<div class="heading-bar">
   <span class="label">Credits Earned this Month:</span>
   <span class="value">29</span>
   {{input class="search" type="textfield" value=headingBarSearch id="headingBarSearch" placeholder="Search Students"}}
-</div>
+</div>-->
 <div class="partition">
   <div class="one-third">
     <div class="titled-box">
-      <div class="title">Add Tutoring Hours</div>
+      <div class="title">Add Session Periods</div>
       <div class="content">
-        <form class="form-1" action="">
-          <select name="" id="">
-            <option value="">Monday</option>
-          </select>
-          <b>
-            {{input type="textfield" class="time-range" value=filterStartingTime id="filterStartingTime" placeholder="00"}}
-            :00
-          </b>
-          <span class="time-range-label">to</span>
-          <b>
-            {{input type="textfield" class="time-range" value=filterEndingTime id="filterEndingTime" placeholder="00"}}
-            :00
-          </b><br>
-          <button class="button-blue">Add Hours</button>
+        <form class="form-1" {{action 'addTutoringHours' on='submit'}}>
+          {{view Ember.Select content=addHours.fields.day.options value=addHours.fields.day.value}}
+          {{#field-validated field=addHours.fields.startTime}}
+            {{input class="time-range" type="textfield" value=addHours.fields.startTime.value placeholder="00"}}
+            <b>:00</b>
+            <span class="time-range-label">to</span>
+          {{/field-validated}}
+          {{#field-validated field=addHours.fields.endTime}}
+            {{input class="time-range" type="textfield" value=addHours.fields.endTime.value placeholder="00"}}
+            <b>:00</b>
+          {{/field-validated}}
+          <button type="submit" {{bind-attr class=":button-blue :button-large addHours.valid::disabled"}}>
+            Add Hours
+          </button>
+          <span {{bind-attr class=":loading-message addHoursLoading:visible"}}>Adding Hours ...</span>
+
+          <span class="message-next-line">
+            {{addHoursResponse}}
+          </span>
         </form>
       </div>
     </div>
+    <!--
     <div class="titled-box">
       <div class="title">Download Excel Report</div>
       <div class="content">
@@ -37,23 +43,32 @@
         </form>
       </div>
     </div>
+    -->
   </div>
   <div class="two-thirds tutors-available-hours">
-    <div class="hour">
-      <div>
-        <span class="student-name">Andreas Stocker</span>
-          <span class="right">
-            <span class="begins-in">begins in</span> 1 Hour
-          </span>
-      </div>
-      <div>
-        <span class="datetime">Monday 13:00 - 14:00</span>
-          <span class="right">
-            <button class="button-red remove">Remove</button>
-          </span>
-      </div>
+    <div class="form-1">
+      {{view Ember.Select content=addHours.fields.day.options value=addHours.fields.day.value}}
     </div>
-    <br>
-    <button class="button-blue">Show More</button>
+    {{#each filteredSessionPeriods}}
+      <div {{bind-attr class=":hour student::empty"}}>
+        <div>
+          <span class="student-name">
+            {{#if student}}
+              {{student.fullName}}
+              <div class="email">{{student.emailAddress}}</div>
+            {{else}}
+              Empty
+            {{/if}}
+          </span>
+        </div>
+        <div class="hour-range">{{hour}}:00 - {{endingHour}}:00</div>
+        <div class="right">
+          <div class="begins-in"><b>{{beginsIn}}</b></div>
+          <button class="button-grey remove" {{action 'removeSessionPeriod' this}}>Remove</button>
+        </div>
+      </div>
+    {{else}}
+      <h2>You have not added any Session Periods</h2>
+    {{/each}}
   </div>
 </div>

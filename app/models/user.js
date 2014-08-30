@@ -1,7 +1,9 @@
 App.User = DS.Model.extend({
-  fullName: DS.attr('string'),
   emailAddress: DS.attr('string'),
-  uid: DS.attr('string'),
+  fullName: DS.attr('string'),
+  sessionRegistrations: DS.hasMany('session-registration', {async: true}),
+  payments: DS.hasMany('payment', {async: true}),
   type: DS.attr('string'),
-  contactEmail: DS.attr('string')
+  uid: DS.attr('string'),
+  sessionPeriods: DS.hasMany('session-period', {async: true, inverse: 'tutor'})
 });

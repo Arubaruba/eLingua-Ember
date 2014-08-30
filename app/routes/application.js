@@ -1,5 +1,8 @@
 App.ApplicationRoute = Ember.Route.extend({
 
+  user: null,
+  auth: null,
+
   protectedRoutes: ['student', 'tutor', 'admin'],
   actions: {
     signOut: function () {
@@ -31,26 +34,37 @@ App.ApplicationRoute = Ember.Route.extend({
         var routeProtected = firstRoute && model.get('protectedRoutes').indexOf(firstRoute) != -1;
 
         if (routeProtected && !user) {
-          model.transitionTo('login');
+          model.transitionTo('signed-out.login');
         }
 
+        // Need to check if the user just signed up with google/facebook, and if so, insert their details into the db
         if (user) {
           model.store.find('user', user.uid).then(function (existingUser) {
             if (user && !routeProtected) {
               model.transitionTo(existingUser.get('type'));
             }
           }).catch(function () {
-            var fullName = (auth.provider == 'password')
-              ? model.controllerFor('sign-up').get('form.fullName') : user.displayName;
+            var signUpController = model.controllerFor('signed-out.sign-up');
+            var fullName = (user.displayName) ? user.displayName :
+              signUpController.get('form.fields.fullName.value');
+            if (fullName) fullName = 'Student';
             model.store.createRecord('user', {
               id: user.uid,
               //this may be null
               emailAddress: user.email,
               fullName: fullName,
               type: 'student'
-            }).save();
+            }).save().then(function () {
+              signUpController.set('loading', false);
+              signUpController.get('form').clear();
+              model.transitionTo('student');
+            }, function () {
+              signUpController.set('loading', false);
+            });
           });
         }
+        model.set('auth', auth);
+        model.set('user', user);
         resolve({auth: auth, user: user});
       });
     });

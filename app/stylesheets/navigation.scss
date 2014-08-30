@@ -33,6 +33,11 @@ $nav-margin: 0 15px;
   @include button(#ff2300);
 }
 
+.button-grey {
+  @include button(#ddd);
+  color: #333;
+}
+
 .link-black {
   text-decoration: underline;
   color: #333;
