@@ -47,9 +47,9 @@
   </div>
   <div class="two-thirds tutors-available-hours">
     <div class="form-1">
-      {{view Ember.Select content=addHours.fields.day.options value=addHours.fields.day.value}}
+      {{view Ember.Select content=addHours.fields.day.options value=countedDayName}}
     </div>
-    {{#each filteredSessionPeriods}}
+    {{#each model}}
       <div {{bind-attr class=":hour student::empty"}}>
         <div>
           <span class="student-name">
@@ -68,7 +68,7 @@
         </div>
       </div>
     {{else}}
-      <h2>You have not added any Session Periods</h2>
+      You have not added any session periods for <b>{{countedDayName}}</b> yet.
     {{/each}}
   </div>
 </div>
