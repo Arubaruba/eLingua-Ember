@@ -13,8 +13,8 @@ App.StudentIndexRoute = Ember.Route.extend({
   },
   setupController: function(controller, model) {
     this._super(controller, model);
-    controller.set('sessionPeriods', this.get('sessionPeriods'));
-    controller.set('sessionRegistrations', this.get('sessionRegistrations'));
+    controller.set('unfilteredSessionPeriods', this.get('sessionPeriods'));
+    controller.set('unfilteredSessionRegistrations', this.get('sessionRegistrations'));
     controller.set('user', this.get('user'));
   }
 });

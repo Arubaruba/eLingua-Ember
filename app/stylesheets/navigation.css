@@ -14,11 +14,11 @@
 .button-grey.button-large { padding: 10px; }
 .button-grey.disabled, .button-grey.active { background: white; border: 1px solid #bfbfbf; cursor: default; }
 
-.cell-button-blue { background: #0069ff; box-sizing: border-box; border: 1px solid #003480; color: #fff; cursor: pointer; font-size: 18px; padding: 6px; text-decoration: none; font-variant: uppercase; width: 100%; }
+.cell-button-blue { background: #0069ff; box-sizing: border-box; border: 1px solid #003480; color: #fff; cursor: pointer; font-size: 18px; padding: 6px; text-decoration: none; font-variant: uppercase; width: 180px; }
 .cell-button-blue.button-large { padding: 10px; }
 .cell-button-blue.disabled, .cell-button-blue.active { background: #7da9e8; border: 1px solid #2265c3; cursor: default; }
 
-.cell-button-grey { background: #ddd; box-sizing: border-box; border: 1px solid #9d9d9d; color: #fff; cursor: pointer; font-size: 18px; padding: 6px; text-decoration: none; font-variant: uppercase; color: #333; width: 100%; }
+.cell-button-grey { background: #ddd; box-sizing: border-box; border: 1px solid #9d9d9d; color: #fff; cursor: pointer; font-size: 18px; padding: 6px; text-decoration: none; font-variant: uppercase; color: #333; width: 180px; }
 .cell-button-grey.button-large { padding: 10px; }
 .cell-button-grey.disabled, .cell-button-grey.active { background: white; border: 1px solid #bfbfbf; cursor: default; }
 

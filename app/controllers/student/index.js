@@ -1,8 +1,10 @@
 App.StudentIndexController = Ember.Controller.extend({
-  sessionRegistrations: '',
-  sessionPeriods: Ember.computed('sessionRegistrations.@each', 'sessionPeriods.@each', function () {
+  sessionRegistrations: Ember.computed('unfilteredSessionRegistrations.@each', function () {
+    return this.get('unfilteredSessionRegistrations').rejectBy('removed');
+  }),
+  sessionPeriods: Ember.computed('sessionRegistrations', 'unfilteredSessionPeriods.@each', function () {
     var controller = this;
-    return this.get('sessionPeriods').rejectBy('removed').map(function (sessionPeriod) {
+    return this.get('unfilteredSessionPeriods').rejectBy('removed').map(function (sessionPeriod) {
       var sessionRegistrationCount = controller.get('sessionRegistrations').filterBy('sessionPeriod', sessionPeriod).length;
       var studentsPlural = (sessionRegistrationCount == 1) ? '' : 's';
       var presentStudents = (sessionRegistrationCount > 0) ? sessionRegistrationCount + ' student' + studentsPlural : 'No students yet';
@@ -14,18 +16,18 @@ App.StudentIndexController = Ember.Controller.extend({
   }),
   sessionPeriodGroups: Ember.computed('sessionPeriods', function () {
     var controller = this;
-    return this.get('activeSessionPeriods').mapBy('hour').uniq().map(function (hour) {
+    return this.get('sessionPeriods').mapBy('hour').uniq().map(function (hour) {
       return Ember.Object.create({
         hour: hour,
         endingHour: hour + 1,
-        sessionPeriods: controller.get('activeSessionPeriods').filterBy('hour', hour)
+        sessionPeriods: controller.get('sessionPeriods').filterBy('hour', hour)
       });
     }).sortBy('hour');
   }),
   actions: {
     joinSessionPeriod: function (sessionPeriod) {
       var user = this.get('user');
-      if (!sessionPeriod.get('sessionRegistrations').findBy('student', user)) {
+      if (!sessionPeriod.get('sessionRegistrations').rejectBy('removed').findBy('student', user)) {
         var controller = this;
         this.store.createRecord('session-registration', {
           created: new Date(),
@@ -40,8 +42,16 @@ App.StudentIndexController = Ember.Controller.extend({
         });
       }
     },
-    leaveSessionPeriod: function() {
-
+    leaveSessionPeriod: function(sessionPeriod) {
+      var sessionRegistration = sessionPeriod.get('sessionRegistrations').rejectBy('removed').findBy('student', this.get('user'));
+      if (sessionRegistration && !this.get('leavingSessionPeriod')) {
+        var controller = this;
+        sessionRegistration.set('removed', new Date());
+        sessionRegistration.save().then(function() {
+          controller.set('leavingSessionPeriod', false);
+          controller.notifyPropertyChange('unfilteredSessionRegistrations');
+        });
+      }
     }
   }
 });

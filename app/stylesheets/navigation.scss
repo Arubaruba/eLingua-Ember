@@ -39,15 +39,17 @@ $nav-margin: 0 15px;
   color: #333;
 }
 
+$cell-button-width: 180px;
+
 .cell-button-blue {
   @include button(#0069ff);
-  width: 100%;
+  width: $cell-button-width;
 }
 
 .cell-button-grey {
   @include button(#ddd);
   color: #333;
-  width: 100%;
+  width: $cell-button-width;
 }
 
 .link-black {

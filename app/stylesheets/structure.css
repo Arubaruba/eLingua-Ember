@@ -29,6 +29,7 @@ body { background: #fff; color: #333; font-family: "Lucida Grande", "Lucida Sans
 .student-session-periods .tutor.taking-lesson { background: limegreen !important; }
 .student-session-periods .tutor:nth-child(odd) { background: #e7e7e7; }
 .student-session-periods .empty-table-message { font-size: 23px; padding-bottom: 50px; }
+.student-session-periods button { float: right; }
 
 .simple-menu .title { display: inline-block; font-size: 19px; font-weight: bold; border-bottom: 1px solid #bbb; padding: 13px 0; margin-bottom: 15px; }
 .simple-menu .option { color: inherit; cursor: pointer; display: block; margin: 10px 0; text-decoration: underline; }
