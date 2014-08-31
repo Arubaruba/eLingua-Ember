@@ -1,11 +1,12 @@
 // Tutors create and close these to make sessions available / unavailable to students
 App.SessionPeriod = DS.Model.extend({
-  created: DS.attr('date'),
-  removed: DS.attr('date'),
   sessionRegistration: DS.belongsTo('session-registration'),
   tutor: DS.belongsTo('user'),
   weekDay: DS.attr('number'),
   utcHour: DS.attr('number'),
+
+  created: DS.attr('date'),
+  removed: DS.attr('date'),
 
   // Computed properties
   hour: Ember.computed('utcHour', function(keys, value) {
@@ -36,8 +37,16 @@ App.SessionPeriod = DS.Model.extend({
     nextLesson.setDate(now.getDate() + distance);
     return nextLesson;
   }),
-  remainingTime: Ember.computed('nextLesson', function () {
-    return this.get('nextLesson') - new Date();
+  remainingTime: Ember.computed('weekDay', 'hour', function () {
+    var now = new Date();
+    var distance = (this.get('weekDay') + 7 - now.getDay()) % 7;
+    var nextLesson = new Date();
+    if (distance == 0 && this.get('endingHour') - 1 < now.getHours()) {
+      distance = 7;
+    }
+    nextLesson.setHours(this.get('endingHour'), 0, 0);
+    nextLesson.setDate(now.getDate() + distance);
+    return nextLesson - now;
   }),
   beginsIn: Ember.computed('nextLesson', 'remainingTime', function () {
     return printTimeDifference(new Date(), this.get('nextLesson'));

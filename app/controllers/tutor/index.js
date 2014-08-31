@@ -40,27 +40,29 @@ App.TutorIndexController = Ember.Controller.extend({
   countedDayName: Ember.computed(function () {
     return this.get('weekDays')[new Date().getDay()];
   }),
-  countedDayNames: Ember.computed('filteredSessionPeriods', function () {
-    var model = this.get('filteredSessionPeriods');
-    var lessonsPerDay = {};
-    if (model) {
-      model.forEach(function (sessionPeriod) {
-        var dayIndex = sessionPeriod.get('weekDay');
-        lessonsPerDay[dayIndex] = (lessonsPerDay[dayIndex]) ? lessonsPerDay[dayIndex] + 1 : 1;
+  countedDayNames: Ember.computed('model.@each', function () {
+    if (this.get('model')) {
+      var model = this.get('model').rejectBy('removed');
+      var lessonsPerDay = {};
+      if (model) {
+        model.forEach(function (sessionPeriod) {
+          var dayIndex = sessionPeriod.get('weekDay');
+          lessonsPerDay[dayIndex] = (lessonsPerDay[dayIndex]) ? lessonsPerDay[dayIndex] + 1 : 1;
+        });
+      }
+      var controllerDays = this.get('weekDays');
+      var days = [];
+      controllerDays.forEach(function (day) {
+        days.push(day);
       });
-    }
-    var controllerDays = this.get('weekDays');
-    var days = [];
-    controllerDays.forEach(function (day) {
-      days.push(day);
-    });
-    for (var dayIndex in lessonsPerDay) {
-      days[dayIndex] += ' (' + lessonsPerDay[dayIndex] + ')';
-    }
+      for (var dayIndex in lessonsPerDay) {
+        days[dayIndex] += ' (' + lessonsPerDay[dayIndex] + ')';
+      }
 
-    var uncountedDayName = (this.get('countedDayName') + '').split(' ')[0];
-    this.set('countedDayName', days[controllerDays.indexOf(uncountedDayName)]);
-    return days;
+      var uncountedDayName = (this.get('countedDayName') + '').split(' ')[0];
+      this.set('countedDayName', days[controllerDays.indexOf(uncountedDayName)]);
+      return days;
+    }
   }),
   filteredSessionPeriods: Ember.computed('model.@each', 'countedDayName', function () {
     var uncountedDayName = (this.get('countedDayName') + '').split(' ')[0];
@@ -72,10 +74,10 @@ App.TutorIndexController = Ember.Controller.extend({
   }),
   actions: {
     addTutoringHours: function () {
-      var controller = this;
-      controller.set('addHoursResponse', '');
-      controller.set('addHoursLoading', true);
-      if (this.get('addHours.valid')) {
+      if (this.get('addHours.valid') && this.get('addHours.fields.startTime.value')) {
+        var controller = this;
+        controller.set('addHoursResponse', '');
+        controller.set('addHoursLoading', true);
         var allDuplicates = true;
         var hour = controller.get('addHours.fields.startTime.value');
         var uncountedDayName = (this.get('countedDayName') + '').split(' ')[0];
@@ -107,17 +109,22 @@ App.TutorIndexController = Ember.Controller.extend({
             });
           }
           hour++;
+          if (duplicate && hour < controller.get('addHours.fields.endTime.value')) {
+            addHour();
+          }
         }
 
         addHour();
         if (allDuplicates) {
-          controller.set('addHoursResponse', 'These hours already exist');
+          controller.set('addHoursResponse', this.get('weekDays')[weekDay] + ' already has these hours');
           controller.set('addHoursLoading', false);
         }
       }
     },
     removeSessionPeriod: function (sessionPeriod) {
+      var controller = this;
       sessionPeriod.set('removed', new Date()).save();
+      controller.notifyPropertyChange('model');
       //      if (!sessionPeriod.get('alreadyDeleted')) {
       //        sessionPeriod.set('alreadyDeleted', true);
       //        var controller = this;

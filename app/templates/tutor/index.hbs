@@ -23,9 +23,9 @@
           </button>
           <span {{bind-attr class=":loading-message addHoursLoading:visible"}}>Adding ...</span>
 
-          <span class="message-next-line">
+          <div class="message-next-line">
             {{addHoursResponse}}
-          </span>
+          </div>
         </form>
       </div>
     </div>
@@ -49,8 +49,10 @@
       {{view Ember.Select content=countedDayNames value=countedDayName}}
     </div>
     {{#each filteredSessionPeriods}}
-      <div {{bind-attr class=":hour student::empty"}}>
-        <div>
+      <!--Only fully loaded Records should appear-->
+      {{#if hour}}
+        <div {{bind-attr class=":hour student::empty"}}>
+          <div>
           <span class="student-name">
             {{#if student}}
               {{student.fullName}}
@@ -59,13 +61,14 @@
               Empty
             {{/if}}
           </span>
+          </div>
+          <div class="hour-range">{{hour}}:00 - {{endingHour}}:00</div>
+          <div class="right">
+            <div class="begins-in"><b>{{beginsIn}}</b></div>
+            <button class="button-grey remove" {{action 'removeSessionPeriod' this}}>Remove</button>
+          </div>
         </div>
-        <div class="hour-range">{{hour}}:00 - {{endingHour}}:00</div>
-        <div class="right">
-          <div class="begins-in"><b>{{beginsIn}}</b></div>
-          <button class="button-grey remove" {{action 'removeSessionPeriod' this}}>Remove</button>
-        </div>
-      </div>
+      {{/if}}
     {{else}}
       You have not added any session periods for <b>{{countedDayName}}</b> yet.
     {{/each}}

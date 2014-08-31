@@ -27,21 +27,6 @@ body { background: #fff; color: #333; font-family: "Lucida Grande", "Lucida Sans
 .scheduled-hours .hour .remove { background: #dd3800; color: #fff; cursor: pointer; float: right; font-size: 15px; font-weight: bold; padding: 3px; position: absolute; right: 10px; text-align: center; top: 25px; width: 18px; }
 .scheduled-hours .hour:nth-child(odd) { background: #e7e7e7; }
 
-.tutor-hour-selection .tutor { overflow: auto; padding-bottom: 25px; margin-bottom: 25px; min-height: 305px; }
-.tutor-hour-selection .tutor .img-container { float: left; height: 150px; overflow: hidden; width: 150px; }
-.tutor-hour-selection .tutor .img-container img { height: auto; width: 150px; }
-.tutor-hour-selection .tutor .text { float: left; margin-left: 15px; text-decoration: none; cursor: pointer; }
-.tutor-hour-selection .tutor .text .tutor-name { font-size: 25px; }
-.tutor-hour-selection .tutor .text .days-available { color: #333; }
-.tutor-hour-selection .tutor .text .days-available .selected-day-title { color: #888; font-size: 20px; }
-.tutor-hour-selection .tutor .text .days-available .selected-day-title .day { text-decoration: none !important; }
-.tutor-hour-selection .tutor .text .days-available .day { margin-left: 10px; text-decoration: underline; }
-.tutor-hour-selection .tutor .text .days-available .day:first-of-type { margin-left: 0; }
-.tutor-hour-selection .tutor .text .selected-day { border: 1px solid #bbb; margin-top: 8px; padding: 5px; text-align: center; width: 420px; }
-.tutor-hour-selection .tutor .text .selected-day .available-hour:nth-child(even) { background: #e7e7e7; }
-.tutor-hour-selection .tutor .text .selected-day .available-hour td { padding: 5px 0; }
-.tutor-hour-selection .tutor .text .selected-day .available-hour .add-to-schedule { color: inherit; cursor: pointer; text-decoration: underline; }
-
 .simple-menu .title { display: inline-block; font-size: 19px; font-weight: bold; border-bottom: 1px solid #bbb; padding: 13px 0; margin-bottom: 15px; }
 .simple-menu .option { color: inherit; cursor: pointer; display: block; margin: 10px 0; text-decoration: underline; }
 .simple-menu .option.active { color: #999999; cursor: default; text-decoration: none; }
@@ -52,7 +37,7 @@ body { background: #fff; color: #333; font-family: "Lucida Grande", "Lucida Sans
 .form-1 input.halved, .form-1 select.halved { display: inline-block; width: 50%; }
 .form-1 input.halved:last-of-type, .form-1 select.halved:last-of-type { margin-bottom: 0 !important; }
 .form-1 .time-range-label { display: inline-block; margin: 0 9px; }
-.form-1 .message-next-line { margin-top: 10px; }
+.form-1 .message-next-line { margin-top: 20px; white-space: nowrap; }
 .form-1 .message { line-height: 2; margin-bottom: 10px; }
 .form-1 .text { margin-bottom: 10px; }
 

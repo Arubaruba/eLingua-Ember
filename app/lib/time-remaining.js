@@ -40,6 +40,6 @@ function printTimeDifference(now, y2k) {
   } else if (daysRound == 6 && hoursRound >= 24 - 5) {
     return 'Done for this week'
   } else {
-    return result + 'remaining';
+    return 'begins in ' + result;
   }
 }

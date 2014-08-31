@@ -125,82 +125,9 @@ $part-one-third-width: 300px;
     }
   }
 }
-.a {}
 
-.tutor-hour-selection {
-  .tutor {
-    overflow: auto;
-    padding-bottom: 25px;
-    margin-bottom: 25px;
-    min-height: 305px;
-    $image-size: 150px;
+.student-session-periods {
 
-    .img-container {
-      float: left;
-      height: $image-size;
-      overflow: hidden;
-      width: $image-size;
-
-      img {
-        height: auto;
-        width: $image-size;
-      }
-    }
-
-    .text {
-      float: left;
-      margin-left: 15px;
-      text-decoration: none;
-      cursor: pointer;
-
-      .tutor-name {
-        font-size: 25px;
-      }
-      .days-available {
-        color: #333;
-
-        .selected-day-title {
-          color: #888;
-          font-size: 20px;
-
-          .day {
-            text-decoration: none !important;
-          }
-        }
-        .day {
-          margin-left: 10px;
-          text-decoration: underline;
-          &:first-of-type {
-            margin-left: 0;
-          }
-        }
-      }
-      .selected-day {
-        border: 1px solid $border-color;
-        margin-top: 8px;
-        padding: 5px;
-        text-align: center;
-        width: 420px;
-
-        .available-hour {
-
-          &:nth-child(even) {
-            background: #e7e7e7;
-          }
-
-          td {
-            padding: 5px 0;
-          }
-
-          .add-to-schedule {
-            color: inherit;
-            cursor: pointer;
-            text-decoration: underline;
-          }
-        }
-      }
-    }
-  }
 }
 
 .simple-menu {
@@ -253,14 +180,15 @@ $part-one-third-width: 300px;
       &:last-of-type {
         margin-bottom: 0 !important;
       }
-   }
+    }
   }
   .time-range-label {
     display: inline-block;
     margin: 0 9px;
   }
   .message-next-line {
-    margin-top: 10px;
+    margin-top: 20px;
+    white-space: nowrap;
   }
   .message {
     line-height: 2;
