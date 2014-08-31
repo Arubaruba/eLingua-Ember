@@ -1,14 +1,27 @@
 // Tutors create and close these to make sessions available / unavailable to students
 App.SessionPeriod = DS.Model.extend({
+  created: DS.attr('date'),
+  removed: DS.attr('date'),
   sessionRegistration: DS.belongsTo('session-registration'),
   tutor: DS.belongsTo('user'),
-  student: DS.belongsTo('user'),
-  // only the day and hour will be used
   weekDay: DS.attr('number'),
+  utcHour: DS.attr('number'),
+
+  // Computed properties
+  hour: Ember.computed('utcHour', function(keys, value) {
+    if (arguments.length > 1) {
+      var date1 = new Date();
+      date1.setHours(value);
+      this.set('utcHour', date1.getUTCHours());
+    } else {
+      var date = new Date();
+      date.setUTCHours(this.get('utcHour'));
+      return date.getHours();
+    }
+  }),
   weekDayName: Ember.computed('weekDay', function () {
     return ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][this.get('weekDay')];
   }),
-  hour: DS.attr('number'),
   endingHour: Ember.computed('hour', function () {
     return parseInt(this.get('hour')) + 1;
   }),
@@ -27,8 +40,6 @@ App.SessionPeriod = DS.Model.extend({
     return this.get('nextLesson') - new Date();
   }),
   beginsIn: Ember.computed('nextLesson', 'remainingTime', function () {
-    var timeDifference = printTimeDifference(new Date(), this.get('nextLesson'));
-    var object = this;
-    return timeDifference;
+    return printTimeDifference(new Date(), this.get('nextLesson'));
   })
 });

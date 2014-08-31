@@ -37,11 +37,11 @@ App.TutorIndexController = Ember.Controller.extend({
       })
     }
   }),
-  countedDayName: Ember.computed(function() {
+  countedDayName: Ember.computed(function () {
     return this.get('weekDays')[new Date().getDay()];
   }),
-  countedDayNames: Ember.computed('model', 'filteredSessionPeriods', function () {
-    var model = this.get('model');
+  countedDayNames: Ember.computed('filteredSessionPeriods', function () {
+    var model = this.get('filteredSessionPeriods');
     var lessonsPerDay = {};
     if (model) {
       model.forEach(function (sessionPeriod) {
@@ -62,13 +62,13 @@ App.TutorIndexController = Ember.Controller.extend({
     this.set('countedDayName', days[controllerDays.indexOf(uncountedDayName)]);
     return days;
   }),
-  filteredSessionPeriods: Ember.computed('model', 'countedDayName', function () {
+  filteredSessionPeriods: Ember.computed('model.@each', 'countedDayName', function () {
     var uncountedDayName = (this.get('countedDayName') + '').split(' ')[0];
     return Ember.ArrayController.create({
       content: this.get('model'),
       sortProperties: ['student', 'remainingTime'],
       sortAscending: true
-    }).filterBy('weekDayName', uncountedDayName);
+    }).rejectBy('removed').filterBy('weekDayName', uncountedDayName);
   }),
   actions: {
     addTutoringHours: function () {
@@ -84,13 +84,14 @@ App.TutorIndexController = Ember.Controller.extend({
         function addHour() {
           var duplicate = false;
           controller.get('model').forEach(function (sessionPeriod) {
-            if (sessionPeriod.get('weekDay') == weekDay && sessionPeriod.get('hour') == hour) {
+            if (!sessionPeriod.get('removed') && sessionPeriod.get('weekDay') == weekDay && sessionPeriod.get('hour') == hour) {
               duplicate = true;
             }
           });
           if (!duplicate) {
             allDuplicates = false;
             controller.store.createRecord('session-period', {
+              created: new Date(),
               weekDay: weekDay,
               hour: hour,
               tutor: controller.get('user')
@@ -102,12 +103,12 @@ App.TutorIndexController = Ember.Controller.extend({
                 controller.get('user').save();
                 controller.set('addHoursResponse', 'Hours added');
                 controller.set('addHoursLoading', false);
-                controller.notifyPropertyChange('model');
               }
             });
           }
           hour++;
         }
+
         addHour();
         if (allDuplicates) {
           controller.set('addHoursResponse', 'These hours already exist');
@@ -116,18 +117,18 @@ App.TutorIndexController = Ember.Controller.extend({
       }
     },
     removeSessionPeriod: function (sessionPeriod) {
-      if (!sessionPeriod.get('alreadyDeleted')) {
-        sessionPeriod.set('alreadyDeleted', true);
-        var controller = this;
-        this.get('user').get('sessionPeriods').then(function (sessionPeriods) {
-          sessionPeriods.removeObject(sessionPeriod);
-          controller.get('user').save().then(function () {
-            sessionPeriod.destroyRecord().then(function() {
-              controller.notifyPropertyChange('model');
-            });
-          });
-        });
-      }
+      sessionPeriod.set('removed', new Date()).save();
+      //      if (!sessionPeriod.get('alreadyDeleted')) {
+      //        sessionPeriod.set('alreadyDeleted', true);
+      //        var controller = this;
+      //        this.get('user').get('sessionPeriods').then(function (sessionPeriods) {
+      //          sessionPeriods.removeObject(sessionPeriod);
+      //          controller.get('user').save().then(function () {
+      //            controller.notifyPropertyChange('model');
+      //            sessionPeriod.set('removed', new Date()).save();
+      //          });
+      //        });
+      //      }
       //      var controller = this;
       //      if (!sessionPeriod.get('alreadyDeleted')) {
       //        sessionPeriod.set('alreadyDeleted', true);

@@ -842,7 +842,7 @@ function program10(depth0,data) {
   data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
     'class': (":loading-message addHoursLoading:visible")
   },hashTypes:{'class': "STRING"},hashContexts:{'class': depth0},contexts:[],types:[],data:data})));
-  data.buffer.push(">Adding Hours ...</span>\n\n          <span class=\"message-next-line\">\n            ");
+  data.buffer.push(">Adding ...</span>\n\n          <span class=\"message-next-line\">\n            ");
   stack1 = helpers._triageMustache.call(depth0, "addHoursResponse", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n          </span>\n        </form>\n      </div>\n    </div>\n    <!--\n    <div class=\"titled-box\">\n      <div class=\"title\">Download Excel Report</div>\n      <div class=\"content\">\n        <form class=\"form-1\" action=\"\">\n          Start Date\n          ");
