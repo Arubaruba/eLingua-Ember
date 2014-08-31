@@ -1,6 +1,6 @@
 App.SessionRegistration = DS.Model.extend({
-  registrationDate: DS.attr('date'),
+  created: DS.attr('date'),
+  removed: DS.attr('date'),
   sessionPeriod: DS.belongsTo('session-period'),
-  student: DS.belongsTo('user'),
-  terminationDate: DS.attr('date')
+  student: DS.belongsTo('user')
 });

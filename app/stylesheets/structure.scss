@@ -27,7 +27,6 @@ body {
 .heading-bar {
   font-size: 25px;
   line-height: 50px;
-  margin-bottom: 45px;
   overflow: auto;
 
   .label {
@@ -36,11 +35,20 @@ body {
   .value {
     font-weight: bold;
   }
+  .drop-down,
   .search {
+    background: #fff;
     border: 1px solid $border-color;
+    box-sizing: border-box;
     font-size: 20px;
-    float: right;
     padding: 10px;
+    height: 45px;
+  }
+  .drop-down {
+    float: left;
+  }
+  .search {
+    float: right;
   }
 }
 
@@ -81,53 +89,39 @@ $part-one-third-width: 300px;
   }
 }
 
-.scheduled-hours {
-  .hour {
-    overflow: auto;
-    padding: 5px;
-    margin-bottom: 15px;
-    position: relative;
+.student-session-periods {
+  width: 100%;
 
-    &:last-of-type {
-      margin-bottom: 0;
-    }
-    .text {
-      font-size: 16px;
-      .datetime {
-        font-weight: bold;
-      }
-      .time-remaining {
-        color: #888;
-        font-weight: bold;
-      }
-      .email {
-        font-size: 14px;
-        font-weight: bold;
-        margin-top: 8px;
-      }
-    }
-    .remove {
-      background: #dd3800;
-      color: #fff;
-      cursor: pointer;
-      float: right;
-      font-size: 15px;
+  .hour {
+    padding: 30px 0 10px 0;
+    border-bottom: 3px solid;
+    .time-range {
+      font-size: 25px;
       font-weight: bold;
-      padding: 3px;
-      position: absolute;
-      right: 10px;
-      text-align: center;
-      top: 25px;
-      width: 18px;
     }
+    .begins-in {
+      color: #424242;
+      margin-left: 20px;
+    }
+  }
+  .tutor {
+    background: #f4f4f4;
+    td {
+      padding: 10px;
+    }
+
+    &.taking-lesson {
+      background: limegreen !important;
+    }
+
     &:nth-child(odd) {
       background: #e7e7e7;
     }
   }
-}
-
-.student-session-periods {
-
+  .empty-table-message {
+    font-size: 23px;
+    padding-bottom: 50px;
+  }
 }
 
 .simple-menu {

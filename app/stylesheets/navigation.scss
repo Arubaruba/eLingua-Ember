@@ -2,6 +2,7 @@ $nav-margin: 0 15px;
 
 @mixin button($main-color) {
   background: $main-color;
+  box-sizing: border-box;
   border: 1px solid darken($main-color, 25%);
   color: #fff;
   cursor: pointer;
@@ -36,6 +37,17 @@ $nav-margin: 0 15px;
 .button-grey {
   @include button(#ddd);
   color: #333;
+}
+
+.cell-button-blue {
+  @include button(#0069ff);
+  width: 100%;
+}
+
+.cell-button-grey {
+  @include button(#ddd);
+  color: #333;
+  width: 100%;
 }
 
 .link-black {

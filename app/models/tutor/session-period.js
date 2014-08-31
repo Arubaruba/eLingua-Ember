@@ -1,13 +1,11 @@
 // Tutors create and close these to make sessions available / unavailable to students
 App.SessionPeriod = DS.Model.extend({
-  sessionRegistration: DS.belongsTo('session-registration'),
+  created: DS.attr('date'),
+  removed: DS.attr('date'),
+  sessionRegistrations: DS.hasMany('session-registration', {async: true}),
   tutor: DS.belongsTo('user'),
   weekDay: DS.attr('number'),
   utcHour: DS.attr('number'),
-
-  created: DS.attr('date'),
-  removed: DS.attr('date'),
-
   // Computed properties
   hour: Ember.computed('utcHour', function(keys, value) {
     if (arguments.length > 1) {

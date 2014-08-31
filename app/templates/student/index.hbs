@@ -1,46 +1,61 @@
+<h2>My Tutoring Sessions</h2>
+<table class="student-session-periods" cellspacing="0">
+  <tbody>
+  {{#each enrolledSessionPeriods}}
+    <tr>
+      <td colspan="3" class="hour">
+        <span class="time-range">{{weekDayName}} {{hour}}:00 - {{endingHour}}:00</span>
+        <span class="begins-in">{{beginsIn}}</span>
+      </td>
+    </tr>
+    <tr class="tutor">
+      <td class="tutor-name">{{tutor.fullName}}</td>
+      <td>{{otherStudents}}
+      <td>
+        {{#if joined}}
+          <button {{action 'joinSessionPeriod' this}} class="button-blue">Join</button>
+        {{else}}
+          <button {{action 'leaveSessionPeriod' this}} class="button-blue">Leave</button>
+        {{/if}}
+      </td>
+    </tr>
+  {{else}}
+    <tr>
+      <td class="empty-table-message">You have not registered for any tutoring sessions.
+        <b>You can join some below!</b></td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>
 <div class="heading-bar">
-  <span class="label" title="Tutoring Hours">Remaining Credits:</span>
-  <span class="value">5</span>
-  {{input class="search" type="textfield" value=headingBarSearch id="headingBarSearch" placeholder="Search Tutors"}}
+  {{view Ember.Select content=availableWeekDays value=weekDay class="drop-down"}}
+  {{input class="search" type="textfield" value=tutorNameFilter id="headingBarSearch" placeholder="Search Tutors"}}
 </div>
-<div class="partition">
-  <div class="one-third">
-    <div class="titled-box">
-      <div class="title">Weekly Tutoring Hours</div>
-      <div class="scheduled-hours">
-          <div class="hour">
-            <div class="text">
-              <div class="datetime">Monday 13:00 - 14:00</div>
-              <div class="time-remaining">Starts in 1 Day</div>
-              <div class="email">kamal@komensky.org</div>
-            </div>
-            <div class="remove">X</div>
-          </div>
-      </div>
-    </div>
-    <!--<div class="titled-box">-->
-      <!--<div class="title">Download Excel Report</div>-->
-      <!--<div class="content">-->
-        <!--<form class="form-1" action="">-->
-          <!--Start Date-->
-          <!--{{input type="textfield" value=reportDateStart id="reportDateStart" placeholder="Day-Month-Year"}}-->
-          <!--End Date-->
-          <!--{{input type="textfield" value=reportDateEnd id="reportDateEnd" placeholder="Day-Month-Year"}}-->
-          <!--<button class="button-green">Download</button>-->
-        <!--</form>-->
-      <!--</div>-->
-    <!--</div>-->
-  </div>
-  <div class="two-thirds">
-    <div class="form-1">{{view Ember.Select content=weekDays value=weekDay}}</div>
-    <div class="student-session-periods">
-      {{#each sessionPeriodGroups}}
-        hour: {{hour}}
-        {{#each contents}}
-          {{tutor.fullName}}
-        {{/each}}
-        <hr/>
-      {{/each}}
-    </div>
-  </div>
-</div>
+<h2>Lessons available on {{weekDay}}:</h2>
+<table class="student-session-periods" cellspacing="0">
+  <tbody>
+  {{#each sessionPeriodGroups}}
+    <tr>
+      <td colspan="3" class="hour">
+        <span class="time-range">{{hour}}:00 - {{endingHour}}:00</span>
+        <span class="begins-in">{{beginsIn}}</span>
+      </td>
+    </tr>
+    {{#each sessionPeriods}}
+      <tr class="tutor">
+        <td class="tutor-name">{{tutor.fullName}}</td>
+        <td {{bind-attr class=":students sessionRegistrations::none"}}>
+          {{presentStudents}}
+        </td>
+        <td>
+          {{#if userInvolved}}
+            <button {{action 'leaveSessionPeriod' this}} class="cell-button-grey">Leave</button>
+          {{else}}
+            <button {{action 'joinSessionPeriod' this}} class="cell-button-blue">Join</button>
+          {{/if}}
+        </td>
+      </tr>
+    {{/each}}
+  {{/each}}
+  </tbody>
+</table>

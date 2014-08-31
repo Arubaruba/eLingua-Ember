@@ -1,8 +1,4 @@
 App.ApplicationRoute = Ember.Route.extend({
-
-  user: null,
-  auth: null,
-
   protectedRoutes: ['student', 'tutor', 'admin'],
   actions: {
     signOut: function () {
@@ -15,6 +11,7 @@ App.ApplicationRoute = Ember.Route.extend({
 
     return new Ember.RSVP.Promise(function (resolve) {
       var auth = new FirebaseSimpleLogin(App.Firebase, function (err, user) {
+        App.FirebaseUser = user;
         var login = model.controllerFor('signed-out.login');
         login.set('loading', false);
         if (err) {
@@ -47,7 +44,7 @@ App.ApplicationRoute = Ember.Route.extend({
             var signUpController = model.controllerFor('signed-out.sign-up');
             var fullName = (user.displayName) ? user.displayName :
               signUpController.get('form.fields.fullName.value');
-            if (fullName) fullName = 'Student';
+            if (!fullName) fullName = 'Student';
             model.store.createRecord('user', {
               id: user.uid,
               //this may be null

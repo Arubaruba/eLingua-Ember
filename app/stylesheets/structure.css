@@ -4,10 +4,12 @@ body { background: #fff; color: #333; font-family: "Lucida Grande", "Lucida Sans
 .upper-bar .website-name { font-size: 45px; }
 .upper-bar .right { float: right; line-height: 60px; }
 
-.heading-bar { font-size: 25px; line-height: 50px; margin-bottom: 45px; overflow: auto; }
+.heading-bar { font-size: 25px; line-height: 50px; overflow: auto; }
 .heading-bar .label { margin-right: 10px; }
 .heading-bar .value { font-weight: bold; }
-.heading-bar .search { border: 1px solid #bbb; font-size: 20px; float: right; padding: 10px; }
+.heading-bar .drop-down, .heading-bar .search { background: #fff; border: 1px solid #bbb; box-sizing: border-box; font-size: 20px; padding: 10px; height: 45px; }
+.heading-bar .drop-down { float: left; }
+.heading-bar .search { float: right; }
 
 .partition { overflow: auto; }
 .partition .one-third { float: left; width: 300px; }
@@ -18,14 +20,15 @@ body { background: #fff; color: #333; font-family: "Lucida Grande", "Lucida Sans
 .titled-box .title { background: #eee; border-bottom: 1px solid #bbb; font-size: 20px; padding: 12px; }
 .titled-box .content { padding: 12px; }
 
-.scheduled-hours .hour { overflow: auto; padding: 5px; margin-bottom: 15px; position: relative; }
-.scheduled-hours .hour:last-of-type { margin-bottom: 0; }
-.scheduled-hours .hour .text { font-size: 16px; }
-.scheduled-hours .hour .text .datetime { font-weight: bold; }
-.scheduled-hours .hour .text .time-remaining { color: #888; font-weight: bold; }
-.scheduled-hours .hour .text .email { font-size: 14px; font-weight: bold; margin-top: 8px; }
-.scheduled-hours .hour .remove { background: #dd3800; color: #fff; cursor: pointer; float: right; font-size: 15px; font-weight: bold; padding: 3px; position: absolute; right: 10px; text-align: center; top: 25px; width: 18px; }
-.scheduled-hours .hour:nth-child(odd) { background: #e7e7e7; }
+.student-session-periods { width: 100%; }
+.student-session-periods .hour { padding: 30px 0 10px 0; border-bottom: 3px solid; }
+.student-session-periods .hour .time-range { font-size: 25px; font-weight: bold; }
+.student-session-periods .hour .begins-in { color: #424242; margin-left: 20px; }
+.student-session-periods .tutor { background: #f4f4f4; }
+.student-session-periods .tutor td { padding: 10px; }
+.student-session-periods .tutor.taking-lesson { background: limegreen !important; }
+.student-session-periods .tutor:nth-child(odd) { background: #e7e7e7; }
+.student-session-periods .empty-table-message { font-size: 23px; padding-bottom: 50px; }
 
 .simple-menu .title { display: inline-block; font-size: 19px; font-weight: bold; border-bottom: 1px solid #bbb; padding: 13px 0; margin-bottom: 15px; }
 .simple-menu .option { color: inherit; cursor: pointer; display: block; margin: 10px 0; text-decoration: underline; }

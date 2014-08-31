@@ -37,6 +37,10 @@ App.TutorIndexController = Ember.Controller.extend({
       })
     }
   }),
+  model: Ember.computed('unfilteredSessionPeriods', 'unfilteredSessionPeriods.@each', function () {
+    if (this.get('unfilteredSessionPeriods'))
+      return this.get('unfilteredSessionPeriods').rejectBy('removed').filterBy('tutor', this.get('user'));
+  }),
   countedDayName: Ember.computed(function () {
     return this.get('weekDays')[new Date().getDay()];
   }),
