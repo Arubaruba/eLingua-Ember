@@ -640,7 +640,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
 function program1(depth0,data) {
   
   var buffer = '', stack1;
-  data.buffer.push("\n    <tr>\n      <td colspan=\"3\" class=\"hour\">\n        <span class=\"time-range\">");
+  data.buffer.push("\n    <tr>\n      <td colspan=\"4\" class=\"hour\">\n        <span class=\"time-range\">");
   stack1 = helpers._triageMustache.call(depth0, "weekDayName", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push(" ");
@@ -656,42 +656,31 @@ function program1(depth0,data) {
   stack1 = helpers._triageMustache.call(depth0, "tutor.fullName", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("</td>\n      <td>");
-  stack1 = helpers._triageMustache.call(depth0, "otherStudents", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  stack1 = helpers._triageMustache.call(depth0, "tutor.emailAddress", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n      <td>\n        ");
-  stack1 = helpers['if'].call(depth0, "joined", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(4, program4, data),fn:self.program(2, program2, data),contexts:[depth0],types:["ID"],data:data});
+  data.buffer.push("</td>\n      <td ");
+  data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
+    'class': (":students sessionRegistrations::none")
+  },hashTypes:{'class': "STRING"},hashContexts:{'class': depth0},contexts:[],types:[],data:data})));
+  data.buffer.push(">\n        ");
+  stack1 = helpers._triageMustache.call(depth0, "presentStudents", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n      </td>\n    </tr>\n  ");
-  return buffer;
-  }
-function program2(depth0,data) {
-  
-  var buffer = '';
-  data.buffer.push("\n          <button ");
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "joinSessionPeriod", "", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","ID"],data:data})));
-  data.buffer.push(" class=\"button-blue\">Join</button>\n        ");
-  return buffer;
-  }
-
-function program4(depth0,data) {
-  
-  var buffer = '';
-  data.buffer.push("\n          <button ");
+  data.buffer.push("\n      </td>\n      <td>\n        <button ");
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "leaveSessionPeriod", "", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","ID"],data:data})));
-  data.buffer.push(" class=\"button-blue\">Leave</button>\n        ");
+  data.buffer.push(" class=\"cell-button-grey\">Leave</button>\n      </td>\n    </tr>\n  ");
   return buffer;
   }
 
-function program6(depth0,data) {
+function program3(depth0,data) {
   
   
-  data.buffer.push("\n    <tr>\n      <td class=\"empty-table-message\">You have not registered for any tutoring sessions.\n        <b>You can join some below!</b></td>\n    </tr>\n  ");
+  data.buffer.push("\n    <tr>\n      <td>You have not registered for any tutoring sessions.\n        <b>You can join some below!</b></td>\n    </tr>\n  ");
   }
 
-function program8(depth0,data) {
+function program5(depth0,data) {
   
   var buffer = '', stack1;
-  data.buffer.push("\n    <tr>\n      <td colspan=\"3\" class=\"hour\">\n        <span class=\"time-range\">");
+  data.buffer.push("\n    <tr>\n      <td colspan=\"4\" class=\"hour\">\n        <span class=\"time-range\">");
   stack1 = helpers._triageMustache.call(depth0, "hour", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push(":00 - ");
@@ -701,50 +690,55 @@ function program8(depth0,data) {
   stack1 = helpers._triageMustache.call(depth0, "beginsIn", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("</span>\n      </td>\n    </tr>\n    ");
-  stack1 = helpers.each.call(depth0, "sessionPeriods", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(9, program9, data),contexts:[depth0],types:["ID"],data:data});
+  stack1 = helpers.each.call(depth0, "sessionPeriod", "in", "sessionPeriods", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(6, program6, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n  ");
   return buffer;
   }
-function program9(depth0,data) {
+function program6(depth0,data) {
   
   var buffer = '', stack1;
   data.buffer.push("\n      <tr class=\"tutor\">\n        <td class=\"tutor-name\">");
-  stack1 = helpers._triageMustache.call(depth0, "tutor.fullName", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  stack1 = helpers._triageMustache.call(depth0, "sessionPeriod.tutor.fullName", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("</td>\n        <td ");
-  data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
-    'class': (":students sessionRegistrations::none")
-  },hashTypes:{'class': "STRING"},hashContexts:{'class': depth0},contexts:[],types:[],data:data})));
-  data.buffer.push(">\n          ");
-  stack1 = helpers._triageMustache.call(depth0, "presentStudents", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  data.buffer.push("</td>\n        <td>");
+  stack1 = helpers._triageMustache.call(depth0, "sessionPeriod.presentStudents", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n        </td>\n        <td>\n          ");
-  stack1 = helpers['if'].call(depth0, "userInvolved", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(12, program12, data),fn:self.program(10, program10, data),contexts:[depth0],types:["ID"],data:data});
+  data.buffer.push("</td>\n        <td>\n          ");
+  stack1 = helpers['if'].call(depth0, "sessionPeriod.userInvolved", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(9, program9, data),fn:self.program(7, program7, data),contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n        </td>\n      </tr>\n    ");
+  return buffer;
+  }
+function program7(depth0,data) {
+  
+  var buffer = '';
+  data.buffer.push("\n            <button ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "leaveSessionPeriod", "sessionPeriod", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","ID"],data:data})));
+  data.buffer.push(" class=\"cell-button-grey\">Leave</button>\n          ");
+  return buffer;
+  }
+
+function program9(depth0,data) {
+  
+  var buffer = '', stack1;
+  data.buffer.push("\n            ");
+  stack1 = helpers.unless.call(depth0, "userInvolved", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(10, program10, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n          ");
   return buffer;
   }
 function program10(depth0,data) {
   
   var buffer = '';
-  data.buffer.push("\n            <button ");
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "leaveSessionPeriod", "", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","ID"],data:data})));
-  data.buffer.push(" class=\"cell-button-grey\">Leave</button>\n          ");
-  return buffer;
-  }
-
-function program12(depth0,data) {
-  
-  var buffer = '';
-  data.buffer.push("\n            <button ");
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "joinSessionPeriod", "", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","ID"],data:data})));
-  data.buffer.push(" class=\"cell-button-blue\">Join</button>\n          ");
+  data.buffer.push("\n              <button ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "joinSessionPeriod", "sessionPeriod", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","ID"],data:data})));
+  data.buffer.push(" class=\"cell-button-blue\">Join</button>\n            ");
   return buffer;
   }
 
   data.buffer.push("<h2>My Tutoring Sessions</h2>\n<table class=\"student-session-periods\" cellspacing=\"0\">\n  <tbody>\n  ");
-  stack1 = helpers.each.call(depth0, "enrolledSessionPeriods", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(6, program6, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
+  stack1 = helpers.each.call(depth0, "joinedSessionPeriods", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n  </tbody>\n</table>\n<div class=\"heading-bar\">\n  ");
   data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.Select", {hash:{
@@ -764,7 +758,7 @@ function program12(depth0,data) {
   stack1 = helpers._triageMustache.call(depth0, "weekDay", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push(":</h2>\n<table class=\"student-session-periods\" cellspacing=\"0\">\n  <tbody>\n  ");
-  stack1 = helpers.each.call(depth0, "sessionPeriodGroups", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(8, program8, data),contexts:[depth0],types:["ID"],data:data});
+  stack1 = helpers.each.call(depth0, "sessionPeriodGroups", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(5, program5, data),contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n  </tbody>\n</table>\n");
   return buffer;
@@ -869,20 +863,16 @@ function program5(depth0,data) {
 function program6(depth0,data) {
   
   var buffer = '', stack1;
-  data.buffer.push("\n        <div ");
-  data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
-    'class': (":hour student::empty")
-  },hashTypes:{'class': "STRING"},hashContexts:{'class': depth0},contexts:[],types:[],data:data})));
-  data.buffer.push(">\n          <div>\n          <span class=\"student-name\">\n            ");
-  stack1 = helpers['if'].call(depth0, "student", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(9, program9, data),fn:self.program(7, program7, data),contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n          </span>\n          </div>\n          <div class=\"hour-range\">");
+  data.buffer.push("\n        <div class=\"hour\">\n          <div class=\"hour-range\">");
   stack1 = helpers._triageMustache.call(depth0, "hour", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push(":00 - ");
   stack1 = helpers._triageMustache.call(depth0, "endingHour", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push(":00</div>\n          <div class=\"right\">\n            <div class=\"begins-in\"><b>");
+  data.buffer.push(":00</div>\n          <div class=\"student-name\">\n            ");
+  stack1 = helpers.each.call(depth0, "activeSessionRegistrations", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(9, program9, data),fn:self.program(7, program7, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n          </div>\n          <div class=\"right\">\n            <div class=\"begins-in\"><b>");
   stack1 = helpers._triageMustache.call(depth0, "beginsIn", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("</b></div>\n            <button class=\"button-grey remove\" ");
@@ -906,7 +896,7 @@ function program7(depth0,data) {
 function program9(depth0,data) {
   
   
-  data.buffer.push("\n              Empty\n            ");
+  data.buffer.push("\n              <div class=\"empty\">Empty</div>\n            ");
   }
 
 function program11(depth0,data) {

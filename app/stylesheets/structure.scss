@@ -42,7 +42,7 @@ body {
     box-sizing: border-box;
     font-size: 20px;
     padding: 10px;
-    height: 45px;
+    height: 55px;
   }
   .drop-down {
     float: left;
@@ -90,6 +90,7 @@ $part-one-third-width: 300px;
 }
 
 .student-session-periods {
+  margin-bottom: 50px;
   width: 100%;
 
   .hour {
@@ -108,6 +109,7 @@ $part-one-third-width: 300px;
     background: #f4f4f4;
     td {
       padding: 10px;
+      height: 30px;
     }
 
     &.taking-lesson {
@@ -117,10 +119,6 @@ $part-one-third-width: 300px;
     &:nth-child(odd) {
       background: #e7e7e7;
     }
-  }
-  .empty-table-message {
-    font-size: 23px;
-    padding-bottom: 50px;
   }
   button {
     float: right;
@@ -198,7 +196,6 @@ $part-one-third-width: 300px;
 
 .tutors-available-hours {
   .hour {
-    height: 70px;
     padding: 20px;
     overflow: hidden;
     position: relative;
@@ -207,7 +204,7 @@ $part-one-third-width: 300px;
     &:nth-child(even) {
       background: #e7e7e7;
     }
-    &.empty {
+    .empty {
       color: #bbb;
       font-weight: normal;
     }
@@ -217,7 +214,7 @@ $part-one-third-width: 300px;
       font-weight: bold;
     }
     .hour-range {
-      margin-top: 10px;
+      margin-bottom: 10px;
       font-weight: bold;
       font-size: 23px;
     }

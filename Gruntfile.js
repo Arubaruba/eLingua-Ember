@@ -11,7 +11,10 @@ module.exports = function(grunt) {
     uglify: config('uglify'),
     watch: {
       files: ['app/templates/**/*.hbs'],
-      tasks: ['emberTemplates']
+      tasks: ['emberTemplates'],
+      options: {
+        livereload: true
+      }
     }
   });
 

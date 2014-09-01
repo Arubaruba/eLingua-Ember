@@ -37,38 +37,39 @@ App.TutorIndexController = Ember.Controller.extend({
       })
     }
   }),
-  model: Ember.computed('unfilteredSessionPeriods', 'unfilteredSessionPeriods.@each', function () {
-    if (this.get('unfilteredSessionPeriods'))
-      return this.get('unfilteredSessionPeriods').rejectBy('removed').filterBy('tutor', this.get('user'));
-  }),
-  countedDayName: Ember.computed(function () {
-    return this.get('weekDays')[new Date().getDay()];
-  }),
-  countedDayNames: Ember.computed('model.@each', function () {
-    if (this.get('model')) {
-      var model = this.get('model').rejectBy('removed');
-      var lessonsPerDay = {};
-      if (model) {
-        model.forEach(function (sessionPeriod) {
-          var dayIndex = sessionPeriod.get('weekDay');
-          lessonsPerDay[dayIndex] = (lessonsPerDay[dayIndex]) ? lessonsPerDay[dayIndex] + 1 : 1;
+  model: Ember.computed('user', 'unfilteredSessionPeriods', 'unfilteredSessionPeriods.@each',
+    'unfilteredSessionRegistrations.@each.removed', 'unfilteredSessionPeriods.@each.sessionRegistrations', function () {
+      return this.get('unfilteredSessionPeriods').rejectBy('removed').filterBy('tutor', this.get('user')).map(function (sessionPeriod) {
+        sessionPeriod.get('sessionRegistrations').then(function (sessionRegistrations) {
+          sessionPeriod.set('activeSessionRegistrations', sessionRegistrations.rejectBy('removed'));
         });
-      }
-      var controllerDays = this.get('weekDays');
-      var days = [];
-      controllerDays.forEach(function (day) {
-        days.push(day);
+        return sessionPeriod;
       });
-      for (var dayIndex in lessonsPerDay) {
-        days[dayIndex] += ' (' + lessonsPerDay[dayIndex] + ')';
-      }
-
-      var uncountedDayName = (this.get('countedDayName') + '').split(' ')[0];
-      this.set('countedDayName', days[controllerDays.indexOf(uncountedDayName)]);
-      return days;
+    }),
+  countedDayName: '',
+  countedDayNames: Ember.computed('model.@each', function () {
+    var model = this.get('model').rejectBy('removed');
+    var lessonsPerDay = {};
+    if (model) {
+      model.forEach(function (sessionPeriod) {
+        var dayIndex = sessionPeriod.get('weekDay');
+        lessonsPerDay[dayIndex] = (lessonsPerDay[dayIndex]) ? lessonsPerDay[dayIndex] + 1 : 1;
+      });
     }
+    var controllerDays = this.get('weekDays');
+    var days = [];
+    controllerDays.forEach(function (day) {
+      days.push(day);
+    });
+    for (var dayIndex in lessonsPerDay) {
+      days[dayIndex] += ' (' + lessonsPerDay[dayIndex] + ')';
+    }
+
+    var uncountedDayName = (this.get('countedDayName') + '').split(' ')[0];
+    this.set('countedDayName', days[controllerDays.indexOf(uncountedDayName)]);
+    return days;
   }),
-  filteredSessionPeriods: Ember.computed('model.@each', 'countedDayName', function () {
+  filteredSessionPeriods: Ember.computed('model', 'model.@each', 'countedDayName', function () {
     var uncountedDayName = (this.get('countedDayName') + '').split(' ')[0];
     return Ember.ArrayController.create({
       content: this.get('model'),

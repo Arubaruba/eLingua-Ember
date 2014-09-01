@@ -7,7 +7,7 @@ body { background: #fff; color: #333; font-family: "Lucida Grande", "Lucida Sans
 .heading-bar { font-size: 25px; line-height: 50px; overflow: auto; }
 .heading-bar .label { margin-right: 10px; }
 .heading-bar .value { font-weight: bold; }
-.heading-bar .drop-down, .heading-bar .search { background: #fff; border: 1px solid #bbb; box-sizing: border-box; font-size: 20px; padding: 10px; height: 45px; }
+.heading-bar .drop-down, .heading-bar .search { background: #fff; border: 1px solid #bbb; box-sizing: border-box; font-size: 20px; padding: 10px; height: 55px; }
 .heading-bar .drop-down { float: left; }
 .heading-bar .search { float: right; }
 
@@ -20,15 +20,14 @@ body { background: #fff; color: #333; font-family: "Lucida Grande", "Lucida Sans
 .titled-box .title { background: #eee; border-bottom: 1px solid #bbb; font-size: 20px; padding: 12px; }
 .titled-box .content { padding: 12px; }
 
-.student-session-periods { width: 100%; }
+.student-session-periods { margin-bottom: 50px; width: 100%; }
 .student-session-periods .hour { padding: 30px 0 10px 0; border-bottom: 3px solid; }
 .student-session-periods .hour .time-range { font-size: 25px; font-weight: bold; }
 .student-session-periods .hour .begins-in { color: #424242; margin-left: 20px; }
 .student-session-periods .tutor { background: #f4f4f4; }
-.student-session-periods .tutor td { padding: 10px; }
+.student-session-periods .tutor td { padding: 10px; height: 30px; }
 .student-session-periods .tutor.taking-lesson { background: limegreen !important; }
 .student-session-periods .tutor:nth-child(odd) { background: #e7e7e7; }
-.student-session-periods .empty-table-message { font-size: 23px; padding-bottom: 50px; }
 .student-session-periods button { float: right; }
 
 .simple-menu .title { display: inline-block; font-size: 19px; font-weight: bold; border-bottom: 1px solid #bbb; padding: 13px 0; margin-bottom: 15px; }
@@ -45,11 +44,11 @@ body { background: #fff; color: #333; font-family: "Lucida Grande", "Lucida Sans
 .form-1 .message { line-height: 2; margin-bottom: 10px; }
 .form-1 .text { margin-bottom: 10px; }
 
-.tutors-available-hours .hour { height: 70px; padding: 20px; overflow: hidden; position: relative; background: #f4f4f4; }
+.tutors-available-hours .hour { padding: 20px; overflow: hidden; position: relative; background: #f4f4f4; }
 .tutors-available-hours .hour:nth-child(even) { background: #e7e7e7; }
-.tutors-available-hours .hour.empty { color: #bbb; font-weight: normal; }
+.tutors-available-hours .hour .empty { color: #bbb; font-weight: normal; }
 .tutors-available-hours .hour .student-name { font-size: 23px; font-weight: bold; }
-.tutors-available-hours .hour .hour-range { margin-top: 10px; font-weight: bold; font-size: 23px; }
+.tutors-available-hours .hour .hour-range { margin-bottom: 10px; font-weight: bold; font-size: 23px; }
 .tutors-available-hours .hour .email { font-size: 16px; color: #999999; margin-bottom: 5px; }
 .tutors-available-hours .hour .begins-in { color: #777; font-size: 16px; margin-bottom: 10px; }
 .tutors-available-hours .hour .right { position: absolute; right: 20px; top: 20px; }

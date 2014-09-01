@@ -1,27 +1,26 @@
 <h2>My Tutoring Sessions</h2>
 <table class="student-session-periods" cellspacing="0">
   <tbody>
-  {{#each enrolledSessionPeriods}}
+  {{#each joinedSessionPeriods}}
     <tr>
-      <td colspan="3" class="hour">
+      <td colspan="4" class="hour">
         <span class="time-range">{{weekDayName}} {{hour}}:00 - {{endingHour}}:00</span>
         <span class="begins-in">{{beginsIn}}</span>
       </td>
     </tr>
     <tr class="tutor">
       <td class="tutor-name">{{tutor.fullName}}</td>
-      <td>{{otherStudents}}
+      <td>{{tutor.emailAddress}}</td>
+      <td {{bind-attr class=":students sessionRegistrations::none"}}>
+        {{presentStudents}}
+      </td>
       <td>
-        {{#if joined}}
-          <button {{action 'joinSessionPeriod' this}} class="button-blue">Join</button>
-        {{else}}
-          <button {{action 'leaveSessionPeriod' this}} class="button-blue">Leave</button>
-        {{/if}}
+        <button {{action 'leaveSessionPeriod' this}} class="cell-button-grey">Leave</button>
       </td>
     </tr>
   {{else}}
     <tr>
-      <td class="empty-table-message">You have not registered for any tutoring sessions.
+      <td>You have not registered for any tutoring sessions.
         <b>You can join some below!</b></td>
     </tr>
   {{/each}}
@@ -36,22 +35,22 @@
   <tbody>
   {{#each sessionPeriodGroups}}
     <tr>
-      <td colspan="3" class="hour">
+      <td colspan="4" class="hour">
         <span class="time-range">{{hour}}:00 - {{endingHour}}:00</span>
         <span class="begins-in">{{beginsIn}}</span>
       </td>
     </tr>
-    {{#each sessionPeriods}}
+    {{#each sessionPeriod in  sessionPeriods}}
       <tr class="tutor">
-        <td class="tutor-name">{{tutor.fullName}}</td>
-        <td {{bind-attr class=":students sessionRegistrations::none"}}>
-          {{presentStudents}}
-        </td>
+        <td class="tutor-name">{{sessionPeriod.tutor.fullName}}</td>
+        <td>{{sessionPeriod.presentStudents}}</td>
         <td>
-          {{#if userInvolved}}
-            <button {{action 'leaveSessionPeriod' this}} class="cell-button-grey">Leave</button>
+          {{#if sessionPeriod.userInvolved}}
+            <button {{action 'leaveSessionPeriod' sessionPeriod}} class="cell-button-grey">Leave</button>
           {{else}}
-            <button {{action 'joinSessionPeriod' this}} class="cell-button-blue">Join</button>
+            {{#unless userInvolved}}
+              <button {{action 'joinSessionPeriod' sessionPeriod}} class="cell-button-blue">Join</button>
+            {{/unless}}
           {{/if}}
         </td>
       </tr>

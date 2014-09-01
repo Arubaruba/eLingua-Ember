@@ -51,18 +51,16 @@
     {{#each filteredSessionPeriods}}
       <!--Only fully loaded Records should appear-->
       {{#if hour}}
-        <div {{bind-attr class=":hour student::empty"}}>
-          <div>
-          <span class="student-name">
-            {{#if student}}
+        <div class="hour">
+          <div class="hour-range">{{hour}}:00 - {{endingHour}}:00</div>
+          <div class="student-name">
+            {{#each activeSessionRegistrations}}
               {{student.fullName}}
               <div class="email">{{student.emailAddress}}</div>
             {{else}}
-              Empty
-            {{/if}}
-          </span>
+              <div class="empty">Empty</div>
+            {{/each}}
           </div>
-          <div class="hour-range">{{hour}}:00 - {{endingHour}}:00</div>
           <div class="right">
             <div class="begins-in"><b>{{beginsIn}}</b></div>
             <button class="button-grey remove" {{action 'removeSessionPeriod' this}}>Remove</button>
