@@ -1,5 +1,5 @@
 module.exports = {
-  files: ['Gruntfile.js', 'js/**/*.js'],
+  files: ['Gruntfile.js', 'app/**/*.js'],
   options: {
     globals: {
       jQuery: true,

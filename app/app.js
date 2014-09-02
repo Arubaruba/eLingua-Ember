@@ -1,6 +1,6 @@
-App = Ember.Application.create();
+App = Ember.Application.create({});
 
-App.Firebase = new Firebase('https://elingua.firebaseio.com');
+App.Firebase = new Firebase(FirebaseURL);
 
 App.ApplicationAdapter = DS.FirebaseAdapter.extend({
   firebase: App.Firebase

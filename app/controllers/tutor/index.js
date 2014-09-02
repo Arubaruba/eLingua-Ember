@@ -46,7 +46,7 @@ App.TutorIndexController = Ember.Controller.extend({
         return sessionPeriod;
       });
     }),
-  countedDayName: '',
+  countedDayName: null,
   countedDayNames: Ember.computed('model.@each', function () {
     var model = this.get('model').rejectBy('removed');
     var lessonsPerDay = {};
@@ -65,8 +65,12 @@ App.TutorIndexController = Ember.Controller.extend({
       days[dayIndex] += ' (' + lessonsPerDay[dayIndex] + ')';
     }
 
-    var uncountedDayName = (this.get('countedDayName') + '').split(' ')[0];
-    this.set('countedDayName', days[controllerDays.indexOf(uncountedDayName)]);
+    if (this.get('countedDayName')) {
+      var uncountedDayName = (this.get('countedDayName') + '').split(' ')[0];
+      this.set('countedDayName', days[controllerDays.indexOf(uncountedDayName)]);
+    } else {
+      this.set('countedDayName', days[new Date().getDay()]);
+    }
     return days;
   }),
   filteredSessionPeriods: Ember.computed('model', 'model.@each', 'countedDayName', function () {

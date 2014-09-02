@@ -4,7 +4,7 @@ module.exports = {
   },
   dist: {
     files: {
-      'dist/elingua.min.js': ['tmp/elingua.concat.js']
+      'tmp/elingua.uglified.js': ['app/app.js', 'app/models/**/*.js', 'app/controllers/**/*.js', 'app/**/*.js']
     }
   }
 };
